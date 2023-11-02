@@ -7,32 +7,34 @@
 
 import UIKit
 
-class AuthViewController: UIViewController {
+final class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Авторизация"
+        navigationItem.title = L10n.Auth.title
         navigationController?.navigationBar.prefersLargeTitles = true
-        emailTextField.placeholder = "E-mail"
-        passwordTextField.placeholder = "Пароль"
+        emailTextField.placeholder = L10n.Auth.emailTextField
+        passwordTextField.placeholder = L10n.Auth.passwordTextField
 
-        signInButton.setTitle("Войти", for: .normal)
-        signUpButton.setTitle("Еще нет аккаунта?", for: .normal)
+        signInButton.setTitle(L10n.Auth.signInButton, for: .normal)
+        signUpButton.setTitle(L10n.Auth.signUpButton, for: .normal)
 
         // Do any additional setup after loading the view.
     }
 
-
-    //@IBAction func Button(_ sender: UIButton) {
-    //}
-    //@IBOutlet var Button: [UIButton]!
     @IBOutlet var signInButton: UIButton!
     @IBOutlet var signUpButton: UIButton!
 
     @IBOutlet private var emailTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
 
+    @IBAction private func didTapSignIn() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
+        view.window?.rootViewController = vc
 
+    }
+    
 
 }
 

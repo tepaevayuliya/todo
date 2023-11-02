@@ -1,7 +1,10 @@
-/* 
-  Localizable.strings
-  todo
+"auth.title" = "Авторизация";
+"auth.sign-in-button" = "Войти";
+"auth.sign-up-button" = "Еще нет аккаунта?";
+"auth.email-text-field" = "E-mail";
+"auth.password-text-field" = "Пароль";
 
-  Created by Юлия Тепаева on 31.10.2023.
-  
-*/
+"main.title" = "Cписок дел";
+"main.profile-button" = "Профиль";
+"main.empty-label" = "Пока здесь нет ни одной записи.\nСоздайте новую!";
+"main.empty-button" = "Новая запись";

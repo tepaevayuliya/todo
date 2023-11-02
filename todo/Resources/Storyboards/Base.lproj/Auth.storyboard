@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tfy-e2-AtM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="er6-bR-exg">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2C-ok-YPa">
-                                <rect key="frame" x="16" y="138" width="361" height="645"/>
+                                <rect key="frame" x="16" y="138" width="361" height="596"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5pY-yT-C6k">
-                                        <rect key="frame" x="0.0" y="0.0" width="361" height="645"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="596"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="8qo-zy-5O8">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="144"/>
@@ -44,7 +44,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rru-HJ-WGf">
-                                                <rect key="frame" x="0.0" y="576.33333333333337" width="361" height="68.666666666666629"/>
+                                                <rect key="frame" x="0.0" y="527.33333333333337" width="361" height="68.666666666666629"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jB8-uS-cuq">
                                                         <rect key="frame" x="0.0" y="0.0" width="361" height="34.333333333333336"/>
@@ -55,7 +55,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                         <connections>
-                                                            <action selector="Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SYN-ed-v2y"/>
+                                                            <action selector="didTapSignIn" destination="BYZ-38-t0r" eventType="touchUpInside" id="u7m-V1-qBX"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ub-kh-Xs0">
@@ -67,7 +67,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                         <connections>
-                                                            <action selector="Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Gj-pi-OrK"/>
+                                                            <segue destination="NLi-y9-kJG" kind="show" id="R0u-3i-K8b"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -98,6 +98,16 @@
             </objects>
             <point key="canvasLocation" x="1874.0458015267175" y="3.5211267605633805"/>
         </scene>
+        <!--SignUp-->
+        <scene sceneID="fep-Fd-caC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUp" id="NLi-y9-kJG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8Ig-em-f0V"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CgL-cs-p7j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2563" y="51"/>
+        </scene>
         <!--Item-->
         <scene sceneID="8x8-8X-gB8">
             <objects>
@@ -116,6 +126,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQS-Re-gwE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="947.32824427480909" y="3.5211267605633805"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="8hL-ns-7JV">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YcB-iV-x8s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="er6-bR-exg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="udR-mZ-PPp">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Tfy-e2-AtM" kind="relationship" relationship="viewControllers" id="UYP-AN-0x1"/>
+                    </connections>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="20.610687022900763" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>
