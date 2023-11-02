@@ -7,10 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-
-    
+class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,18 +16,18 @@ class ViewController: UIViewController {
         emailTextField.placeholder = "E-mail"
         passwordTextField.placeholder = "Пароль"
 
-        enterButton.setTitle("Войти", for: .normal)
-        singUpButton.setTitle("Еще нет аккаунта?", for: .normal)
+        signInButton.setTitle("Войти", for: .normal)
+        signUpButton.setTitle("Еще нет аккаунта?", for: .normal)
 
         // Do any additional setup after loading the view.
     }
 
 
-    @IBAction func Button(_ sender: UIButton) {
-    }
+    //@IBAction func Button(_ sender: UIButton) {
+    //}
     //@IBOutlet var Button: [UIButton]!
-    @IBOutlet var enterButton: UIButton!
-    @IBOutlet var singUpButton: UIButton!
+    @IBOutlet var signInButton: UIButton!
+    @IBOutlet var signUpButton: UIButton!
 
     @IBOutlet private var emailTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
