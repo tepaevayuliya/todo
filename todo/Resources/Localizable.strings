@@ -3,6 +3,7 @@
 "auth.sign-up-button" = "Еще нет аккаунта?";
 "auth.email-text-field" = "E-mail";
 "auth.password-text-field" = "Пароль";
+"auth.password-text-field-error" = "Ошибка!";
 
 "main.title" = "Cписок дел";
 "main.profile-button" = "Профиль";

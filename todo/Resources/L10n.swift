@@ -7,6 +7,7 @@ enum L10n {
         static let signUpButton = NSLocalizedString("auth.sign-up-button", comment: "")
         static let emailTextField = NSLocalizedString("auth.email-text-field", comment: "")
         static let passwordTextField = NSLocalizedString("auth.password-text-field", comment: "")
+        static let passwordTextFieldError = NSLocalizedString("auth.password-text-field-error", comment: "")
     }
 
     enum Main {

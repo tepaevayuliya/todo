@@ -36,7 +36,7 @@ final class AuthViewController: ParentViewController {
     @IBOutlet private var passwordTextField: TextInput!
 
     @IBAction private func didTapSignIn() {
-        passwordTextField.show(error: "Ошибка!")
+        passwordTextField.show(error: L10n.Auth.passwordTextFieldError)
 
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
