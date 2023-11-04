@@ -5,4 +5,10 @@
 //  Created by Юлия Тепаева on 02.11.2023.
 //
 
-import Foundation
+import UIKit
+
+class ParentViewController: UIViewController {
+    deinit{
+        print("\(String(describing: type(of: self))) released")
+    }
+}

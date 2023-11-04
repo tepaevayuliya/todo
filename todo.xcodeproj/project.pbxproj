@@ -21,6 +21,10 @@
 		5CE234302AF168EA0097AB36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE2342F2AF168EA0097AB36 /* Main.storyboard */; };
 		5CE234322AF1692A0097AB36 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234312AF1692A0097AB36 /* MainViewController.swift */; };
 		5CE234342AF16D760097AB36 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE234332AF16D760097AB36 /* SignUp.storyboard */; };
+		5CE234372AF3F2800097AB36 /* ParenyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234362AF3F2800097AB36 /* ParenyViewController.swift */; };
+		5CE2343A2AF3F3660097AB36 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234392AF3F3660097AB36 /* TextField.swift */; };
+		5CE2343D2AF3FE400097AB36 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE2343C2AF3FE400097AB36 /* TextInput.swift */; };
+		5CE234402AF4071C0097AB36 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE2343F2AF4071C0097AB36 /* UIViewController+Keyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,10 @@
 		5CE2342F2AF168EA0097AB36 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5CE234312AF1692A0097AB36 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5CE234332AF16D760097AB36 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		5CE234362AF3F2800097AB36 /* ParenyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParenyViewController.swift; sourceTree = "<group>"; };
+		5CE234392AF3F3660097AB36 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		5CE2343C2AF3FE400097AB36 /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
+		5CE2343F2AF4071C0097AB36 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Keyboard.swift"; path = "../../../../../Downloads/UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +117,8 @@
 		5C151E222AEAB8E1009684FE /* todo */ = {
 			isa = PBXGroup;
 			children = (
+				5CE2343E2AF406EB0097AB36 /* Extensions */,
+				5CE234382AF3F32D0097AB36 /* UIKit */,
 				5CE234252AF163F10097AB36 /* Classes */,
 				5CE234292AF164420097AB36 /* Resources */,
 				5C151E232AEAB8E2009684FE /* AppDelegate.swift */,
@@ -145,6 +155,7 @@
 		5CE234262AF164190097AB36 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5CE234352AF3F2650097AB36 /* Parent */,
 				5CE234282AF164310097AB36 /* Main */,
 				5CE234272AF164250097AB36 /* Auth */,
 			);
@@ -188,6 +199,31 @@
 				5CE234332AF16D760097AB36 /* SignUp.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		5CE234352AF3F2650097AB36 /* Parent */ = {
+			isa = PBXGroup;
+			children = (
+				5CE234362AF3F2800097AB36 /* ParenyViewController.swift */,
+			);
+			path = Parent;
+			sourceTree = "<group>";
+		};
+		5CE234382AF3F32D0097AB36 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				5CE234392AF3F3660097AB36 /* TextField.swift */,
+				5CE2343C2AF3FE400097AB36 /* TextInput.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		5CE2343E2AF406EB0097AB36 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5CE2343F2AF4071C0097AB36 /* UIViewController+Keyboard.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,10 +361,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CE2342E2AF166FA0097AB36 /* L10n.swift in Sources */,
+				5CE234372AF3F2800097AB36 /* ParenyViewController.swift in Sources */,
 				5C151E282AEAB8E2009684FE /* AuthViewController.swift in Sources */,
+				5CE2343A2AF3F3660097AB36 /* TextField.swift in Sources */,
+				5CE234402AF4071C0097AB36 /* UIViewController+Keyboard.swift in Sources */,
 				5C151E242AEAB8E2009684FE /* AppDelegate.swift in Sources */,
 				5C151E262AEAB8E2009684FE /* SceneDelegate.swift in Sources */,
 				5CE234322AF1692A0097AB36 /* MainViewController.swift in Sources */,
+				5CE2343D2AF3FE400097AB36 /* TextInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
