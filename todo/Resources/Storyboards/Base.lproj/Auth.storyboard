@@ -50,6 +50,9 @@
                                                         <rect key="frame" x="0.0" y="34.333333333333258" width="361" height="34.333333333333343"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                        <connections>
+                                                            <segue destination="NLi-y9-kJG" kind="show" id="p4G-gb-UY0"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
