@@ -13,8 +13,10 @@ final class AuthViewController: ParentViewController {
 
         navigationItem.title = L10n.Auth.title
         navigationController?.navigationBar.prefersLargeTitles = true
-        //emailTextField.placeholder = L10n.Auth.emailTextField
-        //passwordTextField.placeholder = L10n.Auth.passwordTextField
+
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
 
         emailTextField.setup(placeholder: L10n.Auth.emailTextField, text: nil)
         passwordTextField.setup(placeholder: L10n.Auth.passwordTextField, text: nil)
@@ -24,9 +26,7 @@ final class AuthViewController: ParentViewController {
 
         passwordTextField.enableSecurityMode()
 
-
         addTapToHideKeyboardGesture()
-        // Do any additional setup after loading the view.
     }
 
     @IBOutlet var signInButton: UIButton!

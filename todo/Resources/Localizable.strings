@@ -9,3 +9,10 @@
 "main.profile-button" = "Профиль";
 "main.empty-label" = "Пока здесь нет ни одной записи.\nСоздайте новую!";
 "main.empty-button" = "Новая запись";
+
+"signUp.title" = "Регистрация";
+"signUp.sign-up-button" = "Зарегистрироваться";
+"signUp.name-text-field" = "Имя пользователя";
+"signUp.email-text-field" = "E-mail";
+"signUp.password-text-field" = "Пароль";
+"signUp.name-text-field-error" = "Поле должно быть заполнено";

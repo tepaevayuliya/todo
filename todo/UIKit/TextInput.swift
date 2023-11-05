@@ -24,7 +24,7 @@ final class TextInput: UIView {
         label.numberOfLines = 2
 
         return label
-    }() //кложура
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,6 +67,10 @@ final class TextInput: UIView {
         textField.enableSecurityMode()
     }
 
+    func enableSecurityModeLightweight() {
+        textField.enableSecurityModeLightweight()
+    }
+
     private lazy var bottomConstraint = textField.bottomAnchor.constraint(equalTo: bottomAnchor)
 
     private func setup() {
@@ -86,6 +90,14 @@ final class TextInput: UIView {
             errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             errorLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+    }
+
+    func isEmpty() -> Bool {
+        if (textField.text == "") {
+            return true
+        } else {
+            return false
+        }
     }
 
     @objc
