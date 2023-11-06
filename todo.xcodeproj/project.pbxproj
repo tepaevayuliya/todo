@@ -59,6 +59,7 @@
 		5C151E402AEAB8E5009684FE /* todoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C151E442AEAB8E5009684FE /* todoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todoUITests.swift; sourceTree = "<group>"; };
 		5C151E462AEAB8E5009684FE /* todoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5C50A2F92AF9862400EEE149 /* Swift.gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = Swift.gitignore; sourceTree = "<group>"; };
 		5CCD1C262AF6B3BE002C7FAF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5CCD1C292AF6BCBC002C7FAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SignUp.storyboard; sourceTree = "<group>"; };
 		5CE2342B2AF166AE0097AB36 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		5C151E172AEAB8E1009684FE = {
 			isa = PBXGroup;
 			children = (
+				5C50A2F92AF9862400EEE149 /* Swift.gitignore */,
 				5C151E222AEAB8E1009684FE /* todo */,
 				5C151E392AEAB8E5009684FE /* todoTests */,
 				5C151E432AEAB8E5009684FE /* todoUITests */,
