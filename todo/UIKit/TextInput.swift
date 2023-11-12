@@ -26,6 +26,10 @@ final class TextInput: UIView {
         return label
     }()
 
+    var text: String? {
+        textField.text
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

@@ -37,7 +37,13 @@ final class AuthViewController: ParentViewController {
 
     @IBAction private func didTapSignIn() {
         passwordTextField.show(error: L10n.Auth.passwordTextFieldError)
-
+        if ValidationManager.isValid(email: emailTextField.text) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
+            view.window?.rootViewController = vc
+        } else {
+            emailTextField.show(error: "Емейл некоррекный")
+        }
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
 //        view.window?.rootViewController = vc

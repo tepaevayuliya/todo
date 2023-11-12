@@ -25,7 +25,6 @@ final class SignUpViewController: ParentViewController {
         addTapToHideKeyboardGesture()
     }
 
-
     @IBOutlet var signUpButton: UIButton!
 
     @IBOutlet private var nameTextField: TextInput!
@@ -38,4 +37,3 @@ final class SignUpViewController: ParentViewController {
         }
     }
 }
-

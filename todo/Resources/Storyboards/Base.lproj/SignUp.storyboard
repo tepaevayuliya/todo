@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtd-hh-OSr">
-                                <rect key="frame" x="16" y="94" width="361" height="689"/>
+                                <rect key="frame" x="16" y="94" width="361" height="708"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jV2-XV-vfG">
-                                        <rect key="frame" x="0.0" y="0.0" width="361" height="689"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="708"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="yuf-Kj-7QW">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="200"/>
@@ -40,7 +40,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3U5-y6-4bt">
-                                                <rect key="frame" x="0.0" y="654.66666666666663" width="361" height="34.333333333333371"/>
+                                                <rect key="frame" x="0.0" y="673.66666666666663" width="361" height="34.333333333333371"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fm5-Fy-Y0c">
                                                         <rect key="frame" x="0.0" y="0.0" width="361" height="34.333333333333336"/>
@@ -60,7 +60,7 @@
                         <viewLayoutGuide key="safeArea" id="VBM-FE-aei"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="VBM-FE-aei" firstAttribute="bottom" secondItem="gtd-hh-OSr" secondAttribute="bottom" constant="35" id="9LV-uM-srE"/>
+                            <constraint firstItem="VBM-FE-aei" firstAttribute="bottom" secondItem="gtd-hh-OSr" secondAttribute="bottom" constant="16" id="9LV-uM-srE" userLabel="Safe Area.bottom = Stack View.bottom + 16"/>
                             <constraint firstItem="gtd-hh-OSr" firstAttribute="top" secondItem="VBM-FE-aei" secondAttribute="top" constant="35" id="E97-Nd-wLX"/>
                             <constraint firstItem="gtd-hh-OSr" firstAttribute="leading" secondItem="VBM-FE-aei" secondAttribute="leading" constant="16" id="ddE-sy-eMN"/>
                             <constraint firstItem="VBM-FE-aei" firstAttribute="trailing" secondItem="gtd-hh-OSr" secondAttribute="trailing" constant="16" id="j1f-ON-wed"/>
