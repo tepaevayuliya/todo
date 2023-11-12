@@ -70,7 +70,7 @@
                             <constraint firstItem="c2C-ok-YPa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="sOQ-58-2mQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="rgN-w9-7cj"/>
+                    <navigationItem key="navigationItem" id="nta-y4-Q3a"/>
                     <connections>
                         <outlet property="emailTextField" destination="Jq9-Fh-DXo" id="LHq-96-mdc"/>
                         <outlet property="passwordTextField" destination="z3P-ig-fA0" id="chb-C8-NYh"/>
@@ -85,10 +85,9 @@
         <!--SignUp-->
         <scene sceneID="fep-Fd-caC">
             <objects>
-                <viewControllerPlaceholder storyboardName="SignUp" id="NLi-y9-kJG" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="8Ig-em-f0V"/>
-                </viewControllerPlaceholder>
+                <viewControllerPlaceholder storyboardName="SignUp" id="NLi-y9-kJG" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CgL-cs-p7j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationItem title="Title" id="rP7-la-J1Z" userLabel="Navigation Item"/>
             </objects>
             <point key="canvasLocation" x="2563" y="51"/>
         </scene>

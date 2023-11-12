@@ -13,8 +13,7 @@ final class AuthViewController: ParentViewController {
 
         navigationItem.title = L10n.Auth.title
         navigationController?.navigationBar.prefersLargeTitles = true
-        //emailTextField.placeholder = L10n.Auth.emailTextField
-        //passwordTextField.placeholder = L10n.Auth.passwordTextField
+        navigationItem.backButtonDisplayMode = .minimal
 
         emailTextField.setup(placeholder: L10n.Auth.emailTextField, text: nil)
         passwordTextField.setup(placeholder: L10n.Auth.passwordTextField, text: nil)
@@ -24,33 +23,23 @@ final class AuthViewController: ParentViewController {
 
         passwordTextField.enableSecurityMode()
 
-
         addTapToHideKeyboardGesture()
-        // Do any additional setup after loading the view.
     }
 
-    @IBOutlet var signInButton: UIButton!
-    @IBOutlet var signUpButton: UIButton!
+    @IBOutlet private var signInButton: UIButton!
+    @IBOutlet private var signUpButton: UIButton!
 
     @IBOutlet private var emailTextField: TextInput!
     @IBOutlet private var passwordTextField: TextInput!
 
     @IBAction private func didTapSignIn() {
-        passwordTextField.show(error: L10n.Auth.passwordTextFieldError)
-        if ValidationManager.isValid(email: emailTextField.text) {
+        if (ValidationManager.isValid(email: emailTextField.text) && passwordTextField.text?.isEmpty != true){
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
             view.window?.rootViewController = vc
-        } else {
+        } else if !(ValidationManager.isValid(email: emailTextField.text)) {
             emailTextField.show(error: "Емейл некоррекный")
         }
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
-//        view.window?.rootViewController = vc
-
+        passwordTextField.show(error: L10n.Auth.passwordTextFieldError)
     }
-    
-
-
 }
-

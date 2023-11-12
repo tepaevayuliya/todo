@@ -8,16 +8,70 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                <viewController id="Y6W-OH-hqX" userLabel="Sign Up View Controller" customClass="SignUpViewController" customModule="todo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kr0-Or-aR0">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtd-hh-OSr">
+                                <rect key="frame" x="16" y="94" width="361" height="708"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jV2-XV-vfG">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="708"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="yuf-Kj-7QW">
+                                                <rect key="frame" x="0.0" y="0.0" width="361" height="200"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="361" placeholderIntrinsicHeight="56" translatesAutoresizingMaskIntoConstraints="NO" id="sp6-m6-29y" customClass="TextInput" customModule="todo" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="361" height="56"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="361" placeholderIntrinsicHeight="56" translatesAutoresizingMaskIntoConstraints="NO" id="qig-Ma-mI6" customClass="TextInput" customModule="todo" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="72" width="361" height="56"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="361" placeholderIntrinsicHeight="56" translatesAutoresizingMaskIntoConstraints="NO" id="AaC-54-v9J" customClass="TextInput" customModule="todo" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="144" width="361" height="56"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3U5-y6-4bt">
+                                                <rect key="frame" x="0.0" y="673.66666666666663" width="361" height="34.333333333333371"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fm5-Fy-Y0c">
+                                                        <rect key="frame" x="0.0" y="0.0" width="361" height="34.333333333333336"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                        <connections>
+                                                            <action selector="didTapSignUp" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Z39-k4-1sc"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VBM-FE-aei"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VBM-FE-aei" firstAttribute="bottom" secondItem="gtd-hh-OSr" secondAttribute="bottom" constant="16" id="9LV-uM-srE" userLabel="Safe Area.bottom = Stack View.bottom + 16"/>
+                            <constraint firstItem="gtd-hh-OSr" firstAttribute="top" secondItem="VBM-FE-aei" secondAttribute="top" constant="35" id="E97-Nd-wLX"/>
+                            <constraint firstItem="gtd-hh-OSr" firstAttribute="leading" secondItem="VBM-FE-aei" secondAttribute="leading" constant="16" id="ddE-sy-eMN"/>
+                            <constraint firstItem="VBM-FE-aei" firstAttribute="trailing" secondItem="gtd-hh-OSr" secondAttribute="trailing" constant="16" id="j1f-ON-wed"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="qig-Ma-mI6" id="5lC-gI-iuf"/>
+                        <outlet property="nameTextField" destination="sp6-m6-29y" id="kIa-uF-T1F"/>
+                        <outlet property="passwordTextField" destination="AaC-54-v9J" id="CKq-wF-crs"/>
+                        <outlet property="signUpButton" destination="Fm5-Fy-Y0c" id="LWP-SJ-jim"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

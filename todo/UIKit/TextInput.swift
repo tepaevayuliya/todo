@@ -24,7 +24,7 @@ final class TextInput: UIView {
         label.numberOfLines = 2
 
         return label
-    }() //кложура
+    }()
 
     var text: String? {
         textField.text
@@ -82,9 +82,6 @@ final class TextInput: UIView {
             textField.topAnchor.constraint(equalTo: topAnchor),
             textField.trailingAnchor.constraint(equalTo: trailingAnchor),
             bottomConstraint,
-
-            //heightAnchor.constraint(equalToConstant: 80),
-
             errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             errorLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 4),
             errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),

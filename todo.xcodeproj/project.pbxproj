@@ -10,20 +10,21 @@
 		5C151E242AEAB8E2009684FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C151E232AEAB8E2009684FE /* AppDelegate.swift */; };
 		5C151E262AEAB8E2009684FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C151E252AEAB8E2009684FE /* SceneDelegate.swift */; };
 		5C151E282AEAB8E2009684FE /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C151E272AEAB8E2009684FE /* AuthViewController.swift */; };
-		5C151E2B2AEAB8E2009684FE /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C151E292AEAB8E2009684FE /* Auth.storyboard */; };
 		5C151E2D2AEAB8E4009684FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C151E2C2AEAB8E4009684FE /* Assets.xcassets */; };
-		5C151E302AEAB8E4009684FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C151E2E2AEAB8E4009684FE /* LaunchScreen.storyboard */; };
 		5C151E3B2AEAB8E5009684FE /* todoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C151E3A2AEAB8E5009684FE /* todoTests.swift */; };
 		5C151E452AEAB8E5009684FE /* todoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C151E442AEAB8E5009684FE /* todoUITests.swift */; };
 		5C151E472AEAB8E5009684FE /* todoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C151E462AEAB8E5009684FE /* todoUITestsLaunchTests.swift */; };
 		5C50A3022AFD33AE00EEE149 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A3002AFD33AE00EEE149 /* PrimaryButton.swift */; };
 		5C50A3032AFD33AE00EEE149 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A3012AFD33AE00EEE149 /* MainButton.swift */; };
 		5C50A3062AFD358000EEE149 /* ValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A3052AFD358000EEE149 /* ValidationManager.swift */; };
+		5C50A3082B01329100EEE149 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C50A3092B01329100EEE149 /* SignUp.storyboard */; };
+		5C50A30A2B01329C00EEE149 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C50A30B2B01329C00EEE149 /* Auth.storyboard */; };
+		5C50A30C2B0132A100EEE149 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C50A30D2B0132A100EEE149 /* LaunchScreen.storyboard */; };
+		5CCD1C272AF6B3BE002C7FAF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD1C262AF6B3BE002C7FAF /* SignUpViewController.swift */; };
 		5CE2342C2AF166AE0097AB36 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CE2342B2AF166AE0097AB36 /* Localizable.strings */; };
 		5CE2342E2AF166FA0097AB36 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE2342D2AF166FA0097AB36 /* L10n.swift */; };
 		5CE234302AF168EA0097AB36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE2342F2AF168EA0097AB36 /* Main.storyboard */; };
 		5CE234322AF1692A0097AB36 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234312AF1692A0097AB36 /* MainViewController.swift */; };
-		5CE234342AF16D760097AB36 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE234332AF16D760097AB36 /* SignUp.storyboard */; };
 		5CE234372AF3F2800097AB36 /* ParenyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234362AF3F2800097AB36 /* ParenyViewController.swift */; };
 		5CE2343A2AF3F3660097AB36 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234392AF3F3660097AB36 /* TextField.swift */; };
 		5CE2343D2AF3FE400097AB36 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE2343C2AF3FE400097AB36 /* TextInput.swift */; };
@@ -52,9 +53,7 @@
 		5C151E232AEAB8E2009684FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C151E252AEAB8E2009684FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5C151E272AEAB8E2009684FE /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		5C151E2A2AEAB8E2009684FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Auth.storyboard; sourceTree = "<group>"; };
 		5C151E2C2AEAB8E4009684FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5C151E2F2AEAB8E4009684FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C151E312AEAB8E4009684FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C151E362AEAB8E5009684FE /* todoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C151E3A2AEAB8E5009684FE /* todoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todoTests.swift; sourceTree = "<group>"; };
@@ -65,11 +64,14 @@
 		5C50A3002AFD33AE00EEE149 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		5C50A3012AFD33AE00EEE149 /* MainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		5C50A3052AFD358000EEE149 /* ValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationManager.swift; sourceTree = "<group>"; };
+		5C50A3092B01329100EEE149 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		5C50A30B2B01329C00EEE149 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		5C50A30D2B0132A100EEE149 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5CCD1C262AF6B3BE002C7FAF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5CE2342B2AF166AE0097AB36 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		5CE2342D2AF166FA0097AB36 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		5CE2342F2AF168EA0097AB36 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5CE234312AF1692A0097AB36 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		5CE234332AF16D760097AB36 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		5CE234362AF3F2800097AB36 /* ParenyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParenyViewController.swift; sourceTree = "<group>"; };
 		5CE234392AF3F3660097AB36 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		5CE2343C2AF3FE400097AB36 /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
@@ -169,6 +171,14 @@
 			path = Button;
 			sourceTree = "<group>";
 		};
+		5CCD1C252AF6B397002C7FAF /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				5CCD1C262AF6B3BE002C7FAF /* SignUpViewController.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		5CE234252AF163F10097AB36 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +191,7 @@
 		5CE234262AF164190097AB36 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5CCD1C252AF6B397002C7FAF /* SignUp */,
 				5CE234352AF3F2650097AB36 /* Parent */,
 				5CE234282AF164310097AB36 /* Main */,
 				5CE234272AF164250097AB36 /* Auth */,
@@ -219,10 +230,10 @@
 		5CE2342A2AF1645D0097AB36 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				5C151E292AEAB8E2009684FE /* Auth.storyboard */,
-				5C151E2E2AEAB8E4009684FE /* LaunchScreen.storyboard */,
+				5C50A30B2B01329C00EEE149 /* Auth.storyboard */,
+				5C50A30D2B0132A100EEE149 /* LaunchScreen.storyboard */,
 				5CE2342F2AF168EA0097AB36 /* Main.storyboard */,
-				5CE234332AF16D760097AB36 /* SignUp.storyboard */,
+				5C50A3092B01329100EEE149 /* SignUp.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -357,12 +368,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C151E302AEAB8E4009684FE /* LaunchScreen.storyboard in Resources */,
+				5C50A30C2B0132A100EEE149 /* LaunchScreen.storyboard in Resources */,
 				5CE234302AF168EA0097AB36 /* Main.storyboard in Resources */,
-				5CE234342AF16D760097AB36 /* SignUp.storyboard in Resources */,
+				5C50A3082B01329100EEE149 /* SignUp.storyboard in Resources */,
 				5CE2342C2AF166AE0097AB36 /* Localizable.strings in Resources */,
 				5C151E2D2AEAB8E4009684FE /* Assets.xcassets in Resources */,
-				5C151E2B2AEAB8E2009684FE /* Auth.storyboard in Resources */,
+				5C50A30A2B01329C00EEE149 /* Auth.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +403,7 @@
 				5CE234372AF3F2800097AB36 /* ParenyViewController.swift in Sources */,
 				5C151E282AEAB8E2009684FE /* AuthViewController.swift in Sources */,
 				5CE2343A2AF3F3660097AB36 /* TextField.swift in Sources */,
+				5CCD1C272AF6B3BE002C7FAF /* SignUpViewController.swift in Sources */,
 				5CE234402AF4071C0097AB36 /* UIViewController+Keyboard.swift in Sources */,
 				5C151E242AEAB8E2009684FE /* AppDelegate.swift in Sources */,
 				5C50A3032AFD33AE00EEE149 /* MainButton.swift in Sources */,
@@ -433,25 +445,6 @@
 			targetProxy = 5C151E412AEAB8E5009684FE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		5C151E292AEAB8E2009684FE /* Auth.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5C151E2A2AEAB8E2009684FE /* Base */,
-			);
-			name = Auth.storyboard;
-			sourceTree = "<group>";
-		};
-		5C151E2E2AEAB8E4009684FE /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5C151E2F2AEAB8E4009684FE /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5C151E482AEAB8E5009684FE /* Debug */ = {

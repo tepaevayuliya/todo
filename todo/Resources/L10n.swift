@@ -16,4 +16,13 @@ enum L10n {
         static let emptyButton = NSLocalizedString("main.empty-button", comment: "")
         static let title = NSLocalizedString("main.title", comment: "")
     }
+
+    enum SignUp {
+        static let title = NSLocalizedString("signUp.title", comment: "")
+        static let signUpButton = NSLocalizedString("signUp.sign-up-button", comment: "")
+        static let nameTextField = NSLocalizedString("signUp.name-text-field", comment: "")
+        static let emailTextField = NSLocalizedString("signUp.email-text-field", comment: "")
+        static let passwordTextField = NSLocalizedString("signUp.password-text-field", comment: "")
+        static let nameTextFieldError = NSLocalizedString("signUp.name-text-field-error", comment: "")
+    }
 }
