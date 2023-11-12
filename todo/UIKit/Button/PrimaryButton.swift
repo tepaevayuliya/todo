@@ -18,6 +18,12 @@ final class PrimaryButton: MainButton {
     }
 
     private func setup() {
-        style = Style(cornerRadius: 8, insets: 32, bgColor: .Color.primary, highlightedBgColor: .Color.primary.withAlphaComponent(0.5), titleColor: .Color.white)
+        style = Style(cornerRadius: 8, 
+                      insets: 32,
+                      bgColor: .Color.primary,
+                      highlightedBgColor: .Color.primary.withAlphaComponent(0.5),
+                      titleColor: .Color.white
+                      //highlightedTitleColor: .Color.white.withAlphaComponent(0.5) // мб не так
+        )
     }
 }

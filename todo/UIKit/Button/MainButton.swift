@@ -75,6 +75,6 @@ class MainButton: UIButton {
         if button.isHighlighted {
             return (fgColor: style.highlightedTitleColor, bgColor: style.highlightedBgColor)
         }
-        return (fgColor: style.highlightedBgColor, bgColor: style.highlightedTitleColor)
+        return (fgColor: style.titleColor, bgColor: style.bgColor)
     }
 }
