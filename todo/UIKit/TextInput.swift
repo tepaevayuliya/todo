@@ -30,10 +30,6 @@ final class TextInput: UIView {
         textField.text
     }
 
-    var text: String? {
-        textField.text
-    }
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -75,10 +71,6 @@ final class TextInput: UIView {
         textField.enableSecurityMode()
     }
 
-    func enableSecurityModeLightweight() {
-        textField.enableSecurityModeLightweight()
-    }
-
     private lazy var bottomConstraint = textField.bottomAnchor.constraint(equalTo: bottomAnchor)
 
     private func setup() {
@@ -90,22 +82,11 @@ final class TextInput: UIView {
             textField.topAnchor.constraint(equalTo: topAnchor),
             textField.trailingAnchor.constraint(equalTo: trailingAnchor),
             bottomConstraint,
-
-            //heightAnchor.constraint(equalToConstant: 80),
-
             errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             errorLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 4),
             errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             errorLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
-    }
-
-    func isEmpty() -> Bool {
-        if (textField.text == "") {
-            return true
-        } else {
-            return false
-        }
     }
 
     @objc

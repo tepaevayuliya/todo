@@ -25,11 +25,6 @@ final class TextField: UITextField {
         rightViewMode = .always
     }
 
-    func enableSecurityModeLightweight() {
-        textContentType = .password
-        isSecureTextEntry = true
-    }
-
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         super.textRect(forBounds: bounds).inset(by: insets)
     }
