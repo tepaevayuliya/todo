@@ -32,12 +32,36 @@ final class SignUpViewController: ParentViewController {
     @IBOutlet private var passwordTextField: TextInput!
 
     @IBAction private func didTapSignUp() {
-        if nameTextField.text?.isEmpty != true {
+        var isValidFlag = true
+
+        if !(nameTextField.text?.isEmpty != true) {
+            nameTextField.show(error: L10n.SignUp.textFieldError)
+            isValidFlag = false
+        } else if !ValidationManager.isValid(commonText: nameTextField.text, symbolsCount: 70) {
+            nameTextField.show(error: L10n.SignUp.nameTextFieldError)
+            isValidFlag = false
+        }
+
+        if !(emailTextField.text?.isEmpty != true) {
+            emailTextField.show(error: L10n.SignUp.textFieldError)
+            isValidFlag = false
+        } else if !(ValidationManager.isValid(email: emailTextField.text)) {
+            emailTextField.show(error: L10n.SignUp.emailTextFieldError)
+            isValidFlag = false
+        }
+
+        if !(passwordTextField.text?.isEmpty != true) {
+            passwordTextField.show(error: L10n.SignUp.textFieldError)
+            isValidFlag = false
+        } else if !ValidationManager.isValid(commonText: passwordTextField.text, symbolsCount: 256) {
+            passwordTextField.show(error: L10n.SignUp.passwordTextFieldError)
+            isValidFlag = false
+        }
+
+        if isValidFlag {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
             view.window?.rootViewController = vc
-        } else {
-            nameTextField.show(error: L10n.SignUp.nameTextFieldError)
         }
     }
 }

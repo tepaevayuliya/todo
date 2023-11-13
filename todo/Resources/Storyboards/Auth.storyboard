@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2C-ok-YPa">
-                                <rect key="frame" x="16" y="138" width="361" height="645"/>
+                                <rect key="frame" x="16" y="138" width="361" height="664"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5pY-yT-C6k">
-                                        <rect key="frame" x="0.0" y="0.0" width="361" height="645"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="664"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Pdg-uk-lM5">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="128"/>
@@ -36,17 +36,18 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rru-HJ-WGf">
-                                                <rect key="frame" x="0.0" y="576.33333333333337" width="361" height="68.666666666666629"/>
+                                                <rect key="frame" x="0.0" y="595.33333333333337" width="361" height="68.666666666666629"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCO-tG-RNv" customClass="MainButton" customModule="todo" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCO-tG-RNv" customClass="PrimaryButton" customModule="todo" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="361" height="34.333333333333336"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                         <connections>
                                                             <action selector="didTapSignIn" destination="BYZ-38-t0r" eventType="touchUpInside" id="xW1-ht-cMC"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4t-ge-vmu" customClass="PrimaryButton" customModule="todo" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4t-ge-vmu" customClass="TextButton" customModule="todo" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="34.333333333333258" width="361" height="34.333333333333343"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
@@ -65,7 +66,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c2C-ok-YPa" secondAttribute="trailing" constant="16" id="IPL-AJ-xq3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="c2C-ok-YPa" secondAttribute="bottom" constant="35" id="eHI-qG-SwV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="c2C-ok-YPa" secondAttribute="bottom" constant="16" id="eHI-qG-SwV" userLabel="Safe Area.bottom = Stack View.bottom + 16"/>
                             <constraint firstItem="c2C-ok-YPa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="jrH-80-bqX"/>
                             <constraint firstItem="c2C-ok-YPa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="sOQ-58-2mQ"/>
                         </constraints>

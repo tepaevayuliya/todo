@@ -10,20 +10,40 @@ import UIKit
 final class PrimaryButton: MainButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setup(mode: Mode.large)
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setup()
+        setup(mode: Mode.large)
     }
 
-    private func setup() {
-        style = Style(cornerRadius: 8, 
-                      insets: 32,
-                      bgColor: .Color.primary,
-                      highlightedBgColor: .Color.primary.withAlphaComponent(0.5),
-                      titleColor: .Color.white
-                      //highlightedTitleColor: .Color.white.withAlphaComponent(0.5) // мб не так
-        )
+    enum Mode {
+        case large
+        case small
+    }
+
+    private func setup(mode: Mode) {
+        if mode == Mode.large {
+            style = Style(
+                cornerRadius: 8,
+                insets: 32,
+                bgColor: .Color.primary,
+                highlightedBgColor: .Color.primary.withAlphaComponent(0.5),
+                titleColor: .Color.white,
+                highlightedTitleColor: .Color.white
+            )
+        } else if mode == Mode.small {
+            style = Style(
+                cornerRadius: 8,
+                insets: 255,
+                heights: 34, // 6+22+6
+                width: 120,
+                bgColor: .Color.primary,
+                highlightedBgColor: .Color.primary.withAlphaComponent(0.5),
+                titleColor: .Color.white,
+                highlightedTitleColor: .Color.white
+            )
+        }
     }
 }

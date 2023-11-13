@@ -20,6 +20,7 @@
 		5C50A3082B01329100EEE149 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C50A3092B01329100EEE149 /* SignUp.storyboard */; };
 		5C50A30A2B01329C00EEE149 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C50A30B2B01329C00EEE149 /* Auth.storyboard */; };
 		5C50A30C2B0132A100EEE149 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C50A30D2B0132A100EEE149 /* LaunchScreen.storyboard */; };
+		5C50A30F2B026C4C00EEE149 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A30E2B026C4C00EEE149 /* TextButton.swift */; };
 		5CCD1C272AF6B3BE002C7FAF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD1C262AF6B3BE002C7FAF /* SignUpViewController.swift */; };
 		5CE2342C2AF166AE0097AB36 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CE2342B2AF166AE0097AB36 /* Localizable.strings */; };
 		5CE2342E2AF166FA0097AB36 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE2342D2AF166FA0097AB36 /* L10n.swift */; };
@@ -67,6 +68,7 @@
 		5C50A3092B01329100EEE149 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		5C50A30B2B01329C00EEE149 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		5C50A30D2B0132A100EEE149 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5C50A30E2B026C4C00EEE149 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		5CCD1C262AF6B3BE002C7FAF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5CE2342B2AF166AE0097AB36 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		5CE2342D2AF166FA0097AB36 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			children = (
 				5C50A3012AFD33AE00EEE149 /* MainButton.swift */,
 				5C50A3002AFD33AE00EEE149 /* PrimaryButton.swift */,
+				5C50A30E2B026C4C00EEE149 /* TextButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 			files = (
 				5CE2342E2AF166FA0097AB36 /* L10n.swift in Sources */,
 				5C50A3022AFD33AE00EEE149 /* PrimaryButton.swift in Sources */,
+				5C50A30F2B026C4C00EEE149 /* TextButton.swift in Sources */,
 				5CE234372AF3F2800097AB36 /* ParenyViewController.swift in Sources */,
 				5C151E282AEAB8E2009684FE /* AuthViewController.swift in Sources */,
 				5CE2343A2AF3F3660097AB36 /* TextField.swift in Sources */,

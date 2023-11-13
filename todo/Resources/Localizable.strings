@@ -3,6 +3,8 @@
 "auth.sign-up-button" = "Еще нет аккаунта?";
 "auth.email-text-field" = "E-mail";
 "auth.password-text-field" = "Пароль";
+"auth.text-field-error" = "Поле должно быть заполнено";
+"auth.email-text-field-error" = "Введите корректный email";
 "auth.password-text-field-error" = "Ошибка!";
 
 "main.title" = "Cписок дел";
@@ -15,4 +17,7 @@
 "signUp.name-text-field" = "Имя пользователя";
 "signUp.email-text-field" = "E-mail";
 "signUp.password-text-field" = "Пароль";
-"signUp.name-text-field-error" = "Поле должно быть заполнено";
+"signUp.text-field-error" = "Поле должно быть заполнено";
+"signUp.name-text-field-error" = "Имя должно быть до 70 символов длиной";
+"signUp.email-text-field-error" = "Введите корректный email";
+"signUp.password-text-field-error" = "Пароль должен быть до 256 символов";

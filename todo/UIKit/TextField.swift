@@ -50,7 +50,7 @@ final class TextField: UITextField {
         return button
     }()
 
-    private func setup() {
+    func setup() {
         borderStyle = .none
         backgroundColor = UIColor.Color.BackgroundAndSurface.surfaceSecondary
         textColor = UIColor.Color.black

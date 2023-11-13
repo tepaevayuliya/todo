@@ -13,6 +13,7 @@ class MainButton: UIButton {
         var font: UIFont = .systemFont(ofSize: 16)
         var insets: CGFloat = 0
         var heights: CGFloat = 56
+        var width: CGFloat = 343
 
         var bgColor: UIColor = .clear
         var highlightedBgColor : UIColor = .clear
@@ -60,9 +61,10 @@ class MainButton: UIButton {
             var config = button.configuration
             let (titleColor, bgColor) = colors(for: button)
             config?.background.backgroundColor = bgColor
-            config?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer{ [weak self] attr in
+            config?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { [weak self] attr in
                 var newAttr = attr
                 newAttr.foregroundColor = titleColor
+                newAttr.font = self?.style.font
                 return newAttr
             }
             button.tintColor = titleColor
