@@ -15,7 +15,9 @@ final class AuthViewController: ParentViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.backButtonDisplayMode = .minimal
 
-        emailTextField.setup(placeholder: L10n.Auth.emailTextField, text: nil)
+        //emailTextField.show1(titleText: "Юл1")
+//        emailTextField.setup(placeholder: L10n.Auth.emailTextField, text: nil, titleText: "HELP")
+        emailTextField.setup(text: nil, titleText: "Пример лейбла над полем ввода")
         passwordTextField.setup(placeholder: L10n.Auth.passwordTextField, text: nil)
 
         signInButton.setTitle(L10n.Auth.signInButton, for: .normal)
@@ -29,7 +31,7 @@ final class AuthViewController: ParentViewController {
     @IBOutlet private var signInButton: UIButton!
     @IBOutlet private var signUpButton: UIButton!
 
-    @IBOutlet private var emailTextField: TextInput!
+    @IBOutlet private var emailTextField: TextViewInput!
     @IBOutlet private var passwordTextField: TextInput!
 
     @IBAction private func didTapSignIn() {
@@ -38,7 +40,7 @@ final class AuthViewController: ParentViewController {
             let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
             view.window?.rootViewController = vc
         } else if !(ValidationManager.isValid(email: emailTextField.text)) {
-            emailTextField.show(error: "Емейл некоррекный")
+            emailTextField.show(error: "Емейл некоррекный\nПример двустрочной ошибки и текста, который не влезает")
         }
         passwordTextField.show(error: L10n.Auth.passwordTextFieldError)
     }

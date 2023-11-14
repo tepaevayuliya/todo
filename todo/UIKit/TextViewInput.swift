@@ -7,42 +7,45 @@
 
 import UIKit
 
-final class TextViewInput: UIView {
+final class TextViewInput: UIView, UITextViewDelegate {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.isHidden = true
-        label.textColor = UIColor.Color.black
-        label.font = UIFont.systemFont(ofSize: 14)
-//        label.numberOfLines = 2
+        label.textColor = .Color.black
+        label.font = .systemFont(ofSize: 14)
 
         return label
     }()
 
-    private lazy var textField: TextField = {
-        let textField = TextField(frame: .zero)
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.addTarget(self, action: #selector(didBeginEditing), for: .editingDidBegin)
-        return textField
+    private lazy var textView: UITextView = {
+        let textView = UITextView()
+
+        textView.backgroundColor = .Color.BackgroundAndSurface.surfaceSecondary
+        textView.textColor = .Color.black
+        textView.font = .systemFont(ofSize: 16)
+        textView.layer.cornerRadius = 8
+        textView.tintColor = UIColor.Color.black
+        textView.textContainerInset = UIEdgeInsets(top: 18, left: 16, bottom: 16, right: 16)
+
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.delegate = self
+        textView.isScrollEnabled = false
+
+        return textView
     }()
 
     private lazy var errorLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isHidden = true
-        label.textColor = UIColor.Color.error
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .Color.error
+        label.font = .systemFont(ofSize: 12)
         label.numberOfLines = 2
 
         return label
     }()
 
     var text: String? {
-        textField.text
-    }
-
-    var titleText: String? {
-        titleLabel.text
+        textView.text
     }
 
     override init(frame: CGRect) {
@@ -64,19 +67,24 @@ final class TextViewInput: UIView {
         return CGSize(width: UIView.noIntrinsicMetric, height: height + rect.height + 4)
     }
 
-    func setup(placeholder: String?, text: String?) {
-        textField.placeholder = placeholder
-        textField.text = text
+    func textViewDidChange(_ textView: UITextView) {
+        let size = CGSize(width: frame.width, height: .infinity)
+        let estimatedSize = textView.sizeThatFits(size)
+
+        textView.constraints.forEach { (constraint) in
+            if constraint.firstAttribute == .height {
+                constraint.constant = min(max(estimatedSize.height, 56), 200)
+                if constraint.constant == 200 {
+                    textView.isScrollEnabled = true
+                }
+            }
+        }
     }
 
-    func show1(titleText: String) {
+    func setup(text: String?, titleText: String?) {
+        textView.text = text
         titleLabel.text = titleText
     }
-//    func setup(placeholder: String?, text: String?, titleText: String?) {
-//        textField.placeholder = placeholder
-//        textField.text = text
-//        titleLabel.text = titleText
-//    }
 
     func show(error: String) {
         errorLabel.text = error
@@ -91,30 +99,32 @@ final class TextViewInput: UIView {
         invalidateIntrinsicContentSize()
     }
 
-    func enableSecurityMode() {
-        textField.enableSecurityMode()
-    }
-
-    private lazy var bottomConstraint = textField.bottomAnchor.constraint(equalTo: bottomAnchor)
+    private lazy var bottomConstraint = textView.bottomAnchor.constraint(equalTo: bottomAnchor)
 
     private func setup() {
         addSubview(titleLabel)
-        addSubview(textField)
+        addSubview(textView)
         addSubview(errorLabel)
+
+        titleLabel.frame = CGRect(x: 0,
+                                  y: 0,
+                                  width: frame.width,
+                                  height: 22)
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            textField.leadingAnchor.constraint(equalTo: leadingAnchor),
-            textField.topAnchor.constraint(equalTo: topAnchor),
-            textField.trailingAnchor.constraint(equalTo: trailingAnchor),
+            textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            textView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            textView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            textView.heightAnchor.constraint(equalToConstant: 56),
 
             bottomConstraint,
 
             errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            errorLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 4),
+            errorLabel.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 4),
             errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             errorLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
