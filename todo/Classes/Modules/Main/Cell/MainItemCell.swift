@@ -5,4 +5,30 @@
 //  Created by Юлия Тепаева on 15.11.2023.
 //
 
-import Foundation
+import UIKit
+
+final class MainItemCell: UICollectionViewCell {
+    static let reuseID = String(describing: MainItemCell.self)
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        updateColor()
+    }
+
+    override var isSelected: Bool {
+        didSet {
+            updateColor()
+        }
+    }
+
+    func setup(item: MainDataItem) {
+        titleLabel.text = item.title
+    }
+
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var iconView: UIImageView!
+
+    private func updateColor() {
+        iconView.backgroundColor = isSelected ? UIColor.Color.primary : UIColor.Color.BackgroundAndSurface.surfaceSecondary
+    }
+}

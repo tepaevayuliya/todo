@@ -63,6 +63,7 @@ class MainButton: UIButton {
             config?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer{ [weak self] attr in
                 var newAttr = attr
                 newAttr.foregroundColor = titleColor
+                newAttr.font = self?.style.font
                 return newAttr
             }
             button.tintColor = titleColor
