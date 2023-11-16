@@ -38,8 +38,10 @@ final class MainViewController: ParentViewController {
         case let destination as EmptyViewController:
             destination.state = .empty
             destination.action = { [weak self] in
-                self?.data = [.init(title: "1")]
-                self?.reloadData() }
+                self?.performSegue(withIdentifier: "new-item", sender: nil)
+            }
+        case let destination as NewItemViewController:
+            destination.delegate = self
         default:
             break
         }
@@ -74,3 +76,11 @@ extension MainViewController: UICollectionViewDataSource {
 }
 
 extension MainViewController: UICollectionViewDelegate {}
+
+extension MainViewController: NewItemViewControllerDelegate {
+    func didSelect(_ vc: NewItemViewController, data: NewItemData) {
+        self.data.append(.init(title: data.title))
+//        self.data = [.init(title: "1")]
+        reloadData()
+    }
+}
