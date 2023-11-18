@@ -13,33 +13,46 @@ final class AuthViewController: ParentViewController {
 
         navigationItem.title = L10n.Auth.title
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.backButtonDisplayMode = .minimal
 
         emailTextField.setup(placeholder: L10n.Auth.emailTextField, text: nil)
         passwordTextField.setup(placeholder: L10n.Auth.passwordTextField, text: nil)
 
         signInButton.setTitle(L10n.Auth.signInButton, for: .normal)
         signUpButton.setTitle(L10n.Auth.signUpButton, for: .normal)
+        signInButton.setup(mode: PrimaryButton.Mode.large)
+        signUpButton.setup(mode: TextButton.Mode.normal)
 
         passwordTextField.enableSecurityMode()
 
         addTapToHideKeyboardGesture()
     }
 
-    @IBOutlet private var signInButton: UIButton!
-    @IBOutlet private var signUpButton: UIButton!
+    @IBOutlet private var signInButton: PrimaryButton!
+    @IBOutlet private var signUpButton: TextButton!
 
     @IBOutlet private var emailTextField: TextInput!
     @IBOutlet private var passwordTextField: TextInput!
 
     @IBAction private func didTapSignIn() {
-        if (ValidationManager.isValid(email: emailTextField.text) && passwordTextField.text?.isEmpty != true){
+        var isValidFlag = true
+
+        if emailTextField.text?.isEmpty ?? true {
+            emailTextField.show(error: L10n.Auth.textFieldError)
+            isValidFlag = false
+        } else if !(ValidationManager.isValid(email: emailTextField.text)) {
+            emailTextField.show(error: L10n.Auth.emailTextFieldError)
+            isValidFlag = false
+        }
+
+        if passwordTextField.text?.isEmpty ?? true {
+            passwordTextField.show(error: L10n.Auth.textFieldError)
+            isValidFlag = false
+        }
+
+        if isValidFlag {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
             view.window?.rootViewController = vc
-        } else if !(ValidationManager.isValid(email: emailTextField.text)) {
-            emailTextField.show(error: "Емейл некоррекный")
         }
-        passwordTextField.show(error: L10n.Auth.passwordTextFieldError)
     }
 }

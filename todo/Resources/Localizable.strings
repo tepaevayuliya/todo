@@ -3,6 +3,8 @@
 "auth.sign-up-button" = "Еще нет аккаунта?";
 "auth.email-text-field" = "E-mail";
 "auth.password-text-field" = "Пароль";
+"auth.text-field-error" = "Поле должно быть заполнено";
+"auth.email-text-field-error" = "Введите корректный email";
 "auth.password-text-field-error" = "Ошибка!";
 
 "main.title" = "Cписок дел";
@@ -10,9 +12,12 @@
 "main.empty-label" = "Пока здесь нет ни одной записи.\nСоздайте новую!";
 "main.empty-button" = "Новая запись";
 
-"signUp.title" = "Регистрация";
-"signUp.sign-up-button" = "Зарегистрироваться";
-"signUp.name-text-field" = "Имя пользователя";
-"signUp.email-text-field" = "E-mail";
-"signUp.password-text-field" = "Пароль";
-"signUp.name-text-field-error" = "Поле должно быть заполнено";
+"sign-up.title" = "Регистрация";
+"sign-up.sign-up-button" = "Зарегистрироваться";
+"sign-up.name-text-field" = "Имя пользователя";
+"sign-up.email-text-field" = "E-mail";
+"sign-up.password-text-field" = "Пароль";
+"sign-up.text-field-error" = "Поле должно быть заполнено";
+"sign-up.name-text-field-error" = "Имя должно быть до 70 символов длиной";
+"sign-up.email-text-field-error" = "Введите корректный email";
+"sign-up.password-text-field-error" = "Пароль должен быть до 256 символов";
