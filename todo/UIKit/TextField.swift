@@ -47,6 +47,10 @@ final class TextField: UITextField {
         button.widthAnchor.constraint(equalToConstant: 24).isActive = true
         button.setImage(UIImage.TextInput.eyeOpen, for: .normal)
         button.setImage(UIImage.TextInput.eyeClose, for: .selected)
+        let highlightedColor = UIColor.Color.Text.textSecondary.withAlphaComponent(0.2)
+        button.setImage(UIImage.TextInput.eyeOpen.withTintColor(highlightedColor), for: .highlighted)
+        button.setImage(UIImage.TextInput.eyeClose.withTintColor(highlightedColor), for: [.highlighted, .selected])
+
         return button
     }()
 
