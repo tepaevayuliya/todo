@@ -23,7 +23,7 @@ final class TextButton: MainButton {
         case destructive
     }
 
-    private func setup(mode: Mode) {
+    func setup(mode: Mode) {
         if mode == Mode.normal {
             style = Style(
                 font: .boldSystemFont(ofSize: 16),

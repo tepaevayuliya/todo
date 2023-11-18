@@ -20,14 +20,14 @@ enum L10n {
     }
 
     enum SignUp {
-        static let title = NSLocalizedString("signUp.title", comment: "")
-        static let signUpButton = NSLocalizedString("signUp.sign-up-button", comment: "")
-        static let nameTextField = NSLocalizedString("signUp.name-text-field", comment: "")
-        static let emailTextField = NSLocalizedString("signUp.email-text-field", comment: "")
-        static let passwordTextField = NSLocalizedString("signUp.password-text-field", comment: "")
-        static let textFieldError = NSLocalizedString("signUp.text-field-error", comment: "")
-        static let nameTextFieldError = NSLocalizedString("signUp.name-text-field-error", comment: "")
-        static let emailTextFieldError = NSLocalizedString("signUp.email-text-field-error", comment: "")
-        static let passwordTextFieldError = NSLocalizedString("signUp.password-text-field-error", comment: "")
+        static let title = NSLocalizedString("sign-up.title", comment: "")
+        static let signUpButton = NSLocalizedString("sign-up.sign-up-button", comment: "")
+        static let nameTextField = NSLocalizedString("sign-up.name-text-field", comment: "")
+        static let emailTextField = NSLocalizedString("sign-up.email-text-field", comment: "")
+        static let passwordTextField = NSLocalizedString("sign-up.password-text-field", comment: "")
+        static let textFieldError = NSLocalizedString("sign-up.text-field-error", comment: "")
+        static let nameTextFieldError = NSLocalizedString("sign-up.name-text-field-error", comment: "")
+        static let emailTextFieldError = NSLocalizedString("sign-up.email-text-field-error", comment: "")
+        static let passwordTextFieldError = NSLocalizedString("sign-up.password-text-field-error", comment: "")
     }
 }

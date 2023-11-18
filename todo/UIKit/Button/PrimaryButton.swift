@@ -23,7 +23,7 @@ final class PrimaryButton: MainButton {
         case small
     }
 
-    private func setup(mode: Mode) {
+    func setup(mode: Mode) {
         if mode == Mode.large {
             style = Style(
                 cornerRadius: 8,
@@ -36,9 +36,8 @@ final class PrimaryButton: MainButton {
         } else if mode == Mode.small {
             style = Style(
                 cornerRadius: 8,
-                insets: 255,
-                heights: 34, // 6+22+6
-                width: 120,
+                insets: 44,
+                height: 34, // 6+22+6
                 bgColor: .Color.primary,
                 highlightedBgColor: .Color.primary.withAlphaComponent(0.5),
                 titleColor: .Color.white,

@@ -19,14 +19,16 @@ final class AuthViewController: ParentViewController {
 
         signInButton.setTitle(L10n.Auth.signInButton, for: .normal)
         signUpButton.setTitle(L10n.Auth.signUpButton, for: .normal)
+        signInButton.setup(mode: PrimaryButton.Mode.large)
+        signUpButton.setup(mode: TextButton.Mode.normal)
 
         passwordTextField.enableSecurityMode()
 
         addTapToHideKeyboardGesture()
     }
 
-    @IBOutlet private var signInButton: UIButton!
-    @IBOutlet private var signUpButton: UIButton!
+    @IBOutlet private var signInButton: PrimaryButton!
+    @IBOutlet private var signUpButton: TextButton!
 
     @IBOutlet private var emailTextField: TextInput!
     @IBOutlet private var passwordTextField: TextInput!
@@ -34,7 +36,7 @@ final class AuthViewController: ParentViewController {
     @IBAction private func didTapSignIn() {
         var isValidFlag = true
 
-        if !(emailTextField.text?.isEmpty != true) {
+        if emailTextField.text?.isEmpty ?? true {
             emailTextField.show(error: L10n.Auth.textFieldError)
             isValidFlag = false
         } else if !(ValidationManager.isValid(email: emailTextField.text)) {
@@ -42,7 +44,7 @@ final class AuthViewController: ParentViewController {
             isValidFlag = false
         }
 
-        if !(passwordTextField.text?.isEmpty != true) {
+        if passwordTextField.text?.isEmpty ?? true {
             passwordTextField.show(error: L10n.Auth.textFieldError)
             isValidFlag = false
         }

@@ -19,13 +19,14 @@ final class SignUpViewController: ParentViewController {
         passwordTextField.setup(placeholder: L10n.SignUp.passwordTextField, text: nil)
 
         signUpButton.setTitle(L10n.SignUp.signUpButton, for: .normal)
+        signUpButton.setup(mode: PrimaryButton.Mode.large)
 
         passwordTextField.enableSecurityMode()
 
         addTapToHideKeyboardGesture()
     }
 
-    @IBOutlet private var signUpButton: UIButton!
+    @IBOutlet private var signUpButton: PrimaryButton!
 
     @IBOutlet private var nameTextField: TextInput!
     @IBOutlet private var emailTextField: TextInput!
@@ -34,7 +35,7 @@ final class SignUpViewController: ParentViewController {
     @IBAction private func didTapSignUp() {
         var isValidFlag = true
 
-        if !(nameTextField.text?.isEmpty != true) {
+        if nameTextField.text?.isEmpty ?? true {
             nameTextField.show(error: L10n.SignUp.textFieldError)
             isValidFlag = false
         } else if !ValidationManager.isValid(commonText: nameTextField.text, symbolsCount: 70) {
@@ -42,7 +43,7 @@ final class SignUpViewController: ParentViewController {
             isValidFlag = false
         }
 
-        if !(emailTextField.text?.isEmpty != true) {
+        if emailTextField.text?.isEmpty ?? true {
             emailTextField.show(error: L10n.SignUp.textFieldError)
             isValidFlag = false
         } else if !(ValidationManager.isValid(email: emailTextField.text)) {
@@ -50,7 +51,7 @@ final class SignUpViewController: ParentViewController {
             isValidFlag = false
         }
 
-        if !(passwordTextField.text?.isEmpty != true) {
+        if passwordTextField.text?.isEmpty ?? true {
             passwordTextField.show(error: L10n.SignUp.textFieldError)
             isValidFlag = false
         } else if !ValidationManager.isValid(commonText: passwordTextField.text, symbolsCount: 256) {

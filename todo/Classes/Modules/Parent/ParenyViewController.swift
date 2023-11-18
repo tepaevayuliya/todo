@@ -11,7 +11,10 @@ class ParentViewController: UIViewController {
     deinit{
         print("\(String(describing: type(of: self))) released")
     }
+
     override func viewDidLoad() {
+        super.viewDidLoad()
+
         navigationItem.backButtonDisplayMode = .minimal
     }
 }

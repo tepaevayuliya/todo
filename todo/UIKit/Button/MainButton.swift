@@ -12,9 +12,7 @@ class MainButton: UIButton {
         var cornerRadius: CGFloat = 0
         var font: UIFont = .systemFont(ofSize: 16)
         var insets: CGFloat = 0
-        var heights: CGFloat = 56
-        var width: CGFloat = 343
-
+        var height: CGFloat = 56
         var bgColor: UIColor = .clear
         var highlightedBgColor : UIColor = .clear
 
@@ -39,7 +37,7 @@ class MainButton: UIButton {
     }
 
     override var intrinsicContentSize: CGSize {
-        CGSize(width: super.intrinsicContentSize.width + style.insets, height: style.heights)
+        CGSize(width: super.intrinsicContentSize.width + style.insets, height: style.height)
     }
 
     private func setup() {
