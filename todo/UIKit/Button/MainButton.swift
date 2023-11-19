@@ -12,8 +12,7 @@ class MainButton: UIButton {
         var cornerRadius: CGFloat = 0
         var font: UIFont = .systemFont(ofSize: 16)
         var insets: CGFloat = 0
-        var heights: CGFloat = 56
-
+        var height: CGFloat = 56
         var bgColor: UIColor = .clear
         var highlightedBgColor : UIColor = .clear
 
@@ -38,7 +37,7 @@ class MainButton: UIButton {
     }
 
     override var intrinsicContentSize: CGSize {
-        CGSize(width: super.intrinsicContentSize.width + style.insets, height: style.heights)
+        CGSize(width: super.intrinsicContentSize.width + style.insets, height: style.height)
     }
 
     private func setup() {
@@ -60,7 +59,7 @@ class MainButton: UIButton {
             var config = button.configuration
             let (titleColor, bgColor) = colors(for: button)
             config?.background.backgroundColor = bgColor
-            config?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer{ [weak self] attr in
+            config?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { [weak self] attr in
                 var newAttr = attr
                 newAttr.foregroundColor = titleColor
                 newAttr.font = self?.style.font
