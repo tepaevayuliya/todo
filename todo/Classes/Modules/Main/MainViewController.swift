@@ -9,6 +9,7 @@ import UIKit
 
 struct MainDataItem {
     let title: String
+    let deadline: Date
 }
 
 final class MainViewController: ParentViewController {
@@ -22,7 +23,7 @@ final class MainViewController: ParentViewController {
 //        collectionView.register(MainItemCell.self, forCellWithReuseIdentifier: MainItemCell.reuseID)
         collectionView.register(UINib(nibName: "MainItemCell", bundle: nil), forCellWithReuseIdentifier: MainItemCell.reuseID)
         collectionView.allowsMultipleSelection = true
-
+        collectionView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(sectionProvider: {_, _ in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(93))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -30,6 +31,7 @@ final class MainViewController: ParentViewController {
             let section = NSCollectionLayoutSection(group: group)
             return section
         })
+        reloadData()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,7 +49,7 @@ final class MainViewController: ParentViewController {
         }
     }
 
-    private var data: [MainDataItem] = []
+    private var data: [MainDataItem] = [MainDataItem(title: "sdfghj", deadline: Date(timeIntervalSince1970: 0)), MainDataItem(title: "324567", deadline: Date(timeIntervalSince1970: 10000000000000))]
 //    private var data = [MainDataItem]() //второй вариант записи
 
     @IBOutlet private var collectionView: UICollectionView!
@@ -79,7 +81,7 @@ extension MainViewController: UICollectionViewDelegate {}
 
 extension MainViewController: NewItemViewControllerDelegate {
     func didSelect(_ vc: NewItemViewController, data: NewItemData) {
-        self.data.append(.init(title: data.title))
+        self.data.append(.init(title: data.title, deadline: data.deadline))
 //        self.data = [.init(title: "1")]
         reloadData()
     }

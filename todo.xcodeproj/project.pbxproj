@@ -20,8 +20,8 @@
 		5C50A3082B01329100EEE149 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C50A3092B01329100EEE149 /* SignUp.storyboard */; };
 		5C50A30A2B01329C00EEE149 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C50A30B2B01329C00EEE149 /* Auth.storyboard */; };
 		5C50A30C2B0132A100EEE149 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C50A30D2B0132A100EEE149 /* LaunchScreen.storyboard */; };
-		5C50A3112B02DB7F00EEE149 /* TextViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A3102B02DB7F00EEE149 /* TextViewInput.swift */; };
 		5C50A30F2B026C4C00EEE149 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A30E2B026C4C00EEE149 /* TextButton.swift */; };
+		5C50A3112B02DB7F00EEE149 /* TextViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A3102B02DB7F00EEE149 /* TextViewInput.swift */; };
 		5C50A3132B04FFF900EEE149 /* Empty.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C50A3122B04FFF900EEE149 /* Empty.storyboard */; };
 		5C50A3162B05048400EEE149 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A3152B05048400EEE149 /* EmptyViewController.swift */; };
 		5C50A3192B0509A200EEE149 /* MainItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C50A3182B0509A200EEE149 /* MainItemCell.xib */; };
@@ -76,8 +76,8 @@
 		5C50A3092B01329100EEE149 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		5C50A30B2B01329C00EEE149 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		5C50A30D2B0132A100EEE149 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5C50A3102B02DB7F00EEE149 /* TextViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInput.swift; sourceTree = "<group>"; };
 		5C50A30E2B026C4C00EEE149 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
+		5C50A3102B02DB7F00EEE149 /* TextViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewInput.swift; sourceTree = "<group>"; };
 		5C50A3122B04FFF900EEE149 /* Empty.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Empty.storyboard; sourceTree = "<group>"; };
 		5C50A3152B05048400EEE149 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
 		5C50A3182B0509A200EEE149 /* MainItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainItemCell.xib; sourceTree = "<group>"; };
