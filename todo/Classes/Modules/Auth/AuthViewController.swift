@@ -14,7 +14,7 @@ final class AuthViewController: ParentViewController {
         navigationItem.title = L10n.Auth.title
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        emailTextField.setup(placeholder: L10n.Auth.emailTextField, text: nil)
+        emailTextField.setup(text: nil, titleText: "Пример лейбла над полем ввода")
         passwordTextField.setup(placeholder: L10n.Auth.passwordTextField, text: nil)
 
         signInButton.setTitle(L10n.Auth.signInButton, for: .normal)
@@ -30,7 +30,7 @@ final class AuthViewController: ParentViewController {
     @IBOutlet private var signInButton: PrimaryButton!
     @IBOutlet private var signUpButton: TextButton!
 
-    @IBOutlet private var emailTextField: TextInput!
+    @IBOutlet private var emailTextField: TextViewInput!
     @IBOutlet private var passwordTextField: TextInput!
 
     @IBAction private func didTapSignIn() {
@@ -53,6 +53,8 @@ final class AuthViewController: ParentViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
             view.window?.rootViewController = vc
+        } else if !(ValidationManager.isValid(email: emailTextField.text)) {
+            emailTextField.show(error: "Емейл некоррекный\nПример двустрочной ошибки и текста, который не влезает")
         }
     }
 }
