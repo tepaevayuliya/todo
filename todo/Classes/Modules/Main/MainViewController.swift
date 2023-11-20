@@ -82,7 +82,6 @@ extension MainViewController: UICollectionViewDelegate {}
 extension MainViewController: NewItemViewControllerDelegate {
     func didSelect(_ vc: NewItemViewController, data: NewItemData) {
         self.data.append(.init(title: data.title, deadline: data.deadline))
-//        self.data = [.init(title: "1")]
         reloadData()
     }
 }
