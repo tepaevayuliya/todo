@@ -44,9 +44,9 @@ final class EmptyViewController: ParentViewController {
     private func updateState() {
         switch state {
         case .empty:
-            emptyLabel.text = "Пока нет ни одной записи.\nСоздайте новую!"
+            emptyLabel.text = L10n.Empty.emptyLabel
             emptyImageView.image = UIImage.Main.empty
-            emptyButton.setTitle("Новая запись", for: .normal)
+            emptyButton.setTitle(L10n.Empty.emptyButton, for: .normal)
             emptyButton.setup(mode: PrimaryButton.Mode.large)
             emptyButtonTopAnchor.isActive = false
             stackView4.alignment = .fill
@@ -55,29 +55,22 @@ final class EmptyViewController: ParentViewController {
             emptyButtonTrailingAnchor.isActive = true
             emptyButtonLeadingAnchor.isActive = true
         case let .error(error):
+            emptyButtonTopAnchor.isActive = true
+            stackView4.alignment = .center
+            stackView4.spacing = 16
+            stackView.alignment = .center
+            emptyButtonTrailingAnchor.isActive = false
+            emptyButtonLeadingAnchor.isActive = false
+
+            emptyButton.setTitle(L10n.Empty.emptyButtonError, for: .normal)
+            emptyButton.setup(mode: PrimaryButton.Mode.small)
             switch error {
             case .noConnection:
-                emptyLabel.text = "Нет соединения"
+                emptyLabel.text = L10n.Empty.emptyLabelNoConnection
                 emptyImageView.image = UIImage.Main.Error.noСonnection
-                emptyButton.setTitle("Обновить", for: .normal)
-                emptyButton.setup(mode: PrimaryButton.Mode.small)
-                emptyButtonTopAnchor.isActive = true
-                stackView4.alignment = .center
-                stackView4.spacing = 16
-                stackView.alignment = .center
-                emptyButtonTrailingAnchor.isActive = false
-                emptyButtonLeadingAnchor.isActive = false
             case .otherError:
-                emptyLabel.text = "Что-то пошло не так"
+                emptyLabel.text = L10n.Empty.emptyLabelOtherError
                 emptyImageView.image = UIImage.Main.Error.otherError
-                emptyButton.setTitle("Обновить", for: .normal)
-                emptyButton.setup(mode: PrimaryButton.Mode.small)
-                emptyButtonTopAnchor.isActive = true
-                stackView4.alignment = .center
-                stackView4.spacing = 16
-                stackView.alignment = .center
-                emptyButtonTrailingAnchor.isActive = false
-                emptyButtonLeadingAnchor.isActive = false
             }
         }
     }

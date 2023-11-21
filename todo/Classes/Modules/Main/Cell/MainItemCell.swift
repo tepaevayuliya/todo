@@ -27,15 +27,14 @@ final class MainItemCell: UICollectionViewCell {
         }
     }
 
-    func formatted(deadline: Date) -> String {
+    private func formatted(deadline: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU")
-        dateFormatter.dateFormat = "dd MMMM yyyy в hh:mm"
-        let deadlineText = "Дедлайн: " + dateFormatter.string(from: deadline)
-        return deadlineText
+        dateFormatter.dateFormat = "dd MMMM yyyy в HH:mm"
+        return L10n.Main.itemDeadline + dateFormatter.string(from: deadline)
     }
 
-    func isUntilToday(deadline: Date) -> Bool {
+    private func isUntilToday(deadline: Date) -> Bool {
         return deadline < Date()
     }
 
@@ -43,13 +42,13 @@ final class MainItemCell: UICollectionViewCell {
         titleLabel.text = item.title
         iconView.image = UIImage.ItemCell.radiobuttonOff
         if isUntilToday(deadline: item.deadline) {
-            deadline.textColor = .red
+            deadline.textColor = .Color.red
         }
         deadline.text = formatted(deadline: item.deadline)
         view.layer.cornerRadius = 16
     }
 
-    @IBOutlet var view: UIView!
+    @IBOutlet private var view: UIView!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var iconView: UIImageView!
     @IBOutlet private var deadline: UILabel!
