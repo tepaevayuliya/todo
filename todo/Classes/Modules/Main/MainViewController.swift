@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 struct MainDataItem {
     let title: String
     let deadline: Date

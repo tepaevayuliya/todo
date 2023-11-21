@@ -68,8 +68,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="tQt-S2-DMm">
-                                        <rect key="frame" x="9" y="261" width="375" height="346"/>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="tQt-S2-DMm">
+                                        <rect key="frame" x="9" y="261" width="375" height="388"/>
                                     </datePicker>
                                 </subviews>
                                 <constraints>
@@ -94,7 +94,7 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="jMs-Q5-DoC"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="iVG-WC-Sgk"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Uf-IX-kKS">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Uf-IX-kKS" customClass="PrimaryButton" customModule="todo" customModuleProvider="target">
                                 <rect key="frame" x="16" y="767.66666666666663" width="361" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>

@@ -17,6 +17,16 @@ enum L10n {
         static let emptyLabel = NSLocalizedString("main.empty-label", comment: "")
         static let emptyButton = NSLocalizedString("main.empty-button", comment: "")
         static let title = NSLocalizedString("main.title", comment: "")
+        static let createButton = NSLocalizedString("main.create-button", comment: "")
+        static let itemDeadline = NSLocalizedString("main.item-deadline", comment: "")
+    }
+
+    enum Empty {
+        static let emptyLabel = NSLocalizedString("empty.empty-label", comment: "")
+        static let emptyButton = NSLocalizedString("empty.empty-button", comment: "")
+        static let emptyLabelNoConnection = NSLocalizedString("empty.empty-label-no-connection", comment: "")
+        static let emptyLabelOtherError = NSLocalizedString("empty.empty-label-other-error", comment: "")
+        static let emptyButtonError = NSLocalizedString("empty.empty-button-error", comment: "")
     }
 
     enum SignUp {

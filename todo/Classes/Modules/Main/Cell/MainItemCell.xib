@@ -64,14 +64,14 @@
                     <constraint firstItem="NQ4-KM-gAC" firstAttribute="leading" secondItem="bNT-Ou-Of8" secondAttribute="leading" constant="16" id="tfk-hH-EvE"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="304" height="96"/>
+            <size key="customSize" width="304" height="132"/>
             <connections>
                 <outlet property="deadline" destination="VrQ-MJ-2GC" id="cpY-S3-bsA"/>
                 <outlet property="iconView" destination="VKD-Tu-k6a" id="9Ol-lw-j0g"/>
                 <outlet property="titleLabel" destination="jry-O6-3Jm" id="YGN-Y2-ftc"/>
                 <outlet property="view" destination="cCP-bl-qAH" id="FqP-OO-TM4"/>
             </connections>
-            <point key="canvasLocation" x="436.64122137404576" y="14.084507042253522"/>
+            <point key="canvasLocation" x="436.64122137404576" y="26.760563380281692"/>
         </collectionViewCell>
     </objects>
     <resources>
