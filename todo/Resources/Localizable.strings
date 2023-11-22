@@ -13,6 +13,7 @@
 "main.empty-button" = "Новая запись";
 "main.create-button" = "Создать";
 "main.item-deadline" = "Дедлайн: ";
+"main.item-cell-date-format" = "dd MMMM yyyy в HH:mm";
 
 "sign-up.title" = "Регистрация";
 "sign-up.sign-up-button" = "Зарегистрироваться";

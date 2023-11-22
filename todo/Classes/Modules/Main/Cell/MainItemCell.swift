@@ -30,18 +30,17 @@ final class MainItemCell: UICollectionViewCell {
     private func formatted(deadline: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU")
-        dateFormatter.dateFormat = "dd MMMM yyyy в HH:mm"
+        dateFormatter.dateFormat = L10n.Main.itemCellDateFormate
         return L10n.Main.itemDeadline + dateFormatter.string(from: deadline)
     }
 
-    private func isUntilToday(deadline: Date) -> Bool {
+    private func isDeadlinePassed(deadline: Date) -> Bool {
         return deadline < Date()
     }
 
     func setup(item: MainDataItem) {
         titleLabel.text = item.title
-        iconView.image = UIImage.ItemCell.radiobuttonOff
-        if isUntilToday(deadline: item.deadline) {
+        if isDeadlinePassed(deadline: item.deadline) {
             deadline.textColor = .Color.red
         }
         deadline.text = formatted(deadline: item.deadline)

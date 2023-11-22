@@ -19,6 +19,7 @@ enum L10n {
         static let title = NSLocalizedString("main.title", comment: "")
         static let createButton = NSLocalizedString("main.create-button", comment: "")
         static let itemDeadline = NSLocalizedString("main.item-deadline", comment: "")
+        static let itemCellDateFormate = NSLocalizedString("main.item-cell-date-format", comment: "")
     }
 
     enum Empty {

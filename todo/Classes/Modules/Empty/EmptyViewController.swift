@@ -77,7 +77,7 @@ final class EmptyViewController: ParentViewController {
 
     private lazy var emptyButtonTopAnchor = emptyButton.topAnchor.constraint(equalTo: stackView3.bottomAnchor, constant: 16)
     private lazy var emptyButtonTrailingAnchor = emptyButton.trailingAnchor.constraint(equalTo: stackView4.trailingAnchor)
-    private lazy var emptyButtonLeadingAnchor = emptyButton.leadingAnchor.constraint(equalTo: stackView4.trailingAnchor)
+    private lazy var emptyButtonLeadingAnchor = emptyButton.leadingAnchor.constraint(equalTo: stackView4.leadingAnchor)
 
     @IBAction private func didTabEmptyButton() {
         switch state {
@@ -85,7 +85,7 @@ final class EmptyViewController: ParentViewController {
             action?()
         case .error(.noConnection), .error(.otherError):
             state = .empty
-            viewDidLoad()
+            updateState()
         }
     }
 }
