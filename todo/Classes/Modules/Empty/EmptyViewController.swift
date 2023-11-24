@@ -33,7 +33,6 @@ final class EmptyViewController: ParentViewController {
         }
     }
 
-    @IBOutlet private var stackView4: UIStackView!
     @IBOutlet private var stackView3: UIStackView!
     @IBOutlet private var stackView2: UIStackView!
     @IBOutlet private var stackView: UIStackView!
@@ -48,19 +47,12 @@ final class EmptyViewController: ParentViewController {
             emptyImageView.image = UIImage.Main.empty
             emptyButton.setTitle(L10n.Empty.emptyButton, for: .normal)
             emptyButton.setup(mode: PrimaryButton.Mode.large)
-            emptyButtonTopAnchor.isActive = false
-            stackView4.alignment = .fill
-            stackView4.spacing = 0
+
+            stackView2.alignment = .fill
             stackView.alignment = .fill
-            emptyButtonTrailingAnchor.isActive = true
-            emptyButtonLeadingAnchor.isActive = true
         case let .error(error):
-            emptyButtonTopAnchor.isActive = true
-            stackView4.alignment = .center
-            stackView4.spacing = 16
+            stackView2.alignment = .center
             stackView.alignment = .center
-            emptyButtonTrailingAnchor.isActive = false
-            emptyButtonLeadingAnchor.isActive = false
 
             emptyButton.setTitle(L10n.Empty.emptyButtonError, for: .normal)
             emptyButton.setup(mode: PrimaryButton.Mode.small)
@@ -74,10 +66,6 @@ final class EmptyViewController: ParentViewController {
             }
         }
     }
-
-    private lazy var emptyButtonTopAnchor = emptyButton.topAnchor.constraint(equalTo: stackView3.bottomAnchor, constant: 16)
-    private lazy var emptyButtonTrailingAnchor = emptyButton.trailingAnchor.constraint(equalTo: stackView4.trailingAnchor)
-    private lazy var emptyButtonLeadingAnchor = emptyButton.leadingAnchor.constraint(equalTo: stackView4.leadingAnchor)
 
     @IBAction private func didTabEmptyButton() {
         switch state {

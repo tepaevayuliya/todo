@@ -27,23 +27,15 @@ final class MainItemCell: UICollectionViewCell {
         }
     }
 
-    private func formatted(deadline: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        dateFormatter.dateFormat = L10n.Main.itemCellDateFormate
-        return L10n.Main.itemDeadline + dateFormatter.string(from: deadline)
-    }
-
     private func isDeadlinePassed(deadline: Date) -> Bool {
-        return deadline < Date()
+        deadline < Date()
     }
 
     func setup(item: MainDataItem) {
         titleLabel.text = item.title
-        if isDeadlinePassed(deadline: item.deadline) {
-            deadline.textColor = .Color.red
-        }
-        deadline.text = formatted(deadline: item.deadline)
+        deadline.textColor = isDeadlinePassed(deadline: item.deadline) ? .Color.red : .Color.black
+
+        deadline.text = DateFormatter.default.string(from: item.deadline)
         view.layer.cornerRadius = 16
     }
 
@@ -53,10 +45,6 @@ final class MainItemCell: UICollectionViewCell {
     @IBOutlet private var deadline: UILabel!
 
     private func updateImage() {
-        if isSelected {
-            iconView.image = UIImage.ItemCell.radiobuttonOn
-        } else {
-            iconView.image = UIImage.ItemCell.radiobuttonOff
-        }
+        iconView.image = isSelected ? UIImage.ItemCell.radiobuttonOn : UIImage.ItemCell.radiobuttonOff
     }
 }
