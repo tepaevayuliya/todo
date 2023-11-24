@@ -28,6 +28,7 @@
 		5C50A31B2B0509C300EEE149 /* MainItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A31A2B0509C300EEE149 /* MainItemCell.swift */; };
 		5C50A3202B06686200EEE149 /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A31F2B06686200EEE149 /* NewItemViewController.swift */; };
 		5C50A3222B06689000EEE149 /* NewItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C50A3212B06689000EEE149 /* NewItem.storyboard */; };
+		5CCBF8932B10CBC900790C8D /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8922B10CBC900790C8D /* DateFormatter.swift */; };
 		5CCBF8832B0FA1E200790C8D /* PlistFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8822B0FA1E200790C8D /* PlistFiles.swift */; };
 		5CCBF8862B0FA21900790C8D /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8852B0FA21900790C8D /* OSLog.swift */; };
 		5CCBF8892B0FA27200790C8D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8882B0FA27200790C8D /* NetworkManager.swift */; };
@@ -89,6 +90,7 @@
 		5C50A31A2B0509C300EEE149 /* MainItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainItemCell.swift; sourceTree = "<group>"; };
 		5C50A31F2B06686200EEE149 /* NewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemViewController.swift; sourceTree = "<group>"; };
 		5C50A3212B06689000EEE149 /* NewItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewItem.storyboard; sourceTree = "<group>"; };
+		5CCBF8922B10CBC900790C8D /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		5CCBF8822B0FA1E200790C8D /* PlistFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistFiles.swift; sourceTree = "<group>"; };
 		5CCBF8852B0FA21900790C8D /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		5CCBF8882B0FA27200790C8D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				5CE2343F2AF4071C0097AB36 /* UIViewController+Keyboard.swift */,
+				5CCBF8922B10CBC900790C8D /* DateFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				5CCBF8892B0FA27200790C8D /* NetworkManager.swift in Sources */,
 				5C50A30F2B026C4C00EEE149 /* TextButton.swift in Sources */,
 				5CE234372AF3F2800097AB36 /* ParenyViewController.swift in Sources */,
+				5CCBF8932B10CBC900790C8D /* DateFormatter.swift in Sources */,
 				5C151E282AEAB8E2009684FE /* AuthViewController.swift in Sources */,
 				5CE2343A2AF3F3660097AB36 /* TextField.swift in Sources */,
 				5CCD1C272AF6B3BE002C7FAF /* SignUpViewController.swift in Sources */,

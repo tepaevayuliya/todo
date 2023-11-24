@@ -11,6 +11,9 @@
 "main.profile-button" = "Профиль";
 "main.empty-label" = "Пока здесь нет ни одной записи.\nСоздайте новую!";
 "main.empty-button" = "Новая запись";
+"main.create-button" = "Создать";
+"main.item-deadline" = "Дедлайн: ";
+"main.item-cell-date-format" = "dd MMMM yyyy в HH:mm";
 
 "sign-up.title" = "Регистрация";
 "sign-up.sign-up-button" = "Зарегистрироваться";
@@ -21,3 +24,9 @@
 "sign-up.name-text-field-error" = "Имя должно быть до 70 символов длиной";
 "sign-up.email-text-field-error" = "Введите корректный email";
 "sign-up.password-text-field-error" = "Пароль должен быть до 256 символов";
+
+"empty.empty-label" = "Пока нет ни одной записи.\nСоздайте новую!";
+"empty.empty-button" = "Новая запись";
+"empty.empty-label-no-connection" = "Нет соединения";
+"empty.empty-label-other-error" = "Что-то пошло не так";
+"empty.empty-button-error" = "Обновить";

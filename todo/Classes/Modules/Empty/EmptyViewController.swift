@@ -2,7 +2,7 @@
 //  EmptyViewController.swift
 //  MyAwesomeSchoolApp
 //
-//  Created by Tatyana Tepaeva on 14.11.2023.
+//  Created by Юлия Тепаева on 14.11.2023.
 //
 
 import UIKit
@@ -12,10 +12,13 @@ final class EmptyViewController: ParentViewController {
         case empty, error(Error)
     }
 
+    enum Error {
+        case noConnection, otherError
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        emptyImageView.image = UIImage.Main.empty
         updateState()
     }
 
@@ -30,20 +33,47 @@ final class EmptyViewController: ParentViewController {
         }
     }
 
+    @IBOutlet private var stackView3: UIStackView!
+    @IBOutlet private var stackView2: UIStackView!
+    @IBOutlet private var stackView: UIStackView!
     @IBOutlet private var emptyImageView: UIImageView!
     @IBOutlet private var emptyLabel: UILabel!
-    @IBOutlet private var emptyButton: UIButton!
+    @IBOutlet private var emptyButton: PrimaryButton!
 
     private func updateState() {
         switch state {
         case .empty:
-            emptyLabel.text = "Пустое состояние"
+            emptyLabel.text = L10n.Empty.emptyLabel
+            emptyImageView.image = UIImage.Main.empty
+            emptyButton.setTitle(L10n.Empty.emptyButton, for: .normal)
+            emptyButton.setup(mode: PrimaryButton.Mode.large)
+
+            stackView2.alignment = .fill
+            stackView.alignment = .fill
         case let .error(error):
-            break
+            stackView2.alignment = .center
+            stackView.alignment = .center
+
+            emptyButton.setTitle(L10n.Empty.emptyButtonError, for: .normal)
+            emptyButton.setup(mode: PrimaryButton.Mode.small)
+            switch error {
+            case .noConnection:
+                emptyLabel.text = L10n.Empty.emptyLabelNoConnection
+                emptyImageView.image = UIImage.Main.Error.noСonnection
+            case .otherError:
+                emptyLabel.text = L10n.Empty.emptyLabelOtherError
+                emptyImageView.image = UIImage.Main.Error.otherError
+            }
         }
     }
 
     @IBAction private func didTabEmptyButton() {
-        action?()
+        switch state {
+        case .empty:
+            action?()
+        case .error(.noConnection), .error(.otherError):
+            state = .empty
+            updateState()
+        }
     }
 }

@@ -22,14 +22,15 @@ final class NewItemViewController: ParentViewController {
     @IBOutlet private var textView1: UIView!
     @IBOutlet private var label: UILabel!
     @IBOutlet private var pick: UIDatePicker! //datePicker
-    @IBOutlet private var createButton: UIButton!
+    @IBOutlet private var createButton: PrimaryButton!
 
     weak var delegate: NewItemViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Новая запись"
+        navigationItem.title = L10n.Main.emptyButton
+        createButton.setTitle(L10n.Main.createButton, for: .normal)
     }
 
     @IBAction private func didTap() {

@@ -19,7 +19,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCP-bl-qAH">
                         <rect key="frame" x="16" y="8" width="272" height="80"/>
-                        <color key="backgroundColor" name="Color/BackgroundAndSurface/surfaceSecondary"/>
+                        <color key="backgroundColor" name="Color/BackgroundAndSurface/background"/>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="NQ4-KM-gAC">
                         <rect key="frame" x="16" y="8" width="272" height="80"/>
@@ -27,7 +27,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9aG-6c-Ubo">
                                 <rect key="frame" x="16" y="16" width="240" height="24"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jry-O6-3Jm">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jry-O6-3Jm">
                                         <rect key="frame" x="0.0" y="1.3333333333333321" width="206" height="21.666666666666668"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -64,19 +64,19 @@
                     <constraint firstItem="NQ4-KM-gAC" firstAttribute="leading" secondItem="bNT-Ou-Of8" secondAttribute="leading" constant="16" id="tfk-hH-EvE"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="304" height="96"/>
+            <size key="customSize" width="304" height="132"/>
             <connections>
                 <outlet property="deadline" destination="VrQ-MJ-2GC" id="cpY-S3-bsA"/>
                 <outlet property="iconView" destination="VKD-Tu-k6a" id="9Ol-lw-j0g"/>
                 <outlet property="titleLabel" destination="jry-O6-3Jm" id="YGN-Y2-ftc"/>
                 <outlet property="view" destination="cCP-bl-qAH" id="FqP-OO-TM4"/>
             </connections>
-            <point key="canvasLocation" x="436.64122137404576" y="14.084507042253522"/>
+            <point key="canvasLocation" x="436.64122137404576" y="26.760563380281692"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <namedColor name="Color/BackgroundAndSurface/surfaceSecondary">
-            <color red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Color/BackgroundAndSurface/background">
+            <color red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
