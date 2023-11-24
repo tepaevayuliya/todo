@@ -25,7 +25,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Pdg-uk-lM5">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="128"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="361" placeholderIntrinsicHeight="56" translatesAutoresizingMaskIntoConstraints="NO" id="Jq9-Fh-DXo" customClass="TextViewInput" customModule="todo" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="361" placeholderIntrinsicHeight="56" translatesAutoresizingMaskIntoConstraints="NO" id="Jq9-Fh-DXo" customClass="TextInput" customModule="todo" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="361" height="56"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
