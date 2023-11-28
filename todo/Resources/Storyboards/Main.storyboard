@@ -16,21 +16,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wwA-Ed-D96">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q74-hk-yaZ">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="9Ul-Uw-N0V"/>
-                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Bfd-cl-wjg"/>
-                                </connections>
-                            </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dhN-pR-T74">
+                                <rect key="frame" x="16" y="103" width="361" height="699"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wwA-Ed-D96">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="664.66666666666663"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JxV-hr-te8">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Y6W-OH-hqX" id="9Ul-Uw-N0V"/>
+                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="Bfd-cl-wjg"/>
+                                        </connections>
+                                    </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UrP-Ve-Np0" customClass="PrimaryButton" customModule="todo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="664.66666666666663" width="361" height="34.333333333333371"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="didTabNewTaskButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Mwr-2H-RV9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" id="Y9n-Ym-Cap">
                                 <rect key="frame" x="0.0" y="68" width="393" height="715"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -42,16 +55,17 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="wwA-Ed-D96" secondAttribute="bottom" id="2oQ-zS-KHK"/>
-                            <constraint firstItem="wwA-Ed-D96" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="9Qf-zu-c8a"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wwA-Ed-D96" secondAttribute="trailing" id="F13-pf-yCT"/>
-                            <constraint firstItem="wwA-Ed-D96" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="vMQ-Dr-gg9"/>
+                            <constraint firstItem="dhN-pR-T74" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Gt9-N0-pFZ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="dhN-pR-T74" secondAttribute="bottom" constant="16" id="fKd-3d-8cK"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dhN-pR-T74" secondAttribute="trailing" constant="16" id="z5t-dy-dwq"/>
+                            <constraint firstItem="dhN-pR-T74" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="zoQ-Ge-07a"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Lm9-cm-xPY"/>
                     <connections>
                         <outlet property="collectionView" destination="wwA-Ed-D96" id="93d-wU-3Re"/>
                         <outlet property="emptyView" destination="Y9n-Ym-Cap" id="au9-29-jcV"/>
+                        <outlet property="newTaskButton" destination="UrP-Ve-Np0" id="qgD-PR-cXM"/>
                         <segue destination="CkC-Bi-ffe" kind="show" identifier="new-item" id="w7P-sN-ycU"/>
                     </connections>
                 </viewController>

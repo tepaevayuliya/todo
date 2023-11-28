@@ -12,13 +12,6 @@ final class MainItemCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        updateImage()
-    }
-
-    override var isSelected: Bool {
-        didSet {
-            updateImage()
-        }
     }
 
     override var isHighlighted: Bool {
@@ -31,20 +24,22 @@ final class MainItemCell: UICollectionViewCell {
         deadline < Date()
     }
 
-    func setup(item: MainDataItem) {
-        titleLabel.text = item.title
-        deadline.textColor = isDeadlinePassed(deadline: item.deadline) ? .Color.red : .Color.black
+    private var id: String!
+    private var isCompleted: Bool!
 
-        deadline.text = DateFormatter.default.string(from: item.deadline)
+    func setup(item: TodosResponse) {
+        id = item.id
+        isCompleted = item.isCompleted
+        titleLabel.text = item.title
+        date.textColor = isDeadlinePassed(deadline: item.date) ? .Color.red : .Color.black
+        iconView.image = item.isCompleted ? UIImage.ItemCell.radiobuttonOn : UIImage.ItemCell.radiobuttonOff
+
+        date.text = DateFormatter.default.string(from: item.date)
         view.layer.cornerRadius = 16
     }
 
     @IBOutlet private var view: UIView!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var iconView: UIImageView!
-    @IBOutlet private var deadline: UILabel!
-
-    private func updateImage() {
-        iconView.image = isSelected ? UIImage.ItemCell.radiobuttonOn : UIImage.ItemCell.radiobuttonOff
-    }
+    @IBOutlet private var date: UILabel!
 }

@@ -3,4 +3,69 @@
    uuid = "0CBFFCAF-38D8-4B05-A35F-43B2EF3CD6EB"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "77F3A107-C232-4E1F-A7CF-7617941E15C3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "todo/Classes/Modules/Main/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "MainViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "77F3A107-C232-4E1F-A7CF-7617941E15C3 - 2da74edc98fcaab"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "todo.MainViewController.didTabNewTaskButton(todo.PrimaryButton) -&gt; ()"
+                  moduleName = "todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tepaevayuliya/Projects/swift-project/todo/todo/Classes/Modules/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "63">
+               </Location>
+               <Location
+                  uuid = "77F3A107-C232-4E1F-A7CF-7617941E15C3 - 2da74edc98fcb08"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "todo.MainViewController.didTabNewTaskButton(todo.PrimaryButton) -&gt; ()"
+                  moduleName = "todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tepaevayuliya/Projects/swift-project/todo/todo/Classes/Modules/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "63">
+               </Location>
+               <Location
+                  uuid = "77F3A107-C232-4E1F-A7CF-7617941E15C3 - 2da74edc98fcb08"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "todo.MainViewController.didTabNewTaskButton(todo.PrimaryButton) -&gt; ()"
+                  moduleName = "todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tepaevayuliya/Projects/swift-project/todo/todo/Classes/Modules/Main/MainViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "97">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

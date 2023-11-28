@@ -30,3 +30,7 @@
 "empty.empty-label-no-connection" = "Нет соединения";
 "empty.empty-label-other-error" = "Что-то пошло не так";
 "empty.empty-button-error" = "Обновить";
+
+"new-item.deadline-label" = "Дедлайн";
+"new-item.text-view-title-task" = "Что нужно сделать";
+"new-item.text-view-description" = "Описание";

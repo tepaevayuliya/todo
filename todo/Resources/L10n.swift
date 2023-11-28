@@ -41,4 +41,10 @@ enum L10n {
         static let emailTextFieldError = NSLocalizedString("sign-up.email-text-field-error", comment: "")
         static let passwordTextFieldError = NSLocalizedString("sign-up.password-text-field-error", comment: "")
     }
+
+    enum NewItem {
+        static let deadlineLabel = NSLocalizedString("new-item.deadline-label", comment: "")
+        static let textViewTitleTask = NSLocalizedString("new-item.text-view-title-task", comment: "")
+        static let textViewDescription = NSLocalizedString("new-item.text-view-description", comment: "")
+    }
 }

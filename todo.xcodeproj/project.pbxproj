@@ -28,13 +28,14 @@
 		5C50A31B2B0509C300EEE149 /* MainItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A31A2B0509C300EEE149 /* MainItemCell.swift */; };
 		5C50A3202B06686200EEE149 /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A31F2B06686200EEE149 /* NewItemViewController.swift */; };
 		5C50A3222B06689000EEE149 /* NewItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C50A3212B06689000EEE149 /* NewItem.storyboard */; };
-		5CCBF8932B10CBC900790C8D /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8922B10CBC900790C8D /* DateFormatter.swift */; };
 		5CCBF8832B0FA1E200790C8D /* PlistFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8822B0FA1E200790C8D /* PlistFiles.swift */; };
 		5CCBF8862B0FA21900790C8D /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8852B0FA21900790C8D /* OSLog.swift */; };
 		5CCBF8892B0FA27200790C8D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8882B0FA27200790C8D /* NetworkManager.swift */; };
 		5CCBF88D2B0FA6B600790C8D /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF88C2B0FA6B600790C8D /* EmptyResponse.swift */; };
 		5CCBF88F2B0FA6DB00790C8D /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF88E2B0FA6DA00790C8D /* AuthResponse.swift */; };
 		5CCBF8912B0FA71600790C8D /* DataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8902B0FA71600790C8D /* DataResponse.swift */; };
+		5CCBF8932B10CBC900790C8D /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8922B10CBC900790C8D /* DateFormatter.swift */; };
+		5CCBF8952B135A1000790C8D /* TodosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8942B135A1000790C8D /* TodosResponse.swift */; };
 		5CCD1C272AF6B3BE002C7FAF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD1C262AF6B3BE002C7FAF /* SignUpViewController.swift */; };
 		5CE2342C2AF166AE0097AB36 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CE2342B2AF166AE0097AB36 /* Localizable.strings */; };
 		5CE2342E2AF166FA0097AB36 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE2342D2AF166FA0097AB36 /* L10n.swift */; };
@@ -90,7 +91,6 @@
 		5C50A31A2B0509C300EEE149 /* MainItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainItemCell.swift; sourceTree = "<group>"; };
 		5C50A31F2B06686200EEE149 /* NewItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemViewController.swift; sourceTree = "<group>"; };
 		5C50A3212B06689000EEE149 /* NewItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewItem.storyboard; sourceTree = "<group>"; };
-		5CCBF8922B10CBC900790C8D /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		5CCBF8822B0FA1E200790C8D /* PlistFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistFiles.swift; sourceTree = "<group>"; };
 		5CCBF8852B0FA21900790C8D /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		5CCBF8882B0FA27200790C8D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -98,6 +98,8 @@
 		5CCBF88C2B0FA6B600790C8D /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		5CCBF88E2B0FA6DA00790C8D /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		5CCBF8902B0FA71600790C8D /* DataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResponse.swift; sourceTree = "<group>"; };
+		5CCBF8922B10CBC900790C8D /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		5CCBF8942B135A1000790C8D /* TodosResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosResponse.swift; sourceTree = "<group>"; };
 		5CCD1C262AF6B3BE002C7FAF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5CE2342B2AF166AE0097AB36 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		5CE2342D2AF166FA0097AB36 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				5CCBF88C2B0FA6B600790C8D /* EmptyResponse.swift */,
 				5CCBF88E2B0FA6DA00790C8D /* AuthResponse.swift */,
 				5CCBF8902B0FA71600790C8D /* DataResponse.swift */,
+				5CCBF8942B135A1000790C8D /* TodosResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				5C50A3162B05048400EEE149 /* EmptyViewController.swift in Sources */,
 				5CCBF88F2B0FA6DB00790C8D /* AuthResponse.swift in Sources */,
 				5CCBF8912B0FA71600790C8D /* DataResponse.swift in Sources */,
+				5CCBF8952B135A1000790C8D /* TodosResponse.swift in Sources */,
 				5CE2343D2AF3FE400097AB36 /* TextInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

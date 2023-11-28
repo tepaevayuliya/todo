@@ -14,11 +14,11 @@ enum NetworkError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .wrongStatusCode:
-            return "Упс! Что-то пошло не так"
+            return "Упс1! Что-то пошло не так"
         case .wrongURL:
-            return "Упс! Что-то пошло не так"
+            return "Упс2! Что-то пошло не так"
         case .wrongResponse:
-            return "Упс! Что-то пошло не так"
+            return "Упс3! Что-то пошло не так"
         }
     }
 }
@@ -27,6 +27,29 @@ struct SignInRequestBody: Encodable {
     let email: String
     let password: String
 }
+
+struct SignUpRequestBody: Encodable {
+    let name: String
+    let email: String
+    let password: String
+}
+
+struct TodosResponseBody: Encodable {
+    let category: String
+    let title: String
+    let description: String
+    let date: Int
+    let coordinate: Coordinate
+}
+
+struct Coordinate: Encodable {
+    let longitude: String
+    let latitude: String
+}
+
+struct GetAllTasks: Encodable {}
+
+let bodyRequest = EmptyResponse()
 
 final class NetworkManagers {
     static var shared = NetworkManagers()
@@ -39,27 +62,47 @@ final class NetworkManagers {
         return decoder
     }()
 
-    func signIn(email: String, password: String) async throws -> AuthResponse {
-        guard let url = URL(string: "\(PlistFiles.cfApiBaseUrl)/api/auth/login") else {
+    func request<Request: Encodable, Response: Decodable> (
+        url: String,
+        metod: String,
+        requestBody: Request,
+        response: Response,
+        isDateExpected: Bool,
+        isRequestNil: Bool
+    ) async throws -> Response {
+        guard let url = URL(string: "\(PlistFiles.cfApiBaseUrl)/api/\(url)") else {
             throw NetworkError.wrongURL
         }
 
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = try JSONEncoder().encode(SignInRequestBody(email: email, password: password))
+        request.httpMethod = "\(metod)"
+
+        if isRequestNil {
+            request.httpBody = nil
+        } else {
+            request.httpBody = try JSONEncoder().encode(requestBody)
+        }
 
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
+
+        let AuthAccessToken = "Bearer \(responseToken.accessToken)"
+        request.setValue("\(AuthAccessToken)", forHTTPHeaderField: "Authorization")
 
         let (data, resp) = try await URLSession.shared.data(for: request)
         if let httpResponse = resp as? HTTPURLResponse {
             switch httpResponse.statusCode {
             case 200 ..< 400 :
-                log.debug("\(String(decoding: data, as: UTF8.self))")
-                return try decoder.decode(DataResponse<AuthResponse>.self, from: data).data
+                if isDateExpected {
+                    decoder.dateDecodingStrategy = .secondsSince1970
+                }
+                if data.isEmpty {
+                    return bodyRequest as! Response
+                }
+
+                return try decoder.decode(DataResponse<Response>.self, from: data).data
             default:
                 let response = String(data: data, encoding: .utf8) ?? ""
-                log.debug("\(response)")
                 throw NetworkError.wrongStatusCode
             }
         } else {

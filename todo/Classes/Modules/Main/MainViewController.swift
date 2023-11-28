@@ -6,10 +6,8 @@
 //
 
 import UIKit
-struct MainDataItem {
-    let title: String
-    let deadline: Date
-}
+
+private var isLoading = false
 
 final class MainViewController: ParentViewController {
     override func viewDidLoad() {
@@ -18,8 +16,9 @@ final class MainViewController: ParentViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = L10n.Main.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.Main.profileButton, style: .plain, target: self, action: nil)
+        newTaskButton.setTitle(L10n.Main.emptyButton, for: .normal)
+        newTaskButton.setup(mode: PrimaryButton.Mode.large)
 
-//        collectionView.register(MainItemCell.self, forCellWithReuseIdentifier: MainItemCell.reuseID)
         collectionView.register(UINib(nibName: "MainItemCell", bundle: nil), forCellWithReuseIdentifier: MainItemCell.reuseID)
         collectionView.allowsMultipleSelection = true
         collectionView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
@@ -30,17 +29,16 @@ final class MainViewController: ParentViewController {
             let section = NSCollectionLayoutSection(group: group)
             return section
         })
-        reloadData()
+
+        getData()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
+        reloadData()
         switch segue.destination {
         case let destination as EmptyViewController:
-            destination.state = .error(.otherError)//.error(.noConnection)//.empty
-            destination.action = { [weak self] in
-                self?.performSegue(withIdentifier: "new-item", sender: nil)
-            }
+            self.destination = destination
         case let destination as NewItemViewController:
             destination.delegate = self
         default:
@@ -48,16 +46,56 @@ final class MainViewController: ParentViewController {
         }
     }
 
-//    private var data: [MainDataItem] = [MainDataItem(title: "sdfghj", deadline: Date(timeIntervalSince1970: 0)), MainDataItem(title: "324567", deadline: Date(timeIntervalSince1970: 10000000000000))]
-    private var data = [MainDataItem]() //второй вариант записи
+    private var data = [TodosResponse]()
+    private var state: EmptyViewController.State?
+    private var isLoading = true
+
+    private weak var destination: EmptyViewController?
+
+    @IBOutlet private var newTaskButton: PrimaryButton!
 
     @IBOutlet private var collectionView: UICollectionView!
     @IBOutlet private var emptyView: UIView!
 
+    @IBAction private func didTabNewTaskButton(_ sender: PrimaryButton) {
+        performSegue(withIdentifier: "new-item", sender: nil)
+    }
+
     private func reloadData() {
-        emptyView.isHidden = !data.isEmpty
-        if !data.isEmpty {
+        guard !isLoading else {
+            emptyView.isHidden = true
+            collectionView.isHidden = true
+            newTaskButton.isHidden = true
+            return
+        }
+        
+        if data.isEmpty {
+            collectionView.isHidden = true
+            emptyView.isHidden = !data.isEmpty
+            destination?.state = state ?? .empty
+            destination?.action = { [weak self] in
+                self?.performSegue(withIdentifier: "new-item", sender: nil)
+            }
+        } else {
+            collectionView.isHidden = false
+            newTaskButton.isHidden = false
             collectionView.reloadData()
+        }
+    }
+
+    private func getData() {
+        Task {
+            do {
+                isLoading = true
+                data = try await NetworkManagers.shared.request(url: "todos", metod: "GET", requestBody: GetAllTasks(), response: data, isDateExpected: true, isRequestNil: true)
+                isLoading = false
+                reloadData()
+            } catch {
+                isLoading = false
+                data = []
+                state = .error(.otherError)//error)
+                reloadData()
+            }
         }
     }
 }
@@ -76,11 +114,24 @@ extension MainViewController: UICollectionViewDataSource {
     }
 }
 
-extension MainViewController: UICollectionViewDelegate {}
+extension MainViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedItem = data[indexPath.row]
+        Task {
+            do {
+                _ = try await NetworkManagers.shared.request(url: "todos/mark/\(selectedItem.id)", metod: "PUT", requestBody: GetAllTasks(), response: EmptyResponse(), isDateExpected: false, isRequestNil: true)
+                getData()
+            } catch {
+                DispatchQueue.main.async {
+                    let alertVC = UIAlertController(title: "Ошибка!", message: error.localizedDescription, preferredStyle: .alert)
+                    alertVC.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
+                    self.present(alertVC, animated: true)
+                }
+            }
+        }
+    }
+}
 
 extension MainViewController: NewItemViewControllerDelegate {
-    func didSelect(_ vc: NewItemViewController, data: NewItemData) {
-        self.data.append(.init(title: data.title, deadline: data.deadline))
-        reloadData()
-    }
+    func didSelect(_ vc: NewItemViewController) {}
 }

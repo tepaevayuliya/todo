@@ -15,7 +15,7 @@ final class AuthViewController: ParentViewController {
         navigationItem.title = L10n.Auth.title
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        emailTextField.setup(placeholder: "email", text: nil)
+        emailTextField.setup(placeholder: L10n.Auth.emailTextField, text: nil)
         passwordTextField.setup(placeholder: L10n.Auth.passwordTextField, text: nil)
 
         signInButton.setTitle(L10n.Auth.signInButton, for: .normal)
@@ -53,8 +53,11 @@ final class AuthViewController: ParentViewController {
         if isValidFlag {
             Task {
                 do {
-                    let response = try await NetworkManagers.shared.signIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
-                    log.debug("\(response.accessToken)")
+                    let bodeRequest = SignInRequestBody(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
+                    var response = AuthResponseClass()
+                    response = try await NetworkManagers.shared.request(url: "auth/login", metod: "POST", requestBody: bodeRequest, response: response, isDateExpected: false, isRequestNil: false)
+                    responseToken = response
+
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
                     view.window?.rootViewController = vc
@@ -64,14 +67,6 @@ final class AuthViewController: ParentViewController {
                     present(alertVC, animated: true)
                 }
             }
-
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
-//            view.window?.rootViewController = vc
-        } else if !(ValidationManager.isValid(email: emailTextField.text)) {
-            emailTextField.show(error: "Емейл некоррекный\nПример двустрочной ошибки и текста, который не влезает")
         }
-
-
     }
 }

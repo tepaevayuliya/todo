@@ -60,9 +60,22 @@ final class SignUpViewController: ParentViewController {
         }
 
         if isValidFlag {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
-            view.window?.rootViewController = vc
+            Task {
+                do {
+                    let bodeRequest = SignUpRequestBody(name: nameTextField.text ?? "", email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
+                    var response = AuthResponseClass()
+                    response = try await NetworkManagers.shared.request(url: "auth/registration", metod: "POST", requestBody: bodeRequest, response: response, isDateExpected: false, isRequestNil: false)
+                    responseToken = response
+
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
+                    view.window?.rootViewController = vc
+                } catch {
+                    let alertVC = UIAlertController(title: "Ошибка!", message: error.localizedDescription, preferredStyle: .alert)
+                    alertVC.addAction(UIAlertAction(title: "Закрыть!", style: .cancel))
+                    present(alertVC, animated: true)
+                }
+            }
         }
     }
 }
