@@ -54,9 +54,9 @@ final class NewItemViewController: ParentViewController {
     @IBAction private func didTap() {
         Task {
             do {
-                let bodeRequest = TodosResponseBody(category: "", title: self.textView.text ?? "", description: self.textView1.text ?? "", date: Int(self.pick.date.timeIntervalSince1970), coordinate: Coordinate(longitude: "", latitude: ""))
+                let bodyRequest = TodosResponseBody(category: "", title: self.textView.text ?? "", description: self.textView1.text ?? "", date: Int(self.pick.date.timeIntervalSince1970), coordinate: Coordinate(longitude: "", latitude: ""))
 
-                _ = try await NetworkManagers.shared.request(url: "todos", metod: "POST", requestBody: bodeRequest, response: EmptyResponse(), isDateExpected: true, isRequestNil: false)
+                _ = try await NetworkManagers.shared.request(urlPart: "todos", metod: "POST", requestBody: bodyRequest, response: EmptyResponse(), isRequestNil: false)
 
                 delegate?.didSelect(self)
                 navigationController?.popViewController(animated: true)

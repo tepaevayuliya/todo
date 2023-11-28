@@ -59,23 +59,34 @@ final class NetworkManagers {
     private lazy var decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .secondsSince1970
+
         return decoder
     }()
 
+//    struct EmptyEncodable: Encodable {}
+//
+//    func request<Response: Decodable> (url: String, metod: String) async throws -> Response {
+//        try await request(urlPart: url, metod: metod, requestBody: Optional<EmptyEncodable>.none)
+//    }
+
     func request<Request: Encodable, Response: Decodable> (
-        url: String,
+        urlPart: String,
         metod: String,
         requestBody: Request,
         response: Response,
-        isDateExpected: Bool,
         isRequestNil: Bool
     ) async throws -> Response {
-        guard let url = URL(string: "\(PlistFiles.cfApiBaseUrl)/api/\(url)") else {
+        guard let url = URL(string: "\(PlistFiles.cfApiBaseUrl)/api/\(urlPart)") else {
             throw NetworkError.wrongURL
         }
 
         var request = URLRequest(url: url)
         request.httpMethod = "\(metod)"
+
+//        if let _ = requestBody {
+//            request.httpBody = try JSONEncoder().encode(requestBody)
+//        }
 
         if isRequestNil {
             request.httpBody = nil
@@ -93,16 +104,13 @@ final class NetworkManagers {
         if let httpResponse = resp as? HTTPURLResponse {
             switch httpResponse.statusCode {
             case 200 ..< 400 :
-                if isDateExpected {
-                    decoder.dateDecodingStrategy = .secondsSince1970
-                }
                 if data.isEmpty {
                     return bodyRequest as! Response
                 }
 
                 return try decoder.decode(DataResponse<Response>.self, from: data).data
             default:
-                let response = String(data: data, encoding: .utf8) ?? ""
+//                let response = String(data: data, encoding: .utf8) ?? ""
                 throw NetworkError.wrongStatusCode
             }
         } else {

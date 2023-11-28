@@ -87,7 +87,7 @@ final class MainViewController: ParentViewController {
         Task {
             do {
                 isLoading = true
-                data = try await NetworkManagers.shared.request(url: "todos", metod: "GET", requestBody: GetAllTasks(), response: data, isDateExpected: true, isRequestNil: true)
+                data = try await NetworkManagers.shared.request(urlPart: "todos", metod: "GET", requestBody: GetAllTasks(), response: data, isRequestNil: true)
                 isLoading = false
                 reloadData()
             } catch {
@@ -119,7 +119,7 @@ extension MainViewController: UICollectionViewDelegate {
         let selectedItem = data[indexPath.row]
         Task {
             do {
-                _ = try await NetworkManagers.shared.request(url: "todos/mark/\(selectedItem.id)", metod: "PUT", requestBody: GetAllTasks(), response: EmptyResponse(), isDateExpected: false, isRequestNil: true)
+                _ = try await NetworkManagers.shared.request(urlPart: "todos/mark/\(selectedItem.id)", metod: "PUT", requestBody: GetAllTasks(), response: EmptyResponse(), isRequestNil: true)
                 getData()
             } catch {
                 DispatchQueue.main.async {
@@ -133,5 +133,7 @@ extension MainViewController: UICollectionViewDelegate {
 }
 
 extension MainViewController: NewItemViewControllerDelegate {
-    func didSelect(_ vc: NewItemViewController) {}
+    func didSelect(_ vc: NewItemViewController) {
+        getData()
+    }
 }

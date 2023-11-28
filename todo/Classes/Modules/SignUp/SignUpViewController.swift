@@ -62,9 +62,9 @@ final class SignUpViewController: ParentViewController {
         if isValidFlag {
             Task {
                 do {
-                    let bodeRequest = SignUpRequestBody(name: nameTextField.text ?? "", email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
+                    let bodyRequest = SignUpRequestBody(name: nameTextField.text ?? "", email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
                     var response = AuthResponseClass()
-                    response = try await NetworkManagers.shared.request(url: "auth/registration", metod: "POST", requestBody: bodeRequest, response: response, isDateExpected: false, isRequestNil: false)
+                    response = try await NetworkManagers.shared.request(urlPart: "auth/registration", metod: "POST", requestBody: bodyRequest, response: response, isRequestNil: false)
                     responseToken = response
 
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
