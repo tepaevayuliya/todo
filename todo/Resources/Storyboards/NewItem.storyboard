@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,31 +27,40 @@
                                         <rect key="frame" x="16" y="98" width="361" height="56"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUv-Qy-bk5">
-                                        <rect key="frame" x="16" y="172" width="361" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="16" y="172" width="361" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQK-7l-iW3">
+                                        <rect key="frame" x="9" y="197" width="375" height="391"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="tQt-S2-DMm">
-                                        <rect key="frame" x="9" y="201" width="375" height="388"/>
+                                        <rect key="frame" x="25" y="213" width="343" height="365"/>
+                                        <color key="backgroundColor" name="Color/white"/>
                                     </datePicker>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="UQK-7l-iW3" firstAttribute="bottom" secondItem="jMs-Q5-DoC" secondAttribute="bottom" constant="16" id="2rW-S4-EEz"/>
+                                    <constraint firstItem="tQt-S2-DMm" firstAttribute="bottom" secondItem="UQK-7l-iW3" secondAttribute="bottom" constant="-10" id="3wd-rC-9q7"/>
                                     <constraint firstItem="dsM-dr-LON" firstAttribute="leading" secondItem="jMs-Q5-DoC" secondAttribute="leading" constant="16" id="6JC-Aq-p3u"/>
+                                    <constraint firstItem="tQt-S2-DMm" firstAttribute="trailing" secondItem="UQK-7l-iW3" secondAttribute="trailing" constant="-16" id="8WH-aD-tK8"/>
                                     <constraint firstItem="R1K-pi-fYx" firstAttribute="width" secondItem="iVG-WC-Sgk" secondAttribute="width" constant="-32" id="CJd-ml-66y"/>
                                     <constraint firstItem="aUv-Qy-bk5" firstAttribute="trailing" secondItem="jMs-Q5-DoC" secondAttribute="trailing" constant="-16" id="D1Q-NG-8Fe"/>
                                     <constraint firstItem="aUv-Qy-bk5" firstAttribute="top" secondItem="dsM-dr-LON" secondAttribute="bottom" constant="18" id="DK7-vq-xNo"/>
+                                    <constraint firstItem="UQK-7l-iW3" firstAttribute="width" secondItem="iVG-WC-Sgk" secondAttribute="width" multiplier="0.954198" id="DZl-N1-cKw"/>
+                                    <constraint firstItem="tQt-S2-DMm" firstAttribute="leading" secondItem="UQK-7l-iW3" secondAttribute="leading" constant="16" id="ESz-N4-ycm"/>
                                     <constraint firstItem="R1K-pi-fYx" firstAttribute="leading" secondItem="jMs-Q5-DoC" secondAttribute="leading" constant="16" id="FsF-zT-DId"/>
-                                    <constraint firstItem="tQt-S2-DMm" firstAttribute="trailing" secondItem="jMs-Q5-DoC" secondAttribute="trailing" constant="-9" id="GIv-c1-Icl"/>
-                                    <constraint firstItem="tQt-S2-DMm" firstAttribute="top" secondItem="aUv-Qy-bk5" secondAttribute="bottom" constant="8" id="Mfo-Na-QpE"/>
+                                    <constraint firstItem="tQt-S2-DMm" firstAttribute="top" secondItem="UQK-7l-iW3" secondAttribute="top" constant="16" id="Lp0-rq-uH4"/>
                                     <constraint firstItem="dsM-dr-LON" firstAttribute="trailing" secondItem="jMs-Q5-DoC" secondAttribute="trailing" constant="-16" id="NCH-cI-sdF"/>
-                                    <constraint firstItem="tQt-S2-DMm" firstAttribute="bottom" secondItem="jMs-Q5-DoC" secondAttribute="bottom" constant="16" id="O9E-oL-8Ie"/>
                                     <constraint firstItem="dsM-dr-LON" firstAttribute="width" secondItem="iVG-WC-Sgk" secondAttribute="width" constant="-32" id="Qs3-7V-fp3"/>
                                     <constraint firstItem="aUv-Qy-bk5" firstAttribute="width" secondItem="iVG-WC-Sgk" secondAttribute="width" constant="-32" id="U20-x7-FN6"/>
                                     <constraint firstItem="aUv-Qy-bk5" firstAttribute="leading" secondItem="jMs-Q5-DoC" secondAttribute="leading" constant="16" id="WPP-MC-O5r"/>
-                                    <constraint firstItem="jMs-Q5-DoC" firstAttribute="leading" secondItem="tQt-S2-DMm" secondAttribute="leading" constant="-9" id="Wtc-Gq-lsL"/>
                                     <constraint firstItem="R1K-pi-fYx" firstAttribute="top" secondItem="jMs-Q5-DoC" secondAttribute="top" constant="24" id="c4r-sn-uUC"/>
-                                    <constraint firstItem="tQt-S2-DMm" firstAttribute="width" secondItem="iVG-WC-Sgk" secondAttribute="width" constant="-18" id="lFn-xI-huU"/>
+                                    <constraint firstItem="UQK-7l-iW3" firstAttribute="top" secondItem="aUv-Qy-bk5" secondAttribute="bottom" constant="8" id="chx-Qu-0ZO"/>
+                                    <constraint firstItem="UQK-7l-iW3" firstAttribute="leading" secondItem="jMs-Q5-DoC" secondAttribute="leading" constant="9" id="l4J-dL-zL4"/>
+                                    <constraint firstItem="UQK-7l-iW3" firstAttribute="trailing" secondItem="jMs-Q5-DoC" secondAttribute="trailing" constant="-9" id="lvQ-8O-np0"/>
                                     <constraint firstItem="R1K-pi-fYx" firstAttribute="trailing" secondItem="jMs-Q5-DoC" secondAttribute="trailing" constant="-16" id="nFR-64-iv6"/>
                                     <constraint firstItem="dsM-dr-LON" firstAttribute="top" secondItem="R1K-pi-fYx" secondAttribute="bottom" constant="18" id="nUC-uS-60W"/>
                                 </constraints>
@@ -85,6 +95,7 @@
                         <outlet property="pick" destination="tQt-S2-DMm" id="XeM-G3-XO6"/>
                         <outlet property="textView" destination="R1K-pi-fYx" id="av9-tR-NNv"/>
                         <outlet property="textView1" destination="dsM-dr-LON" id="zsF-hf-loq"/>
+                        <outlet property="viewDataPicker" destination="UQK-7l-iW3" id="KIk-ug-z9i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -93,6 +104,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="Color/white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

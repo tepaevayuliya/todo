@@ -70,6 +70,8 @@ final class TextViewInput: UIView, UITextViewDelegate {
     }
 
     func textViewDidChange(_ textView: UITextView) {
+        textView.isScrollEnabled = false
+
         let estimatedSize = textView.sizeThatFits(CGSize(width: frame.width, height: .infinity))
 
         heightConstraint.constant = min(max(estimatedSize.height, 56), 200)
