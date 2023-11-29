@@ -34,3 +34,4 @@
 "new-item.deadline-label" = "Дедлайн";
 "new-item.text-view-title-task" = "Что нужно сделать";
 "new-item.text-view-description" = "Описание";
+"new-item.text-field-error" = "Поле должно быть заполнено";

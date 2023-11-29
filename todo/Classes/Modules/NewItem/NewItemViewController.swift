@@ -52,18 +52,32 @@ final class NewItemViewController: ParentViewController {
     }
 
     @IBAction private func didTap() {
-        Task {
-            do {
-                let bodyRequest = TodosResponseBody(category: "", title: self.textView.text ?? "", description: self.textView1.text ?? "", date: Int(self.pick.date.timeIntervalSince1970), coordinate: Coordinate(longitude: "", latitude: ""))
+        var isValidFlag = true
 
-                _ = try await NetworkManagers.shared.request(urlPart: "todos", metod: "POST", requestBody: bodyRequest, response: EmptyResponse(), isRequestNil: false)
+        if textView.text?.isEmpty ?? true {
+            textView.show(error: L10n.NewItem.textFieldError)
+            isValidFlag = false
+        }
 
-                delegate?.didSelect(self)
-                navigationController?.popViewController(animated: true)
-            } catch {
-                let alertVC = UIAlertController(title: "Ошибка!", message: error.localizedDescription, preferredStyle: .alert)
-                alertVC.addAction(UIAlertAction(title: "Закрыть!", style: .cancel))
-                present(alertVC, animated: true)
+        if textView1.text?.isEmpty ?? true {
+            textView1.show(error: L10n.NewItem.textFieldError)
+            isValidFlag = false
+        }
+
+        if isValidFlag {
+            Task {
+                do {
+                    let bodyRequest = TodosResponseBody(category: "", title: self.textView.text!, description: self.textView1.text!, date: Int(self.pick.date.timeIntervalSince1970), coordinate: Coordinate(longitude: "", latitude: ""))
+
+                    _ = try await NetworkManagers.shared.request(urlPart: "todos", metod: "POST", requestBody: bodyRequest, response: EmptyResponse(), isRequestNil: false)
+
+                    delegate?.didSelect(self)
+                    navigationController?.popViewController(animated: true)
+                } catch {
+                    let alertVC = UIAlertController(title: "Ошибка!", message: error.localizedDescription, preferredStyle: .alert)
+                    alertVC.addAction(UIAlertAction(title: "Закрыть!", style: .cancel))
+                    present(alertVC, animated: true)
+                }
             }
         }
     }

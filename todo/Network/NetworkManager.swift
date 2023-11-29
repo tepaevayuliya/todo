@@ -104,10 +104,9 @@ final class NetworkManagers {
         if let httpResponse = resp as? HTTPURLResponse {
             switch httpResponse.statusCode {
             case 200 ..< 400 :
-                if data.isEmpty {
-                    return bodyRequest as! Response
+                if data.isEmpty, let emptyData = "{}".data(using: .utf8) {
+                    return try decoder.decode(Response.self, from: emptyData)
                 }
-
                 return try decoder.decode(DataResponse<Response>.self, from: data).data
             default:
 //                let response = String(data: data, encoding: .utf8) ?? ""
