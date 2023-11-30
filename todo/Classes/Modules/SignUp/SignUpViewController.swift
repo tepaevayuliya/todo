@@ -62,18 +62,18 @@ final class SignUpViewController: ParentViewController {
         if isValidFlag {
             Task {
                 do {
-                    let bodyRequest = SignUpRequestBody(name: nameTextField.text ?? "", email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
+                    let requestBody = SignUpRequestBody(name: nameTextField.text ?? "", email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
                     var response = AuthResponseClass()
-                    response = try await NetworkManagers.shared.request(urlPart: "auth/registration", metod: "POST", requestBody: bodyRequest, response: response, isRequestNil: false)
+                    response = try await NetworkManagers.shared.request(urlPart: "auth/registration", method: "POST", requestBody: requestBody, response: response, isRequestNil: false)
                     responseToken = response
 
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
                     view.window?.rootViewController = vc
                 } catch {
-                    let alertVC = UIAlertController(title: "Ошибка!", message: error.localizedDescription, preferredStyle: .alert)
-                    alertVC.addAction(UIAlertAction(title: "Закрыть!", style: .cancel))
-                    present(alertVC, animated: true)
+                    DispatchQueue.main.async {
+                        self.showAlertVC(massage: error.localizedDescription)
+                    }
                 }
             }
         }

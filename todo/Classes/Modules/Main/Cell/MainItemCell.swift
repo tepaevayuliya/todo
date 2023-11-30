@@ -24,12 +24,7 @@ final class MainItemCell: UICollectionViewCell {
         deadline < Date()
     }
 
-    private var id: String!
-    private var isCompleted: Bool!
-
     func setup(item: TodosResponse) {
-        id = item.id
-        isCompleted = item.isCompleted
         titleLabel.text = item.title
         date.textColor = isDeadlinePassed(deadline: item.date) ? .Color.red : .Color.black
         iconView.image = item.isCompleted ? UIImage.ItemCell.radiobuttonOn : UIImage.ItemCell.radiobuttonOff

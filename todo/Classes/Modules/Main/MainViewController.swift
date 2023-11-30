@@ -7,8 +7,6 @@
 
 import UIKit
 
-private var isLoading = false
-
 final class MainViewController: ParentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +33,7 @@ final class MainViewController: ParentViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        reloadData()
+
         switch segue.destination {
         case let destination as EmptyViewController:
             self.destination = destination
@@ -71,7 +69,7 @@ final class MainViewController: ParentViewController {
         
         if data.isEmpty {
             collectionView.isHidden = true
-            emptyView.isHidden = !data.isEmpty
+            emptyView.isHidden = false
             destination?.state = state ?? .empty
             destination?.action = { [weak self] in
                 self?.performSegue(withIdentifier: "new-item", sender: nil)
@@ -87,7 +85,7 @@ final class MainViewController: ParentViewController {
         Task {
             do {
                 isLoading = true
-                data = try await NetworkManagers.shared.request(urlPart: "todos", metod: "GET", requestBody: GetAllTasks(), response: data, isRequestNil: true)
+                data = try await NetworkManagers.shared.request(urlPart: "todos", method: "GET", requestBody: "", response: data, isRequestNil: true)
                 isLoading = false
                 reloadData()
             } catch {
@@ -119,13 +117,11 @@ extension MainViewController: UICollectionViewDelegate {
         let selectedItem = data[indexPath.row]
         Task {
             do {
-                _ = try await NetworkManagers.shared.request(urlPart: "todos/mark/\(selectedItem.id)", metod: "PUT", requestBody: GetAllTasks(), response: EmptyResponse(), isRequestNil: true)
+                _ = try await NetworkManagers.shared.request(urlPart: "todos/mark/\(selectedItem.id)", method: "PUT", requestBody: "", response: EmptyResponse(), isRequestNil: true)
                 getData()
             } catch {
                 DispatchQueue.main.async {
-                    let alertVC = UIAlertController(title: "Ошибка!", message: error.localizedDescription, preferredStyle: .alert)
-                    alertVC.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
-                    self.present(alertVC, animated: true)
+                    self.showAlertVC(massage: error.localizedDescription)
                 }
             }
         }

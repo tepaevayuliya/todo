@@ -17,4 +17,10 @@ class ParentViewController: UIViewController {
 
         navigationItem.backButtonDisplayMode = .minimal
     }
+
+    func showAlertVC(massage: String) {
+        let alertVC = UIAlertController(title: "Ошибка!", message: massage, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Закрыть!", style: .cancel))
+        self.present(alertVC, animated: true)
+    }
 }

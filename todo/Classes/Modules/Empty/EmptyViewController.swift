@@ -72,7 +72,6 @@ final class EmptyViewController: ParentViewController {
         case .empty:
             action?()
         case .error(.noConnection), .error(.otherError):
-            state = .empty
             updateState()
         }
     }

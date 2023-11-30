@@ -34,12 +34,12 @@ struct SignUpRequestBody: Encodable {
     let password: String
 }
 
-struct TodosResponseBody: Encodable {
-    let category: String
+struct TodosRequestBody: Encodable {
+    let category: String = ""
     let title: String
     let description: String
     let date: Int
-    let coordinate: Coordinate
+    let coordinate: Coordinate = Coordinate(longitude: "", latitude: "")
 }
 
 struct Coordinate: Encodable {
@@ -47,9 +47,7 @@ struct Coordinate: Encodable {
     let latitude: String
 }
 
-struct GetAllTasks: Encodable {}
-
-let bodyRequest = EmptyResponse()
+let requestBody = EmptyResponse()
 
 final class NetworkManagers {
     static var shared = NetworkManagers()
@@ -66,14 +64,14 @@ final class NetworkManagers {
 
 //    struct EmptyEncodable: Encodable {}
 //
-//    func request<Response: Decodable> (url: String, metod: String) async throws -> Response {
-//        try await request(urlPart: url, metod: metod, requestBody: Optional<EmptyEncodable>.none)
+//    func request<Response: Decodable> (url: String, method: String) async throws -> Response {
+//        try await request(urlPart: url, method: method, requestBody: Optional<EmptyEncodable>.none)
 //    }
 
     func request<Request: Encodable, Response: Decodable> (
         urlPart: String,
-        metod: String,
-        requestBody: Request,
+        method: String,
+        requestBody: Request?,
         response: Response,
         isRequestNil: Bool
     ) async throws -> Response {
@@ -82,17 +80,13 @@ final class NetworkManagers {
         }
 
         var request = URLRequest(url: url)
-        request.httpMethod = "\(metod)"
+        request.httpMethod = "\(method)"
 
 //        if let _ = requestBody {
 //            request.httpBody = try JSONEncoder().encode(requestBody)
 //        }
 
-        if isRequestNil {
-            request.httpBody = nil
-        } else {
-            request.httpBody = try JSONEncoder().encode(requestBody)
-        }
+        request.httpBody = isRequestNil ? nil : try JSONEncoder().encode(requestBody)
 
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
