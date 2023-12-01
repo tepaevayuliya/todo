@@ -90,11 +90,11 @@
                     </view>
                     <connections>
                         <outlet property="createButton" destination="2Uf-IX-kKS" id="yjg-bG-tRt"/>
-                        <outlet property="label" destination="aUv-Qy-bk5" id="RWg-WO-Upo"/>
-                        <outlet property="pick" destination="tQt-S2-DMm" id="XeM-G3-XO6"/>
-                        <outlet property="textView" destination="R1K-pi-fYx" id="av9-tR-NNv"/>
-                        <outlet property="textView1" destination="dsM-dr-LON" id="zsF-hf-loq"/>
-                        <outlet property="viewDataPicker" destination="UQK-7l-iW3" id="KIk-ug-z9i"/>
+                        <outlet property="datePicker" destination="tQt-S2-DMm" id="a1b-DA-44k"/>
+                        <outlet property="deadlineLabel" destination="aUv-Qy-bk5" id="Xi5-BP-cpi"/>
+                        <outlet property="descriptionView" destination="dsM-dr-LON" id="UCT-gh-TUe"/>
+                        <outlet property="titleView" destination="R1K-pi-fYx" id="tuV-Ob-KEW"/>
+                        <outlet property="viewDatePicker" destination="UQK-7l-iW3" id="GJd-mh-3BB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

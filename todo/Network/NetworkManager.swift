@@ -14,11 +14,11 @@ enum NetworkError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .wrongStatusCode:
-            return "Упс1! Что-то пошло не так"
+            return L10n.NetworkError.wrongStatusCode
         case .wrongURL:
-            return "Упс2! Что-то пошло не так"
+            return L10n.NetworkError.wrongURL
         case .wrongResponse:
-            return "Упс3! Что-то пошло не так"
+            return L10n.NetworkError.wrongResponse
         }
     }
 }
@@ -47,8 +47,6 @@ struct Coordinate: Encodable {
     let latitude: String
 }
 
-let requestBody = EmptyResponse()
-
 final class NetworkManagers {
     static var shared = NetworkManagers()
 
@@ -62,18 +60,16 @@ final class NetworkManagers {
         return decoder
     }()
 
-//    struct EmptyEncodable: Encodable {}
-//
-//    func request<Response: Decodable> (url: String, method: String) async throws -> Response {
-//        try await request(urlPart: url, method: method, requestBody: Optional<EmptyEncodable>.none)
-//    }
+    struct EmptyEncodable: Encodable {}
+
+    func request<Response: Decodable> (urlPart: String, method: String) async throws -> Response {
+        try await request(urlPart: urlPart, method: method, requestBody: Optional<EmptyEncodable>.none)
+    }
 
     func request<Request: Encodable, Response: Decodable> (
         urlPart: String,
         method: String,
-        requestBody: Request?,
-        response: Response,
-        isRequestNil: Bool
+        requestBody: Request?
     ) async throws -> Response {
         guard let url = URL(string: "\(PlistFiles.cfApiBaseUrl)/api/\(urlPart)") else {
             throw NetworkError.wrongURL
@@ -82,11 +78,11 @@ final class NetworkManagers {
         var request = URLRequest(url: url)
         request.httpMethod = "\(method)"
 
-//        if let _ = requestBody {
-//            request.httpBody = try JSONEncoder().encode(requestBody)
-//        }
+        if let requestBody {
+            request.httpBody = try JSONEncoder().encode(requestBody)
+        }
 
-        request.httpBody = isRequestNil ? nil : try JSONEncoder().encode(requestBody)
+//        request.httpBody = isRequestNil ? nil : try JSONEncoder().encode(requestBody)
 
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")

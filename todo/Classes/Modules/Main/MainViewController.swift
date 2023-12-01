@@ -70,11 +70,13 @@ final class MainViewController: ParentViewController {
         if data.isEmpty {
             collectionView.isHidden = true
             emptyView.isHidden = false
+            newTaskButton.isHidden = true
             destination?.state = state ?? .empty
             destination?.action = { [weak self] in
                 self?.performSegue(withIdentifier: "new-item", sender: nil)
             }
         } else {
+            emptyView.isHidden = true
             collectionView.isHidden = false
             newTaskButton.isHidden = false
             collectionView.reloadData()
@@ -85,7 +87,7 @@ final class MainViewController: ParentViewController {
         Task {
             do {
                 isLoading = true
-                data = try await NetworkManagers.shared.request(urlPart: "todos", method: "GET", requestBody: "", response: data, isRequestNil: true)
+                data = try await NetworkManagers.shared.request(urlPart: "todos", method: "GET")
                 isLoading = false
                 reloadData()
             } catch {
@@ -117,7 +119,7 @@ extension MainViewController: UICollectionViewDelegate {
         let selectedItem = data[indexPath.row]
         Task {
             do {
-                _ = try await NetworkManagers.shared.request(urlPart: "todos/mark/\(selectedItem.id)", method: "PUT", requestBody: "", response: EmptyResponse(), isRequestNil: true)
+                _ = try await NetworkManagers.shared.request(urlPart: "todos/mark/\(selectedItem.id)", method: "PUT") as EmptyResponse
                 getData()
             } catch {
                 DispatchQueue.main.async {

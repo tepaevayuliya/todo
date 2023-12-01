@@ -54,9 +54,9 @@ final class AuthViewController: ParentViewController {
             Task {
                 do {
                     let requestBody = SignInRequestBody(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
-                    var response = AuthResponseClass()
-                    response = try await NetworkManagers.shared.request(urlPart: "auth/login", method: "POST", requestBody: requestBody, response: response, isRequestNil: false)
-                    responseToken = response
+//                    var response = AuthResponseClass()
+                    responseToken = try await NetworkManagers.shared.request(urlPart: "auth/login", method: "POST", requestBody: requestBody)
+//                    responseToken = response
 
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")

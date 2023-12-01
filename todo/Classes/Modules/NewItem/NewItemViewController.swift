@@ -69,7 +69,7 @@ final class NewItemViewController: ParentViewController {
                 do {
                     let requestBody = TodosRequestBody(title: self.titleView.text ?? "", description: self.descriptionView.text ?? "", date: Int(self.datePicker.date.timeIntervalSince1970))
 
-                    _ = try await NetworkManagers.shared.request(urlPart: "todos", method: "POST", requestBody: requestBody, response: EmptyResponse(), isRequestNil: false)
+                    let _: EmptyResponse = try await NetworkManagers.shared.request(urlPart: "todos", method: "POST", requestBody: requestBody)
 
                     delegate?.didSelect(self)
                     navigationController?.popViewController(animated: true)
