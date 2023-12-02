@@ -38,7 +38,7 @@ struct TodosRequestBody: Encodable {
     let category: String = ""
     let title: String
     let description: String
-    let date: Int
+    let date: Date
     let coordinate: Coordinate = Coordinate(longitude: "", latitude: "")
 }
 
@@ -60,6 +60,13 @@ final class NetworkManagers {
         return decoder
     }()
 
+    private lazy var encoder: JSONEncoder = {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .secondsSince1970
+
+        return encoder
+    }()
+
     struct EmptyEncodable: Encodable {}
 
     func request<Response: Decodable> (urlPart: String, method: String) async throws -> Response {
@@ -79,19 +86,20 @@ final class NetworkManagers {
         request.httpMethod = "\(method)"
 
         if let requestBody {
-            request.httpBody = try JSONEncoder().encode(requestBody)
+            request.httpBody = try encoder.encode(requestBody)
         }
-
-//        request.httpBody = isRequestNil ? nil : try JSONEncoder().encode(requestBody)
 
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
 
-        let AuthAccessToken = "Bearer \(responseToken.accessToken)"
-        request.setValue("\(AuthAccessToken)", forHTTPHeaderField: "Authorization")
+        if let accessToken = UserManager.shared.accessToken {
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        }
 
         let (data, resp) = try await URLSession.shared.data(for: request)
         if let httpResponse = resp as? HTTPURLResponse {
+            let response = String(data: data, encoding: .utf8) ?? ""
+            log.debug("\(response)")
             switch httpResponse.statusCode {
             case 200 ..< 400 :
                 if data.isEmpty, let emptyData = "{}".data(using: .utf8) {
@@ -99,7 +107,6 @@ final class NetworkManagers {
                 }
                 return try decoder.decode(DataResponse<Response>.self, from: data).data
             default:
-//                let response = String(data: data, encoding: .utf8) ?? ""
                 throw NetworkError.wrongStatusCode
             }
         } else {

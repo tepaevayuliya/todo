@@ -47,10 +47,10 @@ final class MainViewController: ParentViewController {
     }
 
     private var data = [TodosResponse]()
-//    private var data: [MainDataItem] = [MainDataItem(title: "sdfghj", deadline: Date(timeIntervalSince1970: 0)), MainDataItem(title: "324567", deadline: Date(timeIntervalSince1970: 10000000000000))]
-//    private var data = [MainDataItem]() //второй вариант записи
+    //    private var data: [MainDataItem] = [MainDataItem(title: "sdfghj", deadline: Date(timeIntervalSince1970: 0)), MainDataItem(title: "324567", deadline: Date(timeIntervalSince1970: 10000000000000))]
+    //    private var data = [MainDataItem]() //второй вариант записи
     private var selectedItem: TodosResponse?
-  
+
     private var state: EmptyViewController.State?
     private var isLoading = true
 
@@ -66,17 +66,15 @@ final class MainViewController: ParentViewController {
 
     private func reloadData() {
         guard !isLoading else {
-            emptyView.isHidden = true
             collectionView.isHidden = true
             newTaskButton.isHidden = true
             return
         }
-        
+
         if data.isEmpty {
             collectionView.isHidden = true
-            emptyView.isHidden = false
             newTaskButton.isHidden = true
-            view as? StatefullView)?.state = .loading
+            (view as? StatefullView)?.state = .loading
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
                 (self?.view as? StatefullView)?.state = .empty()
             }
@@ -85,7 +83,6 @@ final class MainViewController: ParentViewController {
                 self?.performSegue(withIdentifier: "new-item", sender: nil)
             }
         } else {
-            emptyView.isHidden = true
             collectionView.isHidden = false
             newTaskButton.isHidden = false
             collectionView.reloadData()
@@ -102,7 +99,7 @@ final class MainViewController: ParentViewController {
             } catch {
                 isLoading = false
                 data = []
-                state = .error(.otherError)//error)
+//                state = .error(.otherError)//error)
                 reloadData()
             }
         }

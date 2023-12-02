@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct AuthResponseStruct: Decodable {
+struct AuthResponse: Decodable {
     var accessToken = ""
 }
 
-var responseToken = AuthResponseStruct()
+//var responseToken = AuthResponseStruct()

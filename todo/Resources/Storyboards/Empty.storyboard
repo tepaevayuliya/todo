@@ -51,7 +51,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                 <connections>
-                                                    <action selector="didTabEmptyButton" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Zsp-Kb-GoU"/>
+                                                    <action selector="didTapEmptyButton" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Zsp-Kb-GoU"/>
                                                 </connections>
                                             </button>
                                         </subviews>

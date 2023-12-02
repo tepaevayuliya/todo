@@ -39,7 +39,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
-                                            <action selector="didTabNewTaskButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Mwr-2H-RV9"/>
+                                            <action selector="didTapNewTaskButton" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FoH-y5-LiY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -48,21 +48,11 @@
                                     <constraint firstItem="wwA-Ed-D96" firstAttribute="width" secondItem="dhN-pR-T74" secondAttribute="width" id="XHB-l4-lNq"/>
                                 </constraints>
                             </stackView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9n-Ym-Cap">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="818"/>
-                                <connections>
-                                    <segue destination="zQj-S3-IGE" kind="embed" id="Uws-HE-Fd1"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Y9n-Ym-Cap" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Gcj-pN-ZGJ"/>
                             <constraint firstItem="dhN-pR-T74" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Gt9-N0-pFZ"/>
-                            <constraint firstItem="Y9n-Ym-Cap" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="OIz-FK-bWP"/>
-                            <constraint firstItem="Y9n-Ym-Cap" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Upp-YF-1Hd"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Y9n-Ym-Cap" secondAttribute="bottom" id="YNf-2h-Sg3"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="dhN-pR-T74" secondAttribute="bottom" constant="16" id="fKd-3d-8cK"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dhN-pR-T74" secondAttribute="trailing" id="z5t-dy-dwq"/>
                             <constraint firstItem="dhN-pR-T74" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zoQ-Ge-07a"/>
@@ -71,7 +61,6 @@
                     <navigationItem key="navigationItem" id="Lm9-cm-xPY"/>
                     <connections>
                         <outlet property="collectionView" destination="wwA-Ed-D96" id="93d-wU-3Re"/>
-                        <outlet property="emptyView" destination="Y9n-Ym-Cap" id="au9-29-jcV"/>
                         <outlet property="newTaskButton" destination="UrP-Ve-Np0" id="qgD-PR-cXM"/>
                         <segue destination="CkC-Bi-ffe" kind="show" identifier="new-item" id="w7P-sN-ycU"/>
                     </connections>

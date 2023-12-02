@@ -63,11 +63,12 @@ final class SignUpViewController: ParentViewController {
             Task {
                 do {
                     let requestBody = SignUpRequestBody(name: nameTextField.text ?? "", email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
-
-                    responseToken = try await NetworkManagers.shared.request(urlPart: "auth/registration", method: "POST", requestBody: requestBody)
+                    var response = AuthResponse()
+                    response = try await NetworkManagers.shared.request(urlPart: "auth/registration", method: "POST", requestBody: requestBody)
+                    UserManager.shared.set(accessToken: response.accessToken)
 
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
+                    let vc = storyboard.instantiateInitialViewController()
                     view.window?.rootViewController = vc
                 } catch {
                     DispatchQueue.main.async {

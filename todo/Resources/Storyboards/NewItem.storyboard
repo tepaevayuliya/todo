@@ -12,7 +12,7 @@
         <!--New Item View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="NewItemVC" id="Y6W-OH-hqX" customClass="NewItemViewController" customModule="todo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="NewItemViewController" customModule="todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,10 +22,6 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="361" placeholderIntrinsicHeight="56" translatesAutoresizingMaskIntoConstraints="NO" id="R1K-pi-fYx" customClass="TextViewInput" customModule="todo" customModuleProvider="target">
                                         <rect key="frame" x="16" y="24" width="361" height="56"/>
-                                        <color key="backgroundColor" name="Color/BackgroundAndSurface/surfaceSecondary"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="86" id="6l2-GK-7fj"/>
-                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="361" placeholderIntrinsicHeight="56" translatesAutoresizingMaskIntoConstraints="NO" id="dsM-dr-LON" customClass="TextViewInput" customModule="todo" customModuleProvider="target">
                                         <rect key="frame" x="16" y="98" width="361" height="56"/>

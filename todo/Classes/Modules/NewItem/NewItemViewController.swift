@@ -39,7 +39,7 @@ final class NewItemViewController: ParentViewController {
         descriptionView.setup(text: "", titleText: L10n.NewItem.textViewDescription)
 
         if let selectedItem {
-            textView.set(text: selectedItem.title)
+            titleView.set(text: selectedItem.title)
         }
       
         setup()
@@ -55,8 +55,10 @@ final class NewItemViewController: ParentViewController {
         datePicker.layer.cornerRadius = 13
         datePicker.tintColor = UIColor.Color.lightRed
 
+        addTapToHideKeyboardGesture()
+
         if let selectedItem {
-            textView.set(text: selectedItem.title)
+            titleView.set(text: selectedItem.title)
         }
     }
 
@@ -76,7 +78,7 @@ final class NewItemViewController: ParentViewController {
         if isValidFlag {
             Task {
                 do {
-                    let requestBody = TodosRequestBody(title: self.titleView.text ?? "", description: self.descriptionView.text ?? "", date: Int(self.datePicker.date.timeIntervalSince1970))
+                    let requestBody = TodosRequestBody(title: self.titleView.text ?? "", description: self.descriptionView.text ?? "", date: self.datePicker.date)
 
                     let _: EmptyResponse = try await NetworkManagers.shared.request(urlPart: "todos", method: "POST", requestBody: requestBody)
 
@@ -91,5 +93,5 @@ final class NewItemViewController: ParentViewController {
         }
     }
 
-    var selectedItem: MainDataItem?
+    var selectedItem: TodosResponse?
 }
