@@ -15,7 +15,7 @@ final class AuthViewController: ParentViewController {
         navigationItem.title = L10n.Auth.title
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        emailTextField.setup(placeholder: "email", text: nil)
+        emailTextField.setup(placeholder: L10n.Auth.emailTextField, text: nil)
         passwordTextField.setup(placeholder: L10n.Auth.passwordTextField, text: nil)
 
         signInButton.setTitle(L10n.Auth.signInButton, for: .normal)
@@ -53,25 +53,20 @@ final class AuthViewController: ParentViewController {
         if isValidFlag {
             Task {
                 do {
-                    let response = try await NetworkManagers.shared.signIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
-                    log.debug("\(response.accessToken)")
+                    let requestBody = SignInRequestBody(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
+//                    var response = AuthResponseClass()
+                    responseToken = try await NetworkManagers.shared.request(urlPart: "auth/login", method: "POST", requestBody: requestBody)
+//                    responseToken = response
+
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
                     view.window?.rootViewController = vc
                 } catch {
-                    let alertVC = UIAlertController(title: "Ошибка!", message: error.localizedDescription, preferredStyle: .alert)
-                    alertVC.addAction(UIAlertAction(title: "Закрыть!", style: .cancel))
-                    present(alertVC, animated: true)
+                    DispatchQueue.main.async {
+                        self.showAlertVC(massage: error.localizedDescription)
+                    }
                 }
             }
-
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
-//            view.window?.rootViewController = vc
-        } else if !(ValidationManager.isValid(email: emailTextField.text)) {
-            emailTextField.show(error: "Емейл некоррекный\nПример двустрочной ошибки и текста, который не влезает")
         }
-
-
     }
 }

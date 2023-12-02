@@ -35,6 +35,7 @@
 		5CCBF88F2B0FA6DB00790C8D /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF88E2B0FA6DA00790C8D /* AuthResponse.swift */; };
 		5CCBF8912B0FA71600790C8D /* DataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8902B0FA71600790C8D /* DataResponse.swift */; };
 		5CCBF8932B10CBC900790C8D /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8922B10CBC900790C8D /* DateFormatter.swift */; };
+		5CCBF8952B135A1000790C8D /* TodosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8942B135A1000790C8D /* TodosResponse.swift */; };
 		5CCBF8972B164F6500790C8D /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCBF8962B164F6500790C8D /* SplashScreen.storyboard */; };
 		5CCBF89A2B164F7D00790C8D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8992B164F7D00790C8D /* SplashViewController.swift */; };
 		5CCBF89C2B164FCC00790C8D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF89B2B164FCC00790C8D /* UserManager.swift */; };
@@ -103,6 +104,7 @@
 		5CCBF88E2B0FA6DA00790C8D /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		5CCBF8902B0FA71600790C8D /* DataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResponse.swift; sourceTree = "<group>"; };
 		5CCBF8922B10CBC900790C8D /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		5CCBF8942B135A1000790C8D /* TodosResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosResponse.swift; sourceTree = "<group>"; };
 		5CCBF8962B164F6500790C8D /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
 		5CCBF8992B164F7D00790C8D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		5CCBF89B2B164FCC00790C8D /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				5CCBF88C2B0FA6B600790C8D /* EmptyResponse.swift */,
 				5CCBF88E2B0FA6DA00790C8D /* AuthResponse.swift */,
 				5CCBF8902B0FA71600790C8D /* DataResponse.swift */,
+				5CCBF8942B135A1000790C8D /* TodosResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				5C50A3162B05048400EEE149 /* EmptyViewController.swift in Sources */,
 				5CCBF88F2B0FA6DB00790C8D /* AuthResponse.swift in Sources */,
 				5CCBF8912B0FA71600790C8D /* DataResponse.swift in Sources */,
+				5CCBF8952B135A1000790C8D /* TodosResponse.swift in Sources */,
 				5CE2343D2AF3FE400097AB36 /* TextInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

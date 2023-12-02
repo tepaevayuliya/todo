@@ -54,19 +54,19 @@
                     </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="NQ4-KM-gAC" firstAttribute="leading" secondItem="cCP-bl-qAH" secondAttribute="leading" id="2pg-oW-GYi"/>
+                    <constraint firstItem="NQ4-KM-gAC" firstAttribute="top" secondItem="cCP-bl-qAH" secondAttribute="top" id="9OV-jz-Aql"/>
                     <constraint firstAttribute="trailing" secondItem="cCP-bl-qAH" secondAttribute="trailing" constant="16" id="9vZ-Dt-EMe"/>
-                    <constraint firstAttribute="trailing" secondItem="NQ4-KM-gAC" secondAttribute="trailing" constant="16" id="Gbi-wG-s0U"/>
                     <constraint firstAttribute="bottom" secondItem="cCP-bl-qAH" secondAttribute="bottom" constant="8" id="I5a-rq-uAQ"/>
                     <constraint firstItem="cCP-bl-qAH" firstAttribute="leading" secondItem="bNT-Ou-Of8" secondAttribute="leading" constant="16" id="UOp-w1-PjW"/>
-                    <constraint firstAttribute="bottom" secondItem="NQ4-KM-gAC" secondAttribute="bottom" constant="8" id="aUx-2Y-gh4"/>
-                    <constraint firstItem="NQ4-KM-gAC" firstAttribute="top" secondItem="bNT-Ou-Of8" secondAttribute="top" constant="8" id="kcC-UZ-QLA"/>
+                    <constraint firstItem="NQ4-KM-gAC" firstAttribute="trailing" secondItem="cCP-bl-qAH" secondAttribute="trailing" id="nFF-Vr-hXZ"/>
+                    <constraint firstItem="NQ4-KM-gAC" firstAttribute="bottom" secondItem="cCP-bl-qAH" secondAttribute="bottom" id="nPe-GZ-3Gg"/>
                     <constraint firstItem="cCP-bl-qAH" firstAttribute="top" secondItem="bNT-Ou-Of8" secondAttribute="top" constant="8" id="q7O-Pf-gaQ"/>
-                    <constraint firstItem="NQ4-KM-gAC" firstAttribute="leading" secondItem="bNT-Ou-Of8" secondAttribute="leading" constant="16" id="tfk-hH-EvE"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="304" height="132"/>
             <connections>
-                <outlet property="deadline" destination="VrQ-MJ-2GC" id="cpY-S3-bsA"/>
+                <outlet property="date" destination="VrQ-MJ-2GC" id="cpY-S3-bsA"/>
                 <outlet property="iconView" destination="VKD-Tu-k6a" id="9Ol-lw-j0g"/>
                 <outlet property="titleLabel" destination="jry-O6-3Jm" id="YGN-Y2-ftc"/>
                 <outlet property="view" destination="cCP-bl-qAH" id="FqP-OO-TM4"/>

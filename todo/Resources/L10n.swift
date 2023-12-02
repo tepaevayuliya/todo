@@ -41,4 +41,19 @@ enum L10n {
         static let emailTextFieldError = NSLocalizedString("sign-up.email-text-field-error", comment: "")
         static let passwordTextFieldError = NSLocalizedString("sign-up.password-text-field-error", comment: "")
     }
+
+    enum NewItem {
+        static let deadlineLabel = NSLocalizedString("new-item.deadline-label", comment: "")
+        static let textViewTitleTask = NSLocalizedString("new-item.text-view-title-task", comment: "")
+        static let textViewDescription = NSLocalizedString("new-item.text-view-description", comment: "")
+        static let textFieldError = NSLocalizedString("new-item.text-field-error", comment: "")
+    }
+
+    enum NetworkError {
+        static let wrongStatusCode = NSLocalizedString("network-error.wrong-status-code", comment: "")
+        static let wrongURL = NSLocalizedString("network-error.wrong-url", comment: "")
+        static let wrongResponse = NSLocalizedString("network-error.wrong-response", comment: "")
+        static let alertTitle = NSLocalizedString("network-error.alert-title", comment: "")
+        static let alertButton = NSLocalizedString("network-error.alert-button", comment: "")
+    }
 }

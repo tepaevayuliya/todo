@@ -73,11 +73,9 @@ final class EmptyViewController: ParentViewController {
 //        switch state {
 //        case .empty:
 //            action?()
-////        case .error(.noConnection), .error(.otherError):
-//        case .error(Error):
-////            state = .empty
-////            updateState()
-//            action?()
-//        }
+//        case .error(.noConnection), .error(.otherError):
+//            
+//            updateState()
+        }
     }
 }

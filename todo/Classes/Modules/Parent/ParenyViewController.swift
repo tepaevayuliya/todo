@@ -17,4 +17,10 @@ class ParentViewController: UIViewController {
 
         navigationItem.backButtonDisplayMode = .minimal
     }
+
+    func showAlertVC(massage: String) {
+        let alertVC = UIAlertController(title: L10n.NetworkError.alertTitle, message: massage, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: L10n.NetworkError.alertButton, style: .cancel))
+        self.present(alertVC, animated: true)
+    }
 }

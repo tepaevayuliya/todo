@@ -60,9 +60,21 @@ final class SignUpViewController: ParentViewController {
         }
 
         if isValidFlag {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
-            view.window?.rootViewController = vc
+            Task {
+                do {
+                    let requestBody = SignUpRequestBody(name: nameTextField.text ?? "", email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
+
+                    responseToken = try await NetworkManagers.shared.request(urlPart: "auth/registration", method: "POST", requestBody: requestBody)
+
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "NavMainVC")
+                    view.window?.rootViewController = vc
+                } catch {
+                    DispatchQueue.main.async {
+                        self.showAlertVC(massage: error.localizedDescription)
+                    }
+                }
+            }
         }
     }
 }
