@@ -12,7 +12,7 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="MainVC" id="Y6W-OH-hqX" customClass="MainViewController" customModule="todo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" customClass="StatefullView" customModule="todo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -22,7 +22,7 @@
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wwA-Ed-D96">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="604.66666666666663"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JxV-hr-te8">
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JxV-hr-te8">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -93,7 +93,7 @@
         <!--Navigation Controller-->
         <scene sceneID="bh2-5i-a6K">
             <objects>
-                <navigationController storyboardIdentifier="NavMainVC" automaticallyAdjustsScrollViewInsets="NO" id="CIg-kY-63J" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CIg-kY-63J" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EQP-Ci-bO3">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -107,14 +107,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huy-Eg-YiC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="41.984732824427482" y="3.5211267605633805"/>
-        </scene>
-        <!--Empty-->
-        <scene sceneID="keo-w3-EyH">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Empty" id="zQj-S3-IGE" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zvj-NZ-OJE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2595" y="-163"/>
         </scene>
     </scenes>
     <resources>

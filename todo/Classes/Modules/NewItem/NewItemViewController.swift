@@ -33,10 +33,15 @@ final class NewItemViewController: ParentViewController {
 
         navigationItem.title = L10n.Main.emptyButton
         createButton.setTitle(L10n.Main.createButton, for: .normal)
+
         deadlineLabel.text = L10n.NewItem.deadlineLabel
         titleView.setup(text: "", titleText: L10n.NewItem.textViewTitleTask)
         descriptionView.setup(text: "", titleText: L10n.NewItem.textViewDescription)
 
+        if let selectedItem {
+            textView.set(text: selectedItem.title)
+        }
+      
         setup()
     }
 
@@ -49,6 +54,10 @@ final class NewItemViewController: ParentViewController {
 
         datePicker.layer.cornerRadius = 13
         datePicker.tintColor = UIColor.Color.lightRed
+
+        if let selectedItem {
+            textView.set(text: selectedItem.title)
+        }
     }
 
     @IBAction private func didTap() {
@@ -81,4 +90,6 @@ final class NewItemViewController: ParentViewController {
             }
         }
     }
+
+    var selectedItem: MainDataItem?
 }

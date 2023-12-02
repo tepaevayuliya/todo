@@ -11,6 +11,9 @@ final class MainViewController: ParentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        (view as? StatefullView)?.delegate = self
+        navigationItem.backButtonDisplayMode = .minimal
+
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = L10n.Main.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.Main.profileButton, style: .plain, target: self, action: nil)
@@ -18,7 +21,6 @@ final class MainViewController: ParentViewController {
         newTaskButton.setup(mode: PrimaryButton.Mode.large)
 
         collectionView.register(UINib(nibName: "MainItemCell", bundle: nil), forCellWithReuseIdentifier: MainItemCell.reuseID)
-        collectionView.allowsMultipleSelection = true
         collectionView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(sectionProvider: {_, _ in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(93))
@@ -35,16 +37,20 @@ final class MainViewController: ParentViewController {
         super.prepare(for: segue, sender: sender)
 
         switch segue.destination {
-        case let destination as EmptyViewController:
-            self.destination = destination
         case let destination as NewItemViewController:
             destination.delegate = self
+            destination.selectedItem = selectedItem
+            selectedItem = nil
         default:
             break
         }
     }
 
     private var data = [TodosResponse]()
+//    private var data: [MainDataItem] = [MainDataItem(title: "sdfghj", deadline: Date(timeIntervalSince1970: 0)), MainDataItem(title: "324567", deadline: Date(timeIntervalSince1970: 10000000000000))]
+//    private var data = [MainDataItem]() //второй вариант записи
+    private var selectedItem: TodosResponse?
+  
     private var state: EmptyViewController.State?
     private var isLoading = true
 
@@ -53,7 +59,6 @@ final class MainViewController: ParentViewController {
     @IBOutlet private var newTaskButton: PrimaryButton!
 
     @IBOutlet private var collectionView: UICollectionView!
-    @IBOutlet private var emptyView: UIView!
 
     @IBAction private func didTabNewTaskButton(_ sender: PrimaryButton) {
         performSegue(withIdentifier: "new-item", sender: nil)
@@ -71,6 +76,10 @@ final class MainViewController: ParentViewController {
             collectionView.isHidden = true
             emptyView.isHidden = false
             newTaskButton.isHidden = true
+            view as? StatefullView)?.state = .loading
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+                (self?.view as? StatefullView)?.state = .empty()
+            }
             destination?.state = state ?? .empty
             destination?.action = { [weak self] in
                 self?.performSegue(withIdentifier: "new-item", sender: nil)
@@ -117,6 +126,9 @@ extension MainViewController: UICollectionViewDataSource {
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedItem = data[indexPath.row]
+        collectionView.deselectItem(at: indexPath, animated: true)
+
+        performSegue(withIdentifier: "new-item", sender: nil)
         Task {
             do {
                 _ = try await NetworkManagers.shared.request(urlPart: "todos/mark/\(selectedItem.id)", method: "PUT") as EmptyResponse
@@ -133,5 +145,19 @@ extension MainViewController: UICollectionViewDelegate {
 extension MainViewController: NewItemViewControllerDelegate {
     func didSelect(_ vc: NewItemViewController) {
         getData()
+    }
+}
+
+extension MainViewController: StatefullViewDelegate {
+    func statefullViewReloadData(_: StatefullView) {}
+
+    func statefullViewDidTapEmptyButton(_: StatefullView) {}
+
+    func statefullView(_: StatefullView, addChild controller: UIViewController) {
+        addChild(controller)
+    }
+
+    func statefullView(_: StatefullView, didMoveToParent controller: UIViewController) {
+        controller.didMove(toParent: self)
     }
 }

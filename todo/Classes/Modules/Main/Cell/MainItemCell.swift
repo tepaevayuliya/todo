@@ -10,10 +10,6 @@ import UIKit
 final class MainItemCell: UICollectionViewCell {
     static let reuseID = String(describing: MainItemCell.self)
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     override var isHighlighted: Bool {
         didSet {
             view.alpha = isHighlighted ? 0.5 : 1
@@ -36,5 +32,5 @@ final class MainItemCell: UICollectionViewCell {
     @IBOutlet private var view: UIView!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var iconView: UIImageView!
-    @IBOutlet private var date: UILabel!
+    @IBOutlet private var date: UILabel! //deadline
 }

@@ -12,14 +12,15 @@ final class EmptyViewController: ParentViewController {
         case empty, error(Error)
     }
 
-    enum Error {
-        case noConnection, otherError
-    }
+//    enum Error {
+//        case noConnection, otherError
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         updateState()
+        emptyButton.addAction(.init(handler: { [weak self] _ in self?.action?() }), for: .touchUpInside)
     }
 
     var action: (() -> Void)?
@@ -56,24 +57,25 @@ final class EmptyViewController: ParentViewController {
 
             emptyButton.setTitle(L10n.Empty.emptyButtonError, for: .normal)
             emptyButton.setup(mode: PrimaryButton.Mode.small)
-            switch error {
-            case .noConnection:
-                emptyLabel.text = L10n.Empty.emptyLabelNoConnection
-                emptyImageView.image = UIImage.Main.Error.noСonnection
-            case .otherError:
-                emptyLabel.text = L10n.Empty.emptyLabelOtherError
-                emptyImageView.image = UIImage.Main.Error.otherError
-            }
+//            switch error {
+//            case .noConnection:
+//                emptyLabel.text = L10n.Empty.emptyLabelNoConnection
+//                emptyImageView.image = UIImage.Main.Error.noСonnection
+//            case .otherError:
+//                emptyLabel.text = L10n.Empty.emptyLabelOtherError
+//                emptyImageView.image = UIImage.Main.Error.otherError
+//            }
         }
     }
 
     @IBAction private func didTabEmptyButton() {
-        switch state {
-        case .empty:
-            action?()
-        case .error(.noConnection), .error(.otherError):
-            
-            updateState()
+        action?()
+//        switch state {
+//        case .empty:
+//            action?()
+//        case .error(.noConnection), .error(.otherError):
+//            
+//            updateState()
         }
     }
 }

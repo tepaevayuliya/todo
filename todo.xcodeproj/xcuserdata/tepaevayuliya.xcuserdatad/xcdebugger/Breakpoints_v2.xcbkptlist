@@ -3,4 +3,165 @@
    uuid = "0CBFFCAF-38D8-4B05-A35F-43B2EF3CD6EB"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E54352A-94F5-4DB6-9425-9B2475B00191"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "todo/Classes/Modules/Empty/EmptyViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "didTabEmptyButton()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8E54352A-94F5-4DB6-9425-9B2475B00191 - c84e6f605e4605e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "todo.EmptyViewController.didTabEmptyButton() -&gt; ()"
+                  moduleName = "todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tepaevayuliya/Projects/swift-project/todo/todo/Classes/Modules/Empty/EmptyViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "159">
+               </Location>
+               <Location
+                  uuid = "8E54352A-94F5-4DB6-9425-9B2475B00191 - c84e6f605e460408"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "todo.EmptyViewController.didTabEmptyButton() -&gt; ()"
+                  moduleName = "todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tepaevayuliya/Projects/swift-project/todo/todo/Classes/Modules/Empty/EmptyViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EF679455-15B9-4C4E-95CD-2DA15E523426"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "todo/Classes/Modules/Empty/EmptyViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "didTabEmptyButton()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EF679455-15B9-4C4E-95CD-2DA15E523426 - c84e6f605e460457"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "todo.EmptyViewController.didTabEmptyButton() -&gt; ()"
+                  moduleName = "todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tepaevayuliya/Projects/swift-project/todo/todo/Classes/Modules/Empty/EmptyViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "EF679455-15B9-4C4E-95CD-2DA15E523426 - c84e6f605e460457"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "todo.EmptyViewController.didTabEmptyButton() -&gt; ()"
+                  moduleName = "todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tepaevayuliya/Projects/swift-project/todo/todo/Classes/Modules/Empty/EmptyViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "30">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A8C64B38-0C8B-4252-92F0-1F49D6A0147A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "todo/Classes/Modules/Empty/EmptyViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A8C64B38-0C8B-4252-92F0-1F49D6A0147A - a554dd4e8e594ef0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "todo.EmptyViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tepaevayuliya/Projects/swift-project/todo/todo/Classes/Modules/Empty/EmptyViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  uuid = "A8C64B38-0C8B-4252-92F0-1F49D6A0147A - a554dd4e8e594ef0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "todo.EmptyViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tepaevayuliya/Projects/swift-project/todo/todo/Classes/Modules/Empty/EmptyViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "357">
+               </Location>
+               <Location
+                  uuid = "A8C64B38-0C8B-4252-92F0-1F49D6A0147A - f580f9a94814dbbd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAction) -&gt; () in todo.EmptyViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tepaevayuliya/Projects/swift-project/todo/todo/Classes/Modules/Empty/EmptyViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "65">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

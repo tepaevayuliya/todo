@@ -90,6 +90,10 @@ final class TextViewInput: UIView, UITextViewDelegate {
         titleLabel.text = titleText
     }
 
+    func set(text: String?) {
+        textView.text = text
+    }
+
     func show(error: String) {
         errorLabel.text = error
         bottomConstraint.isActive = false

@@ -22,6 +22,10 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="361" placeholderIntrinsicHeight="56" translatesAutoresizingMaskIntoConstraints="NO" id="R1K-pi-fYx" customClass="TextViewInput" customModule="todo" customModuleProvider="target">
                                         <rect key="frame" x="16" y="24" width="361" height="56"/>
+                                        <color key="backgroundColor" name="Color/BackgroundAndSurface/surfaceSecondary"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="86" id="6l2-GK-7fj"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="361" placeholderIntrinsicHeight="56" translatesAutoresizingMaskIntoConstraints="NO" id="dsM-dr-LON" customClass="TextViewInput" customModule="todo" customModuleProvider="target">
                                         <rect key="frame" x="16" y="98" width="361" height="56"/>
@@ -76,10 +80,11 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <keyboardLayoutGuide key="keyboard" id="TKV-ff-de8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="n7b-Qc-bEn" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="AAG-mF-zha"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="2Uf-IX-kKS" secondAttribute="bottom" constant="16" id="DRs-Ju-pzM"/>
+                            <constraint firstItem="TKV-ff-de8" firstAttribute="top" secondItem="2Uf-IX-kKS" secondAttribute="bottom" constant="16" id="DRs-Ju-pzM"/>
                             <constraint firstItem="n7b-Qc-bEn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="FIB-W4-y7X"/>
                             <constraint firstItem="2Uf-IX-kKS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Hi4-AS-k3w"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="n7b-Qc-bEn" secondAttribute="trailing" id="SCp-qE-x5H"/>
