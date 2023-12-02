@@ -18,8 +18,8 @@ protocol NewItemViewControllerDelegate: AnyObject {
 }
 
 final class NewItemViewController: ParentViewController {
-    @IBOutlet private var textView: UIView!
-    @IBOutlet private var textView1: UIView!
+    @IBOutlet private var textView: TextViewInput!
+    @IBOutlet private var textView1: TextViewInput!
     @IBOutlet private var label: UILabel!
     @IBOutlet private var pick: UIDatePicker! //datePicker
     @IBOutlet private var createButton: PrimaryButton!
@@ -31,10 +31,17 @@ final class NewItemViewController: ParentViewController {
 
         navigationItem.title = L10n.Main.emptyButton
         createButton.setTitle(L10n.Main.createButton, for: .normal)
+
+        if let selectedItem {
+            textView.set(text: selectedItem.title)
+        }
+
     }
 
     @IBAction private func didTap() {
         delegate?.didSelect(self, data: NewItemData(title: "textView.text", description: "textView1.text", deadline: pick.date))
         navigationController?.popViewController(animated: true)
     }
+
+    var selectedItem: MainDataItem?
 }

@@ -10,17 +10,6 @@ import UIKit
 final class MainItemCell: UICollectionViewCell {
     static let reuseID = String(describing: MainItemCell.self)
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        updateImage()
-    }
-
-    override var isSelected: Bool {
-        didSet {
-            updateImage()
-        }
-    }
-
     override var isHighlighted: Bool {
         didSet {
             view.alpha = isHighlighted ? 0.5 : 1
@@ -32,6 +21,8 @@ final class MainItemCell: UICollectionViewCell {
     }
 
     func setup(item: MainDataItem) {
+        iconView.image = item.isCompleted ? UIImage.ItemCell.radiobuttonOn : UIImage.ItemCell.radiobuttonOff
+
         titleLabel.text = item.title
         deadline.textColor = isDeadlinePassed(deadline: item.deadline) ? .Color.red : .Color.black
 
@@ -43,8 +34,4 @@ final class MainItemCell: UICollectionViewCell {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var iconView: UIImageView!
     @IBOutlet private var deadline: UILabel!
-
-    private func updateImage() {
-        iconView.image = isSelected ? UIImage.ItemCell.radiobuttonOn : UIImage.ItemCell.radiobuttonOff
-    }
 }

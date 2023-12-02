@@ -12,7 +12,7 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="MainVC" id="Y6W-OH-hqX" customClass="MainViewController" customModule="todo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" customClass="StatefullView" customModule="todo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -31,13 +31,6 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="Bfd-cl-wjg"/>
                                 </connections>
                             </collectionView>
-                            <containerView opaque="NO" contentMode="scaleToFill" id="Y9n-Ym-Cap">
-                                <rect key="frame" x="0.0" y="68" width="393" height="715"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="zQj-S3-IGE" kind="embed" id="Uws-HE-Fd1"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -51,7 +44,6 @@
                     <navigationItem key="navigationItem" id="Lm9-cm-xPY"/>
                     <connections>
                         <outlet property="collectionView" destination="wwA-Ed-D96" id="93d-wU-3Re"/>
-                        <outlet property="emptyView" destination="Y9n-Ym-Cap" id="au9-29-jcV"/>
                         <segue destination="CkC-Bi-ffe" kind="show" identifier="new-item" id="w7P-sN-ycU"/>
                     </connections>
                 </viewController>
@@ -86,14 +78,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huy-Eg-YiC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="41.984732824427482" y="3.5211267605633805"/>
-        </scene>
-        <!--Empty-->
-        <scene sceneID="keo-w3-EyH">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Empty" id="zQj-S3-IGE" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zvj-NZ-OJE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2595" y="-163"/>
         </scene>
     </scenes>
     <resources>
