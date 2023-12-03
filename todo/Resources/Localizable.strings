@@ -35,6 +35,8 @@
 "new-item.text-view-title-task" = "Что нужно сделать";
 "new-item.text-view-description" = "Описание";
 "new-item.text-field-error" = "Поле должно быть заполнено";
+"new-item.delete-button" = "Удалить";
+"new-item.title" = "Запись";
 
 "network-error.wrong-status-code" = "Упс! Что-то пошло не так. Неверный код статуса.";
 "network-error.wrong-url" = "Упс! Что-то пошло не так. Неправильный URL.";

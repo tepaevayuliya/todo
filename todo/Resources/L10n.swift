@@ -47,6 +47,8 @@ enum L10n {
         static let textViewTitleTask = NSLocalizedString("new-item.text-view-title-task", comment: "")
         static let textViewDescription = NSLocalizedString("new-item.text-view-description", comment: "")
         static let textFieldError = NSLocalizedString("new-item.text-field-error", comment: "")
+        static let deleteButton = NSLocalizedString("new-item.delete-button", comment: "")
+        static let title = NSLocalizedString("new-item.title", comment: "")
     }
 
     enum NetworkError {

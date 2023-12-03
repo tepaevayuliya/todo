@@ -46,61 +46,57 @@ final class MainViewController: ParentViewController {
         }
     }
 
-    private var data = [TodosResponse]()
-    //    private var data: [MainDataItem] = [MainDataItem(title: "sdfghj", deadline: Date(timeIntervalSince1970: 0)), MainDataItem(title: "324567", deadline: Date(timeIntervalSince1970: 10000000000000))]
-    //    private var data = [MainDataItem]() //второй вариант записи
+    private var data = [TodosResponse]() //второй вариант записи
+    //    private var data: [TodosResponse] = [TodosResponse(title: "sdfghj", deadline: Date(timeIntervalSince1970: 0)), MainDataItem(title: "324567", deadline: Date(timeIntervalSince1970: 10000000000000))]
     private var selectedItem: TodosResponse?
-
-    private var state: EmptyViewController.State?
-    private var isLoading = true
-
-    private weak var destination: EmptyViewController?
 
     @IBOutlet private var newTaskButton: PrimaryButton!
 
     @IBOutlet private var collectionView: UICollectionView!
 
-    @IBAction private func didTabNewTaskButton(_ sender: PrimaryButton) {
-        performSegue(withIdentifier: "new-item", sender: nil)
-    }
-
-    private func reloadData() {
-        guard !isLoading else {
-            collectionView.isHidden = true
-            newTaskButton.isHidden = true
-            return
-        }
-
-        if data.isEmpty {
-            collectionView.isHidden = true
-            newTaskButton.isHidden = true
-            (view as? StatefullView)?.state = .loading
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-                (self?.view as? StatefullView)?.state = .empty()
-            }
-            destination?.state = state ?? .empty
-            destination?.action = { [weak self] in
-                self?.performSegue(withIdentifier: "new-item", sender: nil)
-            }
-        } else {
-            collectionView.isHidden = false
-            newTaskButton.isHidden = false
-            collectionView.reloadData()
-        }
+    @IBAction private func didTapNewTaskButton() {
+        switchToNewItem()
     }
 
     private func getData() {
         Task {
             do {
-                isLoading = true
+                (view as? StatefullView)?.state = .loading
+
                 data = try await NetworkManagers.shared.request(urlPart: "todos", method: "GET")
-                isLoading = false
-                reloadData()
+
+                if data.isEmpty {
+                    collectionView.isHidden = true
+                    newTaskButton.isHidden = true
+                    (view as? StatefullView)?.state = .empty()
+                } else {
+                    (view as? StatefullView)?.state = .data
+                    collectionView.isHidden = false
+                    newTaskButton.isHidden = false
+                    collectionView.reloadData()
+                }
             } catch {
-                isLoading = false
                 data = []
-//                state = .error(.otherError)//error)
-                reloadData()
+                (view as? StatefullView)?.state = .empty(error: error)
+                collectionView.isHidden = true
+                newTaskButton.isHidden = true
+            }
+        }
+    }
+
+    private func switchToNewItem() {
+        performSegue(withIdentifier: "new-item", sender: nil)
+    }
+
+    private func toggleToDo(id: String) {
+        Task {
+            do {
+                _ = try await NetworkManagers.shared.request(urlPart: "todos/mark/\(id)", method: "PUT") as EmptyResponse
+                getData()
+            } catch {
+                DispatchQueue.main.async {
+                    self.showAlertVC(massage: error.localizedDescription)
+                }
             }
         }
     }
@@ -113,7 +109,10 @@ extension MainViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainItemCell.reuseID, for: indexPath) as? MainItemCell {
-            cell.setup(item: data[indexPath.row])
+            let item = data[indexPath.row]
+            cell.setup(item: item, action: { [weak self] in
+                self?.toggleToDo(id: item.id)
+            })
             return cell
         }
         fatalError("\(#function) error in cell creation")
@@ -122,20 +121,10 @@ extension MainViewController: UICollectionViewDataSource {
 
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedItem = data[indexPath.row]
+        selectedItem = data[indexPath.row]
         collectionView.deselectItem(at: indexPath, animated: true)
 
-        performSegue(withIdentifier: "new-item", sender: nil)
-        Task {
-            do {
-                _ = try await NetworkManagers.shared.request(urlPart: "todos/mark/\(selectedItem.id)", method: "PUT") as EmptyResponse
-                getData()
-            } catch {
-                DispatchQueue.main.async {
-                    self.showAlertVC(massage: error.localizedDescription)
-                }
-            }
-        }
+        switchToNewItem()
     }
 }
 
@@ -146,9 +135,13 @@ extension MainViewController: NewItemViewControllerDelegate {
 }
 
 extension MainViewController: StatefullViewDelegate {
-    func statefullViewReloadData(_: StatefullView) {}
+    func statefullViewReloadData(_: StatefullView) {
+        getData()
+    }
 
-    func statefullViewDidTapEmptyButton(_: StatefullView) {}
+    func statefullViewDidTapEmptyButton(_: StatefullView) {
+        switchToNewItem()
+    }
 
     func statefullView(_: StatefullView, addChild controller: UIViewController) {
         addChild(controller)
