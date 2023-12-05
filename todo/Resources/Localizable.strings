@@ -25,7 +25,7 @@
 "sign-up.email-text-field-error" = "Введите корректный email";
 "sign-up.password-text-field-error" = "Пароль должен быть до 256 символов";
 
-"empty.empty-label" = "Пока нет ни одной записи.\nСоздайте новую!";
+"empty.empty-label" = "Пока здесь нет ни одной записи.\nСоздайте новую!";
 "empty.empty-button" = "Новая запись";
 "empty.empty-label-no-connection" = "Нет соединения";
 "empty.empty-label-other-error" = "Что-то пошло не так";

@@ -23,30 +23,6 @@ enum NetworkError: LocalizedError {
     }
 }
 
-struct SignInRequestBody: Encodable {
-    let email: String
-    let password: String
-}
-
-struct SignUpRequestBody: Encodable {
-    let name: String
-    let email: String
-    let password: String
-}
-
-struct TodosRequestBody: Encodable {
-    let category: String = ""
-    let title: String
-    let description: String
-    let date: Date
-    let coordinate: Coordinate = Coordinate(longitude: "", latitude: "")
-}
-
-struct Coordinate: Encodable {
-    let longitude: String
-    let latitude: String
-}
-
 final class NetworkManagers {
     static var shared = NetworkManagers()
 

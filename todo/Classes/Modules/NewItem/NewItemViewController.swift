@@ -55,7 +55,7 @@ final class NewItemViewController: ParentViewController {
             let button = UIButton(type: .custom)
             button.setTitle(L10n.NewItem.deleteButton, for: .normal)
             button.addTarget(self, action: #selector(deleteToDo), for: .touchUpInside)
-            button.setTitleColor(UIColor.red, for: .normal)
+            button.setTitleColor(UIColor.Color.error, for: .normal)
 
             let buttonItem = UIBarButtonItem(customView: button)
             navigationItem.rightBarButtonItem = buttonItem
@@ -92,7 +92,6 @@ final class NewItemViewController: ParentViewController {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateInitialViewController()
                 view.window?.rootViewController = vc
-//                getData()
             } catch {
                 DispatchQueue.main.async {
                     self.showAlertVC(massage: error.localizedDescription)
