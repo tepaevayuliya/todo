@@ -32,7 +32,7 @@ final class MainItemCell: UICollectionViewCell {
         deadline.textColor = isDeadlinePassed(deadline: item.date) ? .Color.red : .Color.black
         iconButton.tintColor = UIColor.clear
 
-        deadline.text = DateFormatter.default.string(from: item.date)
+        deadline.text = L10n.Main.itemDeadline + DateFormatter.default.string(from: item.date)
         view.layer.cornerRadius = 16
         iconButton.isSelected = item.isCompleted
         self.action = action

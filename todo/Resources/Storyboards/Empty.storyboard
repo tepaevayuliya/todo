@@ -75,7 +75,6 @@
                         <outlet property="emptyLabel" destination="xwL-yu-FPK" id="Zzi-JQ-NJ9"/>
                         <outlet property="stackView" destination="vvo-Tc-DoC" id="fe6-Q6-3CT"/>
                         <outlet property="stackView2" destination="ncA-u6-zQI" id="xVP-xf-KRh"/>
-                        <outlet property="stackView3" destination="VsQ-YT-PjZ" id="g3X-6h-Rx1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
