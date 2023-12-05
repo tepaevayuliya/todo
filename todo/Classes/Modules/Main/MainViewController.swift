@@ -66,20 +66,13 @@ final class MainViewController: ParentViewController {
                 data = try await NetworkManagers.shared.request(urlPart: "todos", method: "GET")
 
                 if data.isEmpty {
-                    collectionView.isHidden = true
-                    newTaskButton.isHidden = true
                     (view as? StatefullView)?.state = .empty()
                 } else {
                     (view as? StatefullView)?.state = .data
-                    collectionView.isHidden = false
-                    newTaskButton.isHidden = false
                     collectionView.reloadData()
                 }
             } catch {
-                data = []
                 (view as? StatefullView)?.state = .empty(error: error)
-                collectionView.isHidden = true
-                newTaskButton.isHidden = true
             }
         }
     }

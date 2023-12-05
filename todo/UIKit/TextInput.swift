@@ -84,6 +84,7 @@ final class TextInput: UIView {
             textField.leadingAnchor.constraint(equalTo: leadingAnchor),
             textField.topAnchor.constraint(equalTo: topAnchor),
             textField.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bottomConstraint,
 
             errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),

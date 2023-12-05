@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n7b-Qc-bEn">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="361" placeholderIntrinsicHeight="56" translatesAutoresizingMaskIntoConstraints="NO" id="R1K-pi-fYx" customClass="TextViewInput" customModule="todo" customModuleProvider="target">
                                         <rect key="frame" x="16" y="24" width="361" height="56"/>
@@ -87,6 +87,7 @@
                         <constraints>
                             <constraint firstItem="n7b-Qc-bEn" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="AAG-mF-zha"/>
                             <constraint firstItem="TKV-ff-de8" firstAttribute="top" secondItem="2Uf-IX-kKS" secondAttribute="bottom" constant="16" id="DRs-Ju-pzM"/>
+                            <constraint firstItem="n7b-Qc-bEn" firstAttribute="bottom" secondItem="TKV-ff-de8" secondAttribute="top" id="EEY-dz-ALv"/>
                             <constraint firstItem="n7b-Qc-bEn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="FIB-W4-y7X"/>
                             <constraint firstItem="2Uf-IX-kKS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Hi4-AS-k3w"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="n7b-Qc-bEn" secondAttribute="trailing" id="SCp-qE-x5H"/>
@@ -99,6 +100,8 @@
                         <outlet property="datePicker" destination="tQt-S2-DMm" id="a1b-DA-44k"/>
                         <outlet property="deadlineLabel" destination="aUv-Qy-bk5" id="Xi5-BP-cpi"/>
                         <outlet property="descriptionView" destination="dsM-dr-LON" id="UCT-gh-TUe"/>
+                        <outlet property="keyboardTopConstraint" destination="DRs-Ju-pzM" id="Ikn-Ml-g7i"/>
+                        <outlet property="keyboardTopConstraintScrollViewBottom" destination="EEY-dz-ALv" id="af4-w9-nyF"/>
                         <outlet property="scrollView" destination="n7b-Qc-bEn" id="M7S-lq-iE8"/>
                         <outlet property="superView" destination="5EZ-qb-Rvc" id="Za1-EG-MWp"/>
                         <outlet property="titleView" destination="R1K-pi-fYx" id="tuV-Ob-KEW"/>

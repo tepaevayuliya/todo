@@ -89,6 +89,7 @@ class StatefullView: UIView {
         }
         emptyVC = controller as? EmptyViewController
         emptyView = emptyVC?.view
+        emptyView.isHidden = true
         emptyView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(loaderView)
 

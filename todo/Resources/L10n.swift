@@ -51,6 +51,11 @@ enum L10n {
         static let title = NSLocalizedString("new-item.title", comment: "")
     }
 
+    enum EditItem {
+        static let deleteButton = NSLocalizedString("edit-item.delete-button", comment: "")
+        static let title = NSLocalizedString("edit-item.title", comment: "")
+    }
+
     enum NetworkError {
         static let wrongStatusCode = NSLocalizedString("network-error.wrong-status-code", comment: "")
         static let wrongURL = NSLocalizedString("network-error.wrong-url", comment: "")

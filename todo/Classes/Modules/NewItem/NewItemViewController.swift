@@ -19,7 +19,6 @@ protocol NewItemViewControllerDelegate: AnyObject {
 }
 
 final class NewItemViewController: ParentViewController {
-    @IBOutlet private var deleteButton: UIButton!
     @IBOutlet private var titleView: TextViewInput!
     @IBOutlet private var descriptionView: TextViewInput!
     @IBOutlet private var deadlineLabel: UILabel!
@@ -30,6 +29,11 @@ final class NewItemViewController: ParentViewController {
     @IBOutlet private var superView: UIView!
 
     weak var delegate: NewItemViewControllerDelegate?
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        view.endEditing(false)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,15 +56,15 @@ final class NewItemViewController: ParentViewController {
         addTapToHideKeyboardGesture()
 
         if let selectedItem {
-            let button = UIButton(type: .custom)
-            button.setTitle(L10n.NewItem.deleteButton, for: .normal)
+            let button = UIButton()
+            button.setTitle(L10n.EditItem.deleteButton, for: .normal)
             button.addTarget(self, action: #selector(deleteToDo), for: .touchUpInside)
             button.setTitleColor(UIColor.Color.error, for: .normal)
 
             let buttonItem = UIBarButtonItem(customView: button)
             navigationItem.rightBarButtonItem = buttonItem
 
-            navigationItem.title = L10n.NewItem.title
+            navigationItem.title = L10n.EditItem.title
 
             titleView.set(text: selectedItem.title)
             descriptionView.set(text: selectedItem.description)
@@ -68,20 +72,25 @@ final class NewItemViewController: ParentViewController {
 
             createButton.heightAnchor.constraint(equalToConstant: 0).isActive = true
             createButtonTopConstraint.isActive = false
-            scrollViewBottomConstraint.isActive = true
+            keyboardTopConstraintScrollViewBottom.isActive = true
+            keyboardTopConstraint.isActive = false
+
             createButton.isHidden = true
         } else {
             navigationItem.title = L10n.Main.emptyButton
             createButton.isHidden = false
+
             createButtonTopConstraint.isActive = true
-            scrollViewBottomConstraint.isActive = false
+            keyboardTopConstraintScrollViewBottom.isActive = false
+            keyboardTopConstraint.isActive = true
         }
     }
 
     private lazy var createButtonTopConstraint = createButton.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0)
-    private lazy var scrollViewBottomConstraint = scrollView.bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: 0)
+    @IBOutlet private var keyboardTopConstraint: NSLayoutConstraint!
+    @IBOutlet private var keyboardTopConstraintScrollViewBottom: NSLayoutConstraint!
 
-    @objc 
+    @objc
     private func deleteToDo() {
         guard let itemId = selectedItem?.id else {
             return
