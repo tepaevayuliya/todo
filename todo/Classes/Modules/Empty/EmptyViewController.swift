@@ -29,7 +29,6 @@ final class EmptyViewController: ParentViewController {
         }
     }
 
-    @IBOutlet private var stackView3: UIStackView!
     @IBOutlet private var stackView2: UIStackView!
     @IBOutlet private var stackView: UIStackView!
     @IBOutlet private var emptyImageView: UIImageView!
