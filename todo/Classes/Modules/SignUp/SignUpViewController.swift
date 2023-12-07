@@ -25,6 +25,11 @@ final class SignUpViewController: ParentViewController {
 
         addTapToHideKeyboardGesture()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        view.endEditing(false)
+    }
 
     @IBOutlet private var signUpButton: PrimaryButton!
 

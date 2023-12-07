@@ -37,7 +37,7 @@ final class PrimaryButton: MainButton {
             style = Style(
                 cornerRadius: 8,
                 insets: 44,
-                height: 34, // 6+22+6
+                height: 34,
                 bgColor: .Color.primary,
                 highlightedBgColor: .Color.primary.withAlphaComponent(0.5),
                 titleColor: .Color.white,

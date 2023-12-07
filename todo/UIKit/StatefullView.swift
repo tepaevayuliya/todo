@@ -89,6 +89,8 @@ class StatefullView: UIView {
         }
         emptyVC = controller as? EmptyViewController
         emptyView = emptyVC?.view
+        emptyView.isHidden = true
+        emptyView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(loaderView)
 
         delegate?.statefullView(self, addChild: controller)
@@ -98,9 +100,9 @@ class StatefullView: UIView {
         [emptyView, loaderView].forEach { subview in
             NSLayoutConstraint.activate([
                 subview.leadingAnchor.constraint(equalTo: leadingAnchor),
-                subview.topAnchor.constraint(equalTo: topAnchor),
+                subview.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
                 subview.trailingAnchor.constraint(equalTo: trailingAnchor),
-                subview.bottomAnchor.constraint(equalTo: bottomAnchor),
+                subview.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             ])
         }
     }

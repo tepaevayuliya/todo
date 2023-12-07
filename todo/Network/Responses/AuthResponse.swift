@@ -10,5 +10,3 @@ import Foundation
 struct AuthResponse: Decodable {
     var accessToken = ""
 }
-
-//var responseToken = AuthResponseStruct()
