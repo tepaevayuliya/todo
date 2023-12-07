@@ -30,7 +30,6 @@ final class MainItemCell: UICollectionViewCell {
     func setup(item: TodosResponse, action: @escaping () -> Void) {
         titleLabel.text = item.title
         deadline.textColor = isDeadlinePassed(deadline: item.date) ? .Color.red : .Color.black
-        iconButton.tintColor = UIColor.clear
 
         deadline.text = L10n.Main.itemDeadline + DateFormatter.default.string(from: item.date)
         view.layer.cornerRadius = 16

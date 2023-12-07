@@ -56,7 +56,8 @@ final class NewItemViewController: ParentViewController {
         addTapToHideKeyboardGesture()
 
         if let selectedItem {
-            let button = UIButton()
+            let button = UIButton(type: .system)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
             button.setTitle(L10n.EditItem.deleteButton, for: .normal)
             button.addTarget(self, action: #selector(deleteToDo), for: .touchUpInside)
             button.setTitleColor(UIColor.Color.error, for: .normal)
@@ -98,9 +99,9 @@ final class NewItemViewController: ParentViewController {
         Task {
             do {
                 _ = try await NetworkManagers.shared.request(urlPart: "todos/\(itemId)", method: "DELETE") as EmptyResponse
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateInitialViewController()
-                view.window?.rootViewController = vc
+
+                delegate?.didSelect(self)
+                navigationController?.popViewController(animated: true)
             } catch {
                 DispatchQueue.main.async {
                     self.showAlertVC(massage: error.localizedDescription)

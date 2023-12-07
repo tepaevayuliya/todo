@@ -92,6 +92,8 @@ final class TextViewInput: UIView, UITextViewDelegate {
 
     func set(text: String?) {
         textView.text = text
+
+        textViewDidChange(textView)
     }
 
     func show(error: String) {
