@@ -1,5 +1,5 @@
 //
-//  todoUITestsLaunchTests.swift
+//  TodoUITestsLaunchTests.swift
 //  todoUITests
 //
 //  Created by Юлия Тепаева on 26.10.2023.
@@ -7,8 +7,7 @@
 
 import XCTest
 
-final class todoUITestsLaunchTests: XCTestCase {
-
+final class TodoUITestsLaunchTests: XCTestCase {
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

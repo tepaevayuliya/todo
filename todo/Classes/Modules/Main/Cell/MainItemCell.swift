@@ -36,7 +36,7 @@ final class MainItemCell: UICollectionViewCell {
         iconButton.isSelected = item.isCompleted
         self.action = action
     }
-    
+
     private var action: (() -> Void)?
 
     @IBAction private func didTapButton() {

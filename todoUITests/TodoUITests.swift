@@ -1,5 +1,5 @@
 //
-//  todoUITests.swift
+//  TodoUITests.swift
 //  todoUITests
 //
 //  Created by Юлия Тепаева on 26.10.2023.
@@ -7,8 +7,7 @@
 
 import XCTest
 
-final class todoUITests: XCTestCase {
-
+final class TodoUITests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 

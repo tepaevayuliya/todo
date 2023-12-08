@@ -12,7 +12,7 @@ final class TextField: UITextField {
         super.init(frame: frame)
         setup()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()

@@ -14,13 +14,13 @@ class MainButton: UIButton {
         var insets: CGFloat = 0
         var height: CGFloat = 56
         var bgColor: UIColor = .clear
-        var highlightedBgColor : UIColor = .clear
+        var highlightedBgColor: UIColor = .clear
 
         var titleColor: UIColor = .clear
-        var highlightedTitleColor : UIColor = .clear
+        var highlightedTitleColor: UIColor = .clear
     }
 
-    var style: Style = Style() {
+    var style: Style = .init() {
         didSet {
             configureStyle()
         }

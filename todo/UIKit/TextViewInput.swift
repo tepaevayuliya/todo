@@ -81,7 +81,7 @@ final class TextViewInput: UIView, UITextViewDelegate {
         invalidateIntrinsicContentSize()
     }
 
-    func textViewDidBeginEditing(_ textView: UITextView) {
+    func textViewDidBeginEditing(_: UITextView) {
         didBeginEditing()
     }
 

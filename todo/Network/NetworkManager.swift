@@ -1,12 +1,12 @@
 //
-//  NetworkManagers.swift
+//  NetworkManager.swift
 //  todo
 //
 //  Created by Юлия Тепаева on 23.11.2023.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 enum NetworkError: LocalizedError {
     case wrongStatusCode, wrongURL, wrongResponse
@@ -16,7 +16,7 @@ enum NetworkError: LocalizedError {
         case .wrongStatusCode:
             return L10n.NetworkError.wrongStatusCode
         case .wrongURL:
-            return L10n.NetworkError.wrongURL
+            return L10n.NetworkError.wrongUrl
         case .wrongResponse:
             return L10n.NetworkError.wrongResponse
         }
@@ -45,16 +45,16 @@ final class NetworkManagers {
 
     struct EmptyEncodable: Encodable {}
 
-    func request<Response: Decodable> (urlPart: String, method: String) async throws -> Response {
-        try await request(urlPart: urlPart, method: method, requestBody: Optional<EmptyEncodable>.none)
+    func request<Response: Decodable>(urlPart: String, method: String) async throws -> Response {
+        try await request(urlPart: urlPart, method: method, requestBody: EmptyEncodable?.none)
     }
 
-    func request<Request: Encodable, Response: Decodable> (
+    func request<Request: Encodable, Response: Decodable>(
         urlPart: String,
         method: String,
         requestBody: Request?
     ) async throws -> Response {
-        guard let url = URL(string: "\(PlistFiles.cfApiBaseUrl)/api/\(urlPart)") else {
+        guard let url = URL(string: "\(PlistFiles.apiBaseUrl)/api/\(urlPart)") else {
             throw NetworkError.wrongURL
         }
 
@@ -77,7 +77,7 @@ final class NetworkManagers {
             let response = String(data: data, encoding: .utf8) ?? ""
             log.debug("\(response)")
             switch httpResponse.statusCode {
-            case 200 ..< 400 :
+            case 200 ..< 400:
                 if data.isEmpty, let emptyData = "{}".data(using: .utf8) {
                     return try decoder.decode(Response.self, from: emptyData)
                 }

@@ -73,7 +73,7 @@ final class NewItemViewController: ParentViewController {
 
             createButton.heightAnchor.constraint(equalToConstant: 0).isActive = true
             createButtonTopConstraint.isActive = false
-            keyboardTopConstraintScrollViewBottom.isActive = true
+            keyboardScrollViewConstraint.isActive = true
             keyboardTopConstraint.isActive = false
 
             createButton.isHidden = true
@@ -82,14 +82,14 @@ final class NewItemViewController: ParentViewController {
             createButton.isHidden = false
 
             createButtonTopConstraint.isActive = true
-            keyboardTopConstraintScrollViewBottom.isActive = false
+            keyboardScrollViewConstraint.isActive = false
             keyboardTopConstraint.isActive = true
         }
     }
 
     private lazy var createButtonTopConstraint = createButton.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0)
     @IBOutlet private var keyboardTopConstraint: NSLayoutConstraint!
-    @IBOutlet private var keyboardTopConstraintScrollViewBottom: NSLayoutConstraint!
+    @IBOutlet private var keyboardScrollViewConstraint: NSLayoutConstraint!
 
     @objc
     private func deleteToDo() {

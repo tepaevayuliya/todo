@@ -1,12 +1,12 @@
 //
-//  ViewController.swift
+//  AuthViewController.swift
 //  todo
 //
 //  Created by Юлия Тепаева on 26.10.2023.
 //
 
-import UIKit
 import Combine
+import UIKit
 
 final class AuthViewController: ParentViewController {
     override func viewDidLoad() {

@@ -99,8 +99,8 @@
                         <outlet property="datePicker" destination="tQt-S2-DMm" id="a1b-DA-44k"/>
                         <outlet property="deadlineLabel" destination="aUv-Qy-bk5" id="Xi5-BP-cpi"/>
                         <outlet property="descriptionView" destination="dsM-dr-LON" id="UCT-gh-TUe"/>
+                        <outlet property="keyboardScrollViewConstraint" destination="EEY-dz-ALv" id="af4-w9-nyF"/>
                         <outlet property="keyboardTopConstraint" destination="DRs-Ju-pzM" id="Ikn-Ml-g7i"/>
-                        <outlet property="keyboardTopConstraintScrollViewBottom" destination="EEY-dz-ALv" id="af4-w9-nyF"/>
                         <outlet property="scrollView" destination="n7b-Qc-bEn" id="M7S-lq-iE8"/>
                         <outlet property="superView" destination="5EZ-qb-Rvc" id="Za1-EG-MWp"/>
                         <outlet property="titleView" destination="R1K-pi-fYx" id="tuV-Ob-KEW"/>

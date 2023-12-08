@@ -1,5 +1,5 @@
 //
-//  TodosRequestBody.swift
+//  TodosRequest.swift
 //  todo
 //
 //  Created by Юлия Тепаева on 03.12.2023.
@@ -12,7 +12,7 @@ struct TodosRequestBody: Encodable {
     let title: String
     let description: String
     let date: Date
-    let coordinate: Coordinate = Coordinate(longitude: "", latitude: "")
+    let coordinate: Coordinate = .init(longitude: "", latitude: "")
 }
 
 struct Coordinate: Encodable {
