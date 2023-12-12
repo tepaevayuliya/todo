@@ -65,10 +65,8 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "main.title", fallback: "Cписок дел")
   }
   internal enum NetworkError {
-    /// Закрыть
-    internal static let alertButton = L10n.tr("Localizable", "network-error.alert-button", fallback: "Закрыть")
-    /// Ошибка!
-    internal static let alertTitle = L10n.tr("Localizable", "network-error.alert-title", fallback: "Ошибка!")
+    /// Упс! Просроченный токен.
+    internal static let expiredToken = L10n.tr("Localizable", "network-error.expired-token", fallback: "Упс! Просроченный токен.")
     /// Упс! Что-то пошло не так. Неправильный ответ с сервера.
     internal static let wrongResponse = L10n.tr("Localizable", "network-error.wrong-response", fallback: "Упс! Что-то пошло не так. Неправильный ответ с сервера.")
     /// Упс! Что-то пошло не так. Неверный код статуса.
@@ -85,6 +83,18 @@ internal enum L10n {
     internal static let textViewDescription = L10n.tr("Localizable", "new-item.text-view-description", fallback: "Описание")
     /// Что нужно сделать
     internal static let textViewTitleTask = L10n.tr("Localizable", "new-item.text-view-title-task", fallback: "Что нужно сделать")
+  }
+  internal enum Profile {
+    /// Выйти
+    internal static let alertButton = L10n.tr("Localizable", "profile.alert-button", fallback: "Выйти")
+    /// Отменить
+    internal static let alertCancel = L10n.tr("Localizable", "profile.alert-cancel", fallback: "Отменить")
+    /// Выйти из профиля?
+    internal static let alertTitle = L10n.tr("Localizable", "profile.alert-title", fallback: "Выйти из профиля?")
+    /// Выход
+    internal static let exitButton = L10n.tr("Localizable", "profile.exit-button", fallback: "Выход")
+    /// Профиль
+    internal static let title = L10n.tr("Localizable", "profile.title", fallback: "Профиль")
   }
   internal enum SignUp {
     /// E-mail

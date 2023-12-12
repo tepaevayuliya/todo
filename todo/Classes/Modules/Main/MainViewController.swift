@@ -7,6 +7,19 @@
 
 import UIKit
 
+struct TodosRequestBody: Encodable {
+    let category: String = ""
+    let title: String
+    let description: String
+    let date: Date
+    let coordinate: Coordinate = .init(longitude: "", latitude: "")
+}
+
+struct Coordinate: Encodable {
+    let longitude: String
+    let latitude: String
+}
+
 final class MainViewController: ParentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,11 +29,11 @@ final class MainViewController: ParentViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = L10n.Main.title
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.Main.profileButton, style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.Main.profileButton, style: .plain, target: self, action: #selector(didTapProfileButton))
         newTaskButton.setTitle(L10n.Main.emptyButton, for: .normal)
         newTaskButton.setup(mode: PrimaryButton.Mode.large)
 
-        collectionView.register(MainDataCell.self, forCellWithReuseIdentifier: MainDataCell.reuseID)
+        collectionView.register(MainDateCell.self, forCellWithReuseIdentifier: MainDateCell.reuseID)
         collectionView.allowsMultipleSelection = true
 
         collectionView.register(UINib(nibName: "MainItemCell", bundle: nil), forCellWithReuseIdentifier: MainItemCell.reuseID)
@@ -78,13 +91,18 @@ final class MainViewController: ParentViewController {
         switchToNewItem()
     }
 
+    @objc
+    private func didTapProfileButton() {
+        performSegue(withIdentifier: "profile", sender: nil)
+    }
+
     private func getData() {
         Task {
             do {
                 (view as? StatefullView)?.state = .loading
 
-                data = try await NetworkManagers.shared.request(urlPart: "todos", method: "GET")
-                
+                data = try await NetworkManagers.shared.requestWithoutRequestBody(urlPart: "todos", method: "GET")
+
                 sections = data
                     .reduce(into: [(date: Date, items: [TodosResponse])](), { partialResult, item in
                         if let index = partialResult.firstIndex(where: { $0.date.withoutTimeStamp == item.date.withoutTimeStamp }) {
@@ -101,9 +119,18 @@ final class MainViewController: ParentViewController {
                 } else {
                     (view as? StatefullView)?.state = .data
                     collectionView.reloadData()
+
+                    if let selectedDate = selectedDate, let selectedDateIndex = sections.firstIndex(where: { $0.date == selectedDate }) {
+                        let dateIndexPath = IndexPath(row: selectedDateIndex, section: 0)
+                        collectionView.selectItem(at: dateIndexPath, animated: true, scrollPosition: [])
+                    }
                 }
-            } catch {
-                (view as? StatefullView)?.state = .empty(error: error)
+            } catch let error as NetworkError {
+                if error == .expiredToken {
+                    goToAuth()
+                } else {
+                    (view as? StatefullView)?.state = .empty(error: error)
+                }
             }
         }
     }
@@ -115,11 +142,15 @@ final class MainViewController: ParentViewController {
     private func toggleToDo(id: String) {
         Task {
             do {
-                _ = try await NetworkManagers.shared.request(urlPart: "todos/mark/\(id)", method: "PUT") as EmptyResponse
+                _ = try await NetworkManagers.shared.requestWithoutRequestBody(urlPart: "todos/mark/\(id)", method: "PUT") as EmptyResponse
                 getData()
-            } catch {
-                DispatchQueue.main.async {
-                    self.showAlertVC(massage: error.localizedDescription)
+            } catch let error as NetworkError {
+                if error == .expiredToken {
+                    goToAuth()
+                } else {
+                    DispatchQueue.main.async {
+                        self.showSnackbarVC(massage: error.localizedDescription)
+                    }
                 }
             }
         }
@@ -146,8 +177,14 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainDataCell.reuseID, for: indexPath) as? MainDataCell {
-                cell.setup(title: DateFormatter.dMMM.string(from: sections[indexPath.row].date))
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainDateCell.reuseID, for: indexPath) as? MainDateCell {
+
+                if DateFormatter.yyyy.string(from: sections[indexPath.row].date as Date) != DateFormatter.yyyy.string(from: NSDate() as Date) {
+                    cell.setup(title: DateFormatter.dMMMyyyy.string(from: sections[indexPath.row].date))
+                } else {
+                    cell.setup(title: DateFormatter.dMMM.string(from: sections[indexPath.row].date))
+                }
+
                 return cell
             }
         default:
@@ -166,8 +203,6 @@ extension MainViewController: UICollectionViewDataSource {
 
                 return cell
             }
-
-
         }
         fatalError("\(#function) error in cell creation")
     }

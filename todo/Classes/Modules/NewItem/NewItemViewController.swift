@@ -98,13 +98,17 @@ final class NewItemViewController: ParentViewController {
         }
         Task {
             do {
-                _ = try await NetworkManagers.shared.request(urlPart: "todos/\(itemId)", method: "DELETE") as EmptyResponse
+                _ = try await NetworkManagers.shared.requestWithoutRequestBody(urlPart: "todos/\(itemId)", method: "DELETE") as EmptyResponse
 
                 delegate?.didSelect(self)
                 navigationController?.popViewController(animated: true)
-            } catch {
-                DispatchQueue.main.async {
-                    self.showAlertVC(massage: error.localizedDescription)
+            } catch let error as NetworkError {
+                if error == .expiredToken {
+                    goToAuth()
+                } else {
+                    DispatchQueue.main.async {
+                        self.showSnackbarVC(massage: error.localizedDescription)
+                    }
                 }
             }
         }
@@ -128,15 +132,19 @@ final class NewItemViewController: ParentViewController {
                 do {
                     let requestBody = TodosRequestBody(title: self.titleView.text ?? "", description: self.descriptionView.text ?? "", date: self.datePicker.date)
 
-                    let _: EmptyResponse = try await NetworkManagers.shared.request(urlPart: "todos", method: "POST", requestBody: requestBody)
+                    let _: EmptyResponse = try await NetworkManagers.shared.requestWithRequestBody(urlPart: "todos", method: "POST", requestBody: requestBody)
 
                     delegate?.didSelect(self)
                     navigationController?.popViewController(animated: true)
-                } catch {
+                } catch let error as NetworkError {
+                if error == .expiredToken {
+                    goToAuth()
+                } else {
                     DispatchQueue.main.async {
-                        self.showAlertVC(massage: error.localizedDescription)
+                        self.showSnackbarVC(massage: error.localizedDescription)
                     }
                 }
+            }
             }
         }
     }

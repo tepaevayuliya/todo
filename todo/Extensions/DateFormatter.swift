@@ -22,4 +22,16 @@ extension DateFormatter {
         return formatter
     }()
 
+    static let dMMMyyyy: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMM yyyy"
+        return formatter
+    }()
+
+    static let yyyy: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY"
+        return formatter
+    }()
+
 }
