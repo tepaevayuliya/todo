@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class MainItemCell: UICollectionViewCell {
     static let reuseID = String(describing: MainItemCell.self)
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        iconButton.setImage(UIImage.checkmark, for: .highlighted)
 
         iconButton.setImage(UIImage.ItemCell.radiobuttonOn, for: .selected)
         iconButton.setImage(UIImage.ItemCell.radiobuttonOff, for: .normal)
@@ -22,6 +25,15 @@ final class MainItemCell: UICollectionViewCell {
             view.alpha = isHighlighted ? 0.5 : 1
         }
     }
+
+//    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+//        if let buttonRect = iconButton.superview?.convert(iconButton.frame, to: contentView),
+//           buttonRect.insetBy(dx: -10, dy: -10).contains(point)
+//        {
+//            return iconButton
+//        }
+//        return super.hitTest(point, with: event)
+//    }
 
     private func isDeadlinePassed(deadline: Date) -> Bool {
         deadline < Date()
@@ -35,6 +47,18 @@ final class MainItemCell: UICollectionViewCell {
         view.layer.cornerRadius = 16
         iconButton.isSelected = item.isCompleted
         self.action = action
+
+        let modifier = AnyModifier { request in
+            var request = request
+            if let token = UserManager.shared.accessToken {
+                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            }
+            return request
+        }
+
+        imageView.kf.cancelDownloadTask()
+        let urlString = "http://45.144.64.179/api/user/photo/6573879c3b4dabf6363fbd89"
+        imageView.kf.setImage(with: URL(string: urlString), placeholder: UIImage.strokedCheckmark, options: [.requestModifier(modifier)])
     }
 
     private var action: (() -> Void)?
@@ -47,4 +71,6 @@ final class MainItemCell: UICollectionViewCell {
     @IBOutlet private var view: UIView!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var deadline: UILabel!
+
+    @IBOutlet private var imageView: UIImageView!
 }
