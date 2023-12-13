@@ -12,15 +12,14 @@ final class MainViewController: ParentViewController {
         super.viewDidLoad()
 
         (view as? StatefullView)?.delegate = self
-        navigationItem.backButtonDisplayMode = .minimal
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = L10n.Main.title
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.Main.profileButton, style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.Main.profileButton, style: .plain, target: self, action: #selector(didTapProfileButton))
         newTaskButton.setTitle(L10n.Main.emptyButton, for: .normal)
         newTaskButton.setup(mode: PrimaryButton.Mode.large)
 
-        collectionView.register(MainDataCell.self, forCellWithReuseIdentifier: MainDataCell.reuseID)
+        collectionView.register(MainDateCell.self, forCellWithReuseIdentifier: MainDateCell.reuseID)
         collectionView.allowsMultipleSelection = true
 
         collectionView.register(UINib(nibName: "MainItemCell", bundle: nil), forCellWithReuseIdentifier: MainItemCell.reuseID)
@@ -75,7 +74,12 @@ final class MainViewController: ParentViewController {
     @IBOutlet private var collectionView: UICollectionView!
 
     @IBAction private func didTapNewTaskButton() {
-        switchToNewItem()
+        goToNewItem()
+    }
+
+    @objc
+    private func didTapProfileButton() {
+        performSegue(withIdentifier: "profile", sender: nil)
     }
 
     private func getData() {
@@ -83,8 +87,8 @@ final class MainViewController: ParentViewController {
             do {
                 (view as? StatefullView)?.state = .loading
 
-                data = try await NetworkManagers.shared.request(urlPart: "todos", method: "GET")
-                
+                data = try await NetworkManager.shared.requestWithoutRequestBody(urlPart: "todos", method: "GET")
+
                 sections = data
                     .reduce(into: [(date: Date, items: [TodosResponse])](), { partialResult, item in
                         if let index = partialResult.firstIndex(where: { $0.date.withoutTimeStamp == item.date.withoutTimeStamp }) {
@@ -101,6 +105,11 @@ final class MainViewController: ParentViewController {
                 } else {
                     (view as? StatefullView)?.state = .data
                     collectionView.reloadData()
+
+                    if let selectedDate = selectedDate, let selectedDateIndex = sections.firstIndex(where: { $0.date == selectedDate }) {
+                        let dateIndexPath = IndexPath(row: selectedDateIndex, section: 0)
+                        collectionView.selectItem(at: dateIndexPath, animated: true, scrollPosition: [])
+                    }
                 }
             } catch {
                 (view as? StatefullView)?.state = .empty(error: error)
@@ -108,18 +117,18 @@ final class MainViewController: ParentViewController {
         }
     }
 
-    private func switchToNewItem() {
+    private func goToNewItem() {
         performSegue(withIdentifier: "new-item", sender: nil)
     }
 
     private func toggleToDo(id: String) {
         Task {
             do {
-                _ = try await NetworkManagers.shared.request(urlPart: "todos/mark/\(id)", method: "PUT") as EmptyResponse
+                _ = try await NetworkManager.shared.requestWithoutRequestBody(urlPart: "todos/mark/\(id)", method: "PUT") as EmptyResponse
                 getData()
             } catch {
                 DispatchQueue.main.async {
-                    self.showAlertVC(massage: error.localizedDescription)
+                    self.showSnackbarVC(message: error.localizedDescription)
                 }
             }
         }
@@ -146,8 +155,15 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainDataCell.reuseID, for: indexPath) as? MainDataCell {
-                cell.setup(title: DateFormatter.dMMM.string(from: sections[indexPath.row].date))
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainDateCell.reuseID, for: indexPath) as? MainDateCell {
+                let sectionsDate = sections[indexPath.row].date
+
+                if Calendar.current.isDate(sectionsDate, equalTo: Date(), toGranularity: .year) {
+                    cell.setup(title: DateFormatter.dMMM.string(from: sectionsDate))
+                } else {
+                    cell.setup(title: DateFormatter.dMMMyyyy.string(from: sectionsDate))
+                }
+
                 return cell
             }
         default:
@@ -166,8 +182,6 @@ extension MainViewController: UICollectionViewDataSource {
 
                 return cell
             }
-
-
         }
         fatalError("\(#function) error in cell creation")
     }
@@ -186,8 +200,12 @@ extension MainViewController: UICollectionViewDelegate {
             selectedDate = sections[indexPath.row].date
         default:
             collectionView.deselectItem(at: indexPath, animated: true)
-            selectedItem = data[indexPath.row]
-            switchToNewItem()
+            if let selectedDate {
+                selectedItem = sections.first(where: { $0.date == selectedDate })?.items[indexPath.row]
+            } else {
+                selectedItem = data[indexPath.row]
+            }
+            goToNewItem()
         }
     }
 
@@ -213,7 +231,7 @@ extension MainViewController: StatefullViewDelegate {
     }
 
     func statefullViewDidTapEmptyButton(_: StatefullView) {
-        switchToNewItem()
+        goToNewItem()
     }
 
     func statefullView(_: StatefullView, addChild controller: UIViewController) {

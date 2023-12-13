@@ -1,5 +1,5 @@
 //
-//  MainDataCell.swift
+//  MainDateCell.swift
 //  todo
 //
 //  Created by Юлия Тепаева on 07.12.2023.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class MainDataCell: UICollectionViewCell {
-    static let reuseID = String(describing: MainDataCell.self)
+final class MainDateCell: UICollectionViewCell {
+    static let reuseID = String(describing: MainDateCell.self)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

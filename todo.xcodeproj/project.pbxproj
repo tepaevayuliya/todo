@@ -32,11 +32,12 @@
 		5C54AEFE2B221BC5004CA56E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C54AEFC2B221BC5004CA56E /* Strings.swift */; };
 		5C54AEFF2B221BC5004CA56E /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C54AEFD2B221BC5004CA56E /* Plist.swift */; };
 		5C54AF012B221CEC004CA56E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C54AF002B221CEC004CA56E /* Localizable.strings */; };
-		5C54AF042B222043004CA56E /* MainDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C54AF032B222043004CA56E /* MainDataCell.swift */; };
+		5C54AF042B222043004CA56E /* MainDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C54AF032B222043004CA56E /* MainDateCell.swift */; };
 		5C54AF062B22275A004CA56E /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C54AF052B22275A004CA56E /* Date+.swift */; };
-		5CCB523F2B1CD49400F3A281 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB523E2B1CD49300F3A281 /* SignUpRequest.swift */; };
-		5CCB52412B1CD4BC00F3A281 /* SignInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB52402B1CD4BC00F3A281 /* SignInRequest.swift */; };
-		5CCB52432B1CD4CF00F3A281 /* TodosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB52422B1CD4CF00F3A281 /* TodosRequest.swift */; };
+		5C54AF082B2340A4004CA56E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C54AF072B2340A4004CA56E /* Profile.storyboard */; };
+		5C54AF0B2B2340E7004CA56E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C54AF0A2B2340E7004CA56E /* ProfileViewController.swift */; };
+		5CCB523F2B1CD49400F3A281 /* SignUpRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB523E2B1CD49300F3A281 /* SignUpRequestBody.swift */; };
+		5CCB52412B1CD4BC00F3A281 /* SignInRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB52402B1CD4BC00F3A281 /* SignInRequestBody.swift */; };
 		5CCBF8862B0FA21900790C8D /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8852B0FA21900790C8D /* OSLog.swift */; };
 		5CCBF8892B0FA27200790C8D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF8882B0FA27200790C8D /* NetworkManager.swift */; };
 		5CCBF88D2B0FA6B600790C8D /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCBF88C2B0FA6B600790C8D /* EmptyResponse.swift */; };
@@ -52,9 +53,11 @@
 		5CCD1C272AF6B3BE002C7FAF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCD1C262AF6B3BE002C7FAF /* SignUpViewController.swift */; };
 		5CE234302AF168EA0097AB36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CE2342F2AF168EA0097AB36 /* Main.storyboard */; };
 		5CE234322AF1692A0097AB36 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234312AF1692A0097AB36 /* MainViewController.swift */; };
-		5CE234372AF3F2800097AB36 /* ParenyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234362AF3F2800097AB36 /* ParenyViewController.swift */; };
+		5CE234372AF3F2800097AB36 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234362AF3F2800097AB36 /* ParentViewController.swift */; };
 		5CE2343A2AF3F3660097AB36 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234392AF3F3660097AB36 /* TextField.swift */; };
 		5CE2343D2AF3FE400097AB36 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE2343C2AF3FE400097AB36 /* TextInput.swift */; };
+		5CEB02A72B236F38002B6C55 /* ProfileResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEB02A62B236F38002B6C55 /* ProfileResponseBody.swift */; };
+		5CEB02B62B2A0CB4002B6C55 /* TodosRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEB02B52B2A0CB4002B6C55 /* TodosRequestBody.swift */; };
 		5CEB02B22B28C550002B6C55 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5CEB02B12B28C550002B6C55 /* Kingfisher */; };
 		5CEB02B42B28CA43002B6C55 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEB02B32B28CA43002B6C55 /* LargeButton.swift */; };
 /* End PBXBuildFile section */
@@ -106,11 +109,12 @@
 		5C54AEFC2B221BC5004CA56E /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		5C54AEFD2B221BC5004CA56E /* Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
 		5C54AF002B221CEC004CA56E /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		5C54AF032B222043004CA56E /* MainDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataCell.swift; sourceTree = "<group>"; };
+		5C54AF032B222043004CA56E /* MainDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDateCell.swift; sourceTree = "<group>"; };
 		5C54AF052B22275A004CA56E /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
-		5CCB523E2B1CD49300F3A281 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
-		5CCB52402B1CD4BC00F3A281 /* SignInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequest.swift; sourceTree = "<group>"; };
-		5CCB52422B1CD4CF00F3A281 /* TodosRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosRequest.swift; sourceTree = "<group>"; };
+		5C54AF072B2340A4004CA56E /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		5C54AF0A2B2340E7004CA56E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		5CCB523E2B1CD49300F3A281 /* SignUpRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestBody.swift; sourceTree = "<group>"; };
+		5CCB52402B1CD4BC00F3A281 /* SignInRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequestBody.swift; sourceTree = "<group>"; };
 		5CCBF8852B0FA21900790C8D /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		5CCBF8882B0FA27200790C8D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5CCBF88A2B0FA34700790C8D /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Base.xcconfig; sourceTree = "<group>"; };
@@ -127,9 +131,11 @@
 		5CCD1C262AF6B3BE002C7FAF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5CE2342F2AF168EA0097AB36 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5CE234312AF1692A0097AB36 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		5CE234362AF3F2800097AB36 /* ParenyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParenyViewController.swift; sourceTree = "<group>"; };
+		5CE234362AF3F2800097AB36 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		5CE234392AF3F3660097AB36 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		5CE2343C2AF3FE400097AB36 /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
+		5CEB02A62B236F38002B6C55 /* ProfileResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponseBody.swift; sourceTree = "<group>"; };
+		5CEB02B52B2A0CB4002B6C55 /* TodosRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosRequestBody.swift; sourceTree = "<group>"; };
 		5CEB02B32B28CA43002B6C55 /* LargeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -265,20 +271,28 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
-		5C54AF022B222034004CA56E /* MainDataCell */ = {
+		5C54AF022B222034004CA56E /* MainDateCell */ = {
 			isa = PBXGroup;
 			children = (
-				5C54AF032B222043004CA56E /* MainDataCell.swift */,
+				5C54AF032B222043004CA56E /* MainDateCell.swift */,
 			);
-			path = MainDataCell;
+			path = MainDateCell;
+			sourceTree = "<group>";
+		};
+		5C54AF092B2340D7004CA56E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				5C54AF0A2B2340E7004CA56E /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		5CCB523D2B1CD46F00F3A281 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				5CCB523E2B1CD49300F3A281 /* SignUpRequest.swift */,
-				5CCB52402B1CD4BC00F3A281 /* SignInRequest.swift */,
-				5CCB52422B1CD4CF00F3A281 /* TodosRequest.swift */,
+				5CCB523E2B1CD49300F3A281 /* SignUpRequestBody.swift */,
+				5CCB52402B1CD4BC00F3A281 /* SignInRequestBody.swift */,
+				5CEB02B52B2A0CB4002B6C55 /* TodosRequestBody.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -304,6 +318,7 @@
 		5CCBF88B2B0FA67B00790C8D /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				5CEB02A62B236F38002B6C55 /* ProfileResponseBody.swift */,
 				5CCBF88C2B0FA6B600790C8D /* EmptyResponse.swift */,
 				5CCBF88E2B0FA6DA00790C8D /* AuthResponse.swift */,
 				5CCBF8902B0FA71600790C8D /* DataResponse.swift */,
@@ -341,6 +356,7 @@
 		5CE234262AF164190097AB36 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5C54AF092B2340D7004CA56E /* Profile */,
 				5CCBF8982B164F6D00790C8D /* SplashScreen */,
 				5C50A31E2B06684A00EEE149 /* NewItem */,
 				5C50A3142B05045700EEE149 /* Empty */,
@@ -363,7 +379,7 @@
 		5CE234282AF164310097AB36 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				5C54AF022B222034004CA56E /* MainDataCell */,
+				5C54AF022B222034004CA56E /* MainDateCell */,
 				5C50A3172B05095A00EEE149 /* Cell */,
 				5CE234312AF1692A0097AB36 /* MainViewController.swift */,
 			);
@@ -392,6 +408,7 @@
 				5C50A3122B04FFF900EEE149 /* Empty.storyboard */,
 				5C50A3212B06689000EEE149 /* NewItem.storyboard */,
 				5CCBF8962B164F6500790C8D /* SplashScreen.storyboard */,
+				5C54AF072B2340A4004CA56E /* Profile.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -399,7 +416,7 @@
 		5CE234352AF3F2650097AB36 /* Parent */ = {
 			isa = PBXGroup;
 			children = (
-				5CE234362AF3F2800097AB36 /* ParenyViewController.swift */,
+				5CE234362AF3F2800097AB36 /* ParentViewController.swift */,
 			);
 			path = Parent;
 			sourceTree = "<group>";
@@ -540,6 +557,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C50A30C2B0132A100EEE149 /* LaunchScreen.storyboard in Resources */,
+				5C54AF082B2340A4004CA56E /* Profile.storyboard in Resources */,
 				5C50A3132B04FFF900EEE149 /* Empty.storyboard in Resources */,
 				5CE234302AF168EA0097AB36 /* Main.storyboard in Resources */,
 				5CCBF8972B164F6500790C8D /* SplashScreen.storyboard in Resources */,
@@ -618,10 +636,11 @@
 				5C54AEFF2B221BC5004CA56E /* Plist.swift in Sources */,
 				5C50A3022AFD33AE00EEE149 /* PrimaryButton.swift in Sources */,
 				5C50A3112B02DB7F00EEE149 /* TextViewInput.swift in Sources */,
+				5CEB02B62B2A0CB4002B6C55 /* TodosRequestBody.swift in Sources */,
 				5CCBF89E2B18E5FD00790C8D /* LoadingIndicatorImageView.swift in Sources */,
 				5CCBF8892B0FA27200790C8D /* NetworkManager.swift in Sources */,
 				5C50A30F2B026C4C00EEE149 /* TextButton.swift in Sources */,
-				5CE234372AF3F2800097AB36 /* ParenyViewController.swift in Sources */,
+				5CE234372AF3F2800097AB36 /* ParentViewController.swift in Sources */,
 				5C54AF062B22275A004CA56E /* Date+.swift in Sources */,
 				5CCBF8A22B18E9AA00790C8D /* StatefullView.swift in Sources */,
 				5CCBF8932B10CBC900790C8D /* DateFormatter.swift in Sources */,
@@ -632,23 +651,25 @@
 				5C50A31B2B0509C300EEE149 /* MainItemCell.swift in Sources */,
 				5C151E242AEAB8E2009684FE /* AppDelegate.swift in Sources */,
 				5C50A3032AFD33AE00EEE149 /* MainButton.swift in Sources */,
-				5C54AF042B222043004CA56E /* MainDataCell.swift in Sources */,
+				5C54AF042B222043004CA56E /* MainDateCell.swift in Sources */,
 				5C54AEF52B21398B004CA56E /* UIViewController+Keyboard.swift in Sources */,
-				5CCB523F2B1CD49400F3A281 /* SignUpRequest.swift in Sources */,
+				5CCB523F2B1CD49400F3A281 /* SignUpRequestBody.swift in Sources */,
 				5C50A3062AFD358000EEE149 /* ValidationManager.swift in Sources */,
 				5CCBF8862B0FA21900790C8D /* OSLog.swift in Sources */,
 				5CCBF88D2B0FA6B600790C8D /* EmptyResponse.swift in Sources */,
 				5CCBF89C2B164FCC00790C8D /* UserManager.swift in Sources */,
-				5CCB52432B1CD4CF00F3A281 /* TodosRequest.swift in Sources */,
 				5C151E262AEAB8E2009684FE /* SceneDelegate.swift in Sources */,
 				5C50A3202B06686200EEE149 /* NewItemViewController.swift in Sources */,
 				5CCBF89A2B164F7D00790C8D /* SplashViewController.swift in Sources */,
 				5CE234322AF1692A0097AB36 /* MainViewController.swift in Sources */,
 				5C50A3162B05048400EEE149 /* EmptyViewController.swift in Sources */,
+				5CEB02A72B236F38002B6C55 /* ProfileResponseBody.swift in Sources */,
 				5CCBF88F2B0FA6DB00790C8D /* AuthResponse.swift in Sources */,
 				5CCBF8912B0FA71600790C8D /* DataResponse.swift in Sources */,
+				5C54AF0B2B2340E7004CA56E /* ProfileViewController.swift in Sources */,
 				5CCBF8952B135A1000790C8D /* TodosResponse.swift in Sources */,
 				5CE2343D2AF3FE400097AB36 /* TextInput.swift in Sources */,
+				5CCB52412B1CD4BC00F3A281 /* SignInRequestBody.swift in Sources */,
 				5CCB52412B1CD4BC00F3A281 /* SignInRequest.swift in Sources */,
 				5CEB02B42B28CA43002B6C55 /* LargeButton.swift in Sources */,
 			);

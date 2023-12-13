@@ -42,5 +42,10 @@
 "network-error.wrong-status-code" = "Упс! Что-то пошло не так. Неверный код статуса.";
 "network-error.wrong-url" = "Упс! Что-то пошло не так. Неправильный URL.";
 "network-error.wrong-response" = "Упс! Что-то пошло не так. Неправильный ответ с сервера.";
-"network-error.alert-title" = "Ошибка!";
-"network-error.alert-button" = "Закрыть";
+"network-error.expired-token" = "Упс! Просроченный токен.";
+
+"profile.title" = "Профиль";
+"profile.exit-button" = "Выход";
+"profile.alert-title" = "Выйти из профиля?";
+"profile.alert-button" = "Выйти";
+"profile.alert-cancel" = "Отменить";

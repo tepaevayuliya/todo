@@ -1,11 +1,16 @@
 //
-//  TodosRequest.swift
+//  TodosRequestBody.swift
 //  todo
 //
-//  Created by Юлия Тепаева on 03.12.2023.
+//  Created by Юлия Тепаева on 13.12.2023.
 //
 
 import Foundation
+
+struct Coordinate: Encodable {
+    let longitude: String
+    let latitude: String
+}
 
 struct TodosRequestBody: Encodable {
     let category: String = ""
@@ -13,9 +18,4 @@ struct TodosRequestBody: Encodable {
     let description: String
     let date: Date
     let coordinate: Coordinate = .init(longitude: "", latitude: "")
-}
-
-struct Coordinate: Encodable {
-    let longitude: String
-    let latitude: String
 }
