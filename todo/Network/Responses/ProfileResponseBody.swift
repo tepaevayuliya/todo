@@ -9,6 +9,5 @@ import Foundation
 
 struct ProfileResponseBody: Decodable {
     let name: String
-    let email: String
     let imageId: String
 }

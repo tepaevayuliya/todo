@@ -1,5 +1,5 @@
 //
-//  NetworkManagers.swift
+//  NetworkManager.swift
 //  todo
 //
 //  Created by Юлия Тепаева on 23.11.2023.
@@ -7,7 +7,6 @@
 
 import Combine
 import Foundation
-import UIKit
 
 enum NetworkError: LocalizedError {
     case wrongStatusCode, wrongURL, wrongResponse, expiredToken
@@ -26,8 +25,8 @@ enum NetworkError: LocalizedError {
     }
 }
 
-final class NetworkManagers {
-    static var shared = NetworkManagers()
+final class NetworkManager {
+    static var shared = NetworkManager()
 
     private init() {}
 
@@ -97,6 +96,7 @@ final class NetworkManagers {
                 }
                 return data
             case 401:
+                await ParentViewController.goToAuth()
                 throw NetworkError.expiredToken
             default:
                 throw NetworkError.wrongStatusCode

@@ -98,17 +98,13 @@ final class NewItemViewController: ParentViewController {
         }
         Task {
             do {
-                _ = try await NetworkManagers.shared.requestWithoutRequestBody(urlPart: "todos/\(itemId)", method: "DELETE") as EmptyResponse
+                _ = try await NetworkManager.shared.requestWithoutRequestBody(urlPart: "todos/\(itemId)", method: "DELETE") as EmptyResponse
 
                 delegate?.didSelect(self)
                 navigationController?.popViewController(animated: true)
-            } catch let error as NetworkError {
-                if error == .expiredToken {
-                    goToAuth()
-                } else {
-                    DispatchQueue.main.async {
-                        self.showSnackbarVC(massage: error.localizedDescription)
-                    }
+            } catch {
+                DispatchQueue.main.async {
+                    self.showSnackbarVC(message: error.localizedDescription)
                 }
             }
         }
@@ -132,19 +128,15 @@ final class NewItemViewController: ParentViewController {
                 do {
                     let requestBody = TodosRequestBody(title: self.titleView.text ?? "", description: self.descriptionView.text ?? "", date: self.datePicker.date)
 
-                    let _: EmptyResponse = try await NetworkManagers.shared.requestWithRequestBody(urlPart: "todos", method: "POST", requestBody: requestBody)
+                    let _: EmptyResponse = try await NetworkManager.shared.requestWithRequestBody(urlPart: "todos", method: "POST", requestBody: requestBody)
 
                     delegate?.didSelect(self)
                     navigationController?.popViewController(animated: true)
-                } catch let error as NetworkError {
-                if error == .expiredToken {
-                    goToAuth()
-                } else {
+                } catch {
                     DispatchQueue.main.async {
-                        self.showSnackbarVC(massage: error.localizedDescription)
+                        self.showSnackbarVC(message: error.localizedDescription)
                     }
                 }
-            }
             }
         }
     }

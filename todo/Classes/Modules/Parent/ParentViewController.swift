@@ -25,14 +25,13 @@ class ParentViewController: UIViewController {
         errorLabelTopConstraint.constant = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 20) + 6
     }
 
-    let errorView = UIView()
-    let errorLabel = UILabel()
+    private var count = 0
+    private let errorView = UIView()
+    private let errorLabel = UILabel()
     private lazy var errorLabelTopConstraint = errorLabel.topAnchor.constraint(equalTo: errorView.topAnchor, constant: 6)
 
     private func setup() {
-        let scenes = UIApplication.shared.connectedScenes
-        let windowScene = scenes.first as? UIWindowScene
-        if let window = windowScene?.windows.first {
+        if let window = UIApplication.shared.connectedScenes.compactMap({ ($0 as? UIWindowScene)?.keyWindow }).last {
             window.addSubview(errorView)
             errorView.topAnchor.constraint(equalTo: window.topAnchor).isActive = true
             errorView.leadingAnchor.constraint(equalTo: window.leadingAnchor).isActive = true
@@ -47,28 +46,26 @@ class ParentViewController: UIViewController {
         errorLabel.leadingAnchor.constraint(equalTo: errorView.leadingAnchor, constant: 16).isActive = true
         errorLabel.trailingAnchor.constraint(equalTo: errorView.trailingAnchor, constant: -16).isActive = true
 
-        errorLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        errorLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         errorLabel.numberOfLines = 3
-        errorLabel.textColor = UIColor.white
+        errorLabel.textColor = UIColor.Color.white
         errorLabel.textAlignment = NSTextAlignment.center
     }
 
-    private var count = 0
-
-    func goToAuth() {
-        UserManager.shared.set(accessToken: nil)
+    static func goToAuth() {
+        UserManager.shared.reset()
 
         let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-        self.view.window?.rootViewController = storyboard.instantiateInitialViewController()
+        UIApplication.shared.connectedScenes.compactMap { ($0 as? UIWindowScene)?.keyWindow }.last?.rootViewController = storyboard.instantiateInitialViewController()
     }
 
-    func showSnackbarVC(massage: String) {
+    func showSnackbarVC(message: String) {
         count += 1
         errorView.isHidden = false
         errorView.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        errorLabel.text = massage
+        errorLabel.text = message
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             if self?.count == 1 {

@@ -7,25 +7,11 @@
 
 import UIKit
 
-struct TodosRequestBody: Encodable {
-    let category: String = ""
-    let title: String
-    let description: String
-    let date: Date
-    let coordinate: Coordinate = .init(longitude: "", latitude: "")
-}
-
-struct Coordinate: Encodable {
-    let longitude: String
-    let latitude: String
-}
-
 final class MainViewController: ParentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
         (view as? StatefullView)?.delegate = self
-        navigationItem.backButtonDisplayMode = .minimal
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = L10n.Main.title
@@ -88,7 +74,7 @@ final class MainViewController: ParentViewController {
     @IBOutlet private var collectionView: UICollectionView!
 
     @IBAction private func didTapNewTaskButton() {
-        switchToNewItem()
+        goToNewItem()
     }
 
     @objc
@@ -101,7 +87,7 @@ final class MainViewController: ParentViewController {
             do {
                 (view as? StatefullView)?.state = .loading
 
-                data = try await NetworkManagers.shared.requestWithoutRequestBody(urlPart: "todos", method: "GET")
+                data = try await NetworkManager.shared.requestWithoutRequestBody(urlPart: "todos", method: "GET")
 
                 sections = data
                     .reduce(into: [(date: Date, items: [TodosResponse])](), { partialResult, item in
@@ -125,32 +111,24 @@ final class MainViewController: ParentViewController {
                         collectionView.selectItem(at: dateIndexPath, animated: true, scrollPosition: [])
                     }
                 }
-            } catch let error as NetworkError {
-                if error == .expiredToken {
-                    goToAuth()
-                } else {
-                    (view as? StatefullView)?.state = .empty(error: error)
-                }
+            } catch {
+                (view as? StatefullView)?.state = .empty(error: error)
             }
         }
     }
 
-    private func switchToNewItem() {
+    private func goToNewItem() {
         performSegue(withIdentifier: "new-item", sender: nil)
     }
 
     private func toggleToDo(id: String) {
         Task {
             do {
-                _ = try await NetworkManagers.shared.requestWithoutRequestBody(urlPart: "todos/mark/\(id)", method: "PUT") as EmptyResponse
+                _ = try await NetworkManager.shared.requestWithoutRequestBody(urlPart: "todos/mark/\(id)", method: "PUT") as EmptyResponse
                 getData()
-            } catch let error as NetworkError {
-                if error == .expiredToken {
-                    goToAuth()
-                } else {
-                    DispatchQueue.main.async {
-                        self.showSnackbarVC(massage: error.localizedDescription)
-                    }
+            } catch {
+                DispatchQueue.main.async {
+                    self.showSnackbarVC(message: error.localizedDescription)
                 }
             }
         }
@@ -178,11 +156,12 @@ extension MainViewController: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainDateCell.reuseID, for: indexPath) as? MainDateCell {
+                let sectionsDate = sections[indexPath.row].date
 
-                if DateFormatter.yyyy.string(from: sections[indexPath.row].date as Date) != DateFormatter.yyyy.string(from: NSDate() as Date) {
-                    cell.setup(title: DateFormatter.dMMMyyyy.string(from: sections[indexPath.row].date))
+                if Calendar.current.isDate(sectionsDate, equalTo: Date(), toGranularity: .year) {
+                    cell.setup(title: DateFormatter.dMMM.string(from: sectionsDate))
                 } else {
-                    cell.setup(title: DateFormatter.dMMM.string(from: sections[indexPath.row].date))
+                    cell.setup(title: DateFormatter.dMMMyyyy.string(from: sectionsDate))
                 }
 
                 return cell
@@ -221,8 +200,12 @@ extension MainViewController: UICollectionViewDelegate {
             selectedDate = sections[indexPath.row].date
         default:
             collectionView.deselectItem(at: indexPath, animated: true)
-            selectedItem = data[indexPath.row]
-            switchToNewItem()
+            if let selectedDate {
+                selectedItem = sections.first(where: { $0.date == selectedDate })?.items[indexPath.row]
+            } else {
+                selectedItem = data[indexPath.row]
+            }
+            goToNewItem()
         }
     }
 
@@ -248,7 +231,7 @@ extension MainViewController: StatefullViewDelegate {
     }
 
     func statefullViewDidTapEmptyButton(_: StatefullView) {
-        switchToNewItem()
+        goToNewItem()
     }
 
     func statefullView(_: StatefullView, addChild controller: UIViewController) {

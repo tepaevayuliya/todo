@@ -69,20 +69,16 @@ final class SignUpViewController: ParentViewController {
                 do {
                     let requestBody = SignUpRequestBody(name: nameTextField.text ?? "", email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
                     var response = AuthResponse()
-                    response = try await NetworkManagers.shared.requestWithRequestBody(urlPart: "auth/registration", method: "POST", requestBody: requestBody)
+                    response = try await NetworkManager.shared.requestWithRequestBody(urlPart: "auth/registration", method: "POST", requestBody: requestBody)
                     UserManager.shared.set(accessToken: response.accessToken)
 
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     view.window?.rootViewController = storyboard.instantiateInitialViewController()
-                } catch let error as NetworkError {
-                if error == .expiredToken {
-                    goToAuth()
-                } else {
+                } catch {
                     DispatchQueue.main.async {
-                        self.showSnackbarVC(massage: error.localizedDescription)
+                        self.showSnackbarVC(message: error.localizedDescription)
                     }
                 }
-            }
             }
         }
     }

@@ -18,18 +18,21 @@ extension DateFormatter {
 
     static let dMMM: DateFormatter = {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ru_RU")
         formatter.dateFormat = "d MMM"
         return formatter
     }()
 
     static let dMMMyyyy: DateFormatter = {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ru_RU")
         formatter.dateFormat = "d MMM yyyy"
         return formatter
     }()
 
     static let yyyy: DateFormatter = {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ru_RU")
         formatter.dateFormat = "YYYY"
         return formatter
     }()
