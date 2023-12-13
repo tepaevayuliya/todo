@@ -55,6 +55,8 @@
 		5CE234372AF3F2800097AB36 /* ParenyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234362AF3F2800097AB36 /* ParenyViewController.swift */; };
 		5CE2343A2AF3F3660097AB36 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234392AF3F3660097AB36 /* TextField.swift */; };
 		5CE2343D2AF3FE400097AB36 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE2343C2AF3FE400097AB36 /* TextInput.swift */; };
+		5CEB02B22B28C550002B6C55 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5CEB02B12B28C550002B6C55 /* Kingfisher */; };
+		5CEB02B42B28CA43002B6C55 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEB02B32B28CA43002B6C55 /* LargeButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +130,7 @@
 		5CE234362AF3F2800097AB36 /* ParenyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParenyViewController.swift; sourceTree = "<group>"; };
 		5CE234392AF3F3660097AB36 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		5CE2343C2AF3FE400097AB36 /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
+		5CEB02B32B28CA43002B6C55 /* LargeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CEB02B22B28C550002B6C55 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +223,7 @@
 		5C50A3072AFD381000EEE149 /* Button */ = {
 			isa = PBXGroup;
 			children = (
+				5CEB02B32B28CA43002B6C55 /* LargeButton.swift */,
 				5C50A3012AFD33AE00EEE149 /* MainButton.swift */,
 				5C50A3002AFD33AE00EEE149 /* PrimaryButton.swift */,
 				5C50A30E2B026C4C00EEE149 /* TextButton.swift */,
@@ -440,6 +445,9 @@
 			dependencies = (
 			);
 			name = todo;
+			packageProductDependencies = (
+				5CEB02B12B28C550002B6C55 /* Kingfisher */,
+			);
 			productName = todo;
 			productReference = 5C151E202AEAB8E1009684FE /* todo.app */;
 			productType = "com.apple.product-type.application";
@@ -512,6 +520,9 @@
 				Base,
 			);
 			mainGroup = 5C151E172AEAB8E1009684FE;
+			packageReferences = (
+				5CEB02B02B28C550002B6C55 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 5C151E212AEAB8E1009684FE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -639,6 +650,7 @@
 				5CCBF8952B135A1000790C8D /* TodosResponse.swift in Sources */,
 				5CE2343D2AF3FE400097AB36 /* TextInput.swift in Sources */,
 				5CCB52412B1CD4BC00F3A281 /* SignInRequest.swift in Sources */,
+				5CEB02B42B28CA43002B6C55 /* LargeButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,6 +973,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5CEB02B02B28C550002B6C55 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5CEB02B12B28C550002B6C55 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CEB02B02B28C550002B6C55 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5C151E182AEAB8E1009684FE /* Project object */;
 }
