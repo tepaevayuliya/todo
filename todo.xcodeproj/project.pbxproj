@@ -56,10 +56,14 @@
 		5CE234372AF3F2800097AB36 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234362AF3F2800097AB36 /* ParentViewController.swift */; };
 		5CE2343A2AF3F3660097AB36 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE234392AF3F3660097AB36 /* TextField.swift */; };
 		5CE2343D2AF3FE400097AB36 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE2343C2AF3FE400097AB36 /* TextInput.swift */; };
-		5CEB02A72B236F38002B6C55 /* ProfileResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEB02A62B236F38002B6C55 /* ProfileResponseBody.swift */; };
-		5CEB02B62B2A0CB4002B6C55 /* TodosRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEB02B52B2A0CB4002B6C55 /* TodosRequestBody.swift */; };
+		5CEB02A72B236F38002B6C55 /* ProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEB02A62B236F38002B6C55 /* ProfileResponse.swift */; };
 		5CEB02B22B28C550002B6C55 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5CEB02B12B28C550002B6C55 /* Kingfisher */; };
 		5CEB02B42B28CA43002B6C55 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEB02B32B28CA43002B6C55 /* LargeButton.swift */; };
+		5CEB02B62B2A0CB4002B6C55 /* TodosRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEB02B52B2A0CB4002B6C55 /* TodosRequestBody.swift */; };
+		5CEB02B92B2B5167002B6C55 /* Dip in Frameworks */ = {isa = PBXBuildFile; productRef = 5CEB02B82B2B5167002B6C55 /* Dip */; };
+		5CEB02BC2B2B51A1002B6C55 /* ManagersAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEB02BB2B2B51A1002B6C55 /* ManagersAssembly.swift */; };
+		5CEB02BE2B2B51A7002B6C55 /* VCAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEB02BD2B2B51A7002B6C55 /* VCAssembly.swift */; };
+		5CEB02C02B2B51E1002B6C55 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEB02BF2B2B51E1002B6C55 /* AuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,9 +138,12 @@
 		5CE234362AF3F2800097AB36 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		5CE234392AF3F3660097AB36 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		5CE2343C2AF3FE400097AB36 /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
-		5CEB02A62B236F38002B6C55 /* ProfileResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponseBody.swift; sourceTree = "<group>"; };
-		5CEB02B52B2A0CB4002B6C55 /* TodosRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosRequestBody.swift; sourceTree = "<group>"; };
+		5CEB02A62B236F38002B6C55 /* ProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponse.swift; sourceTree = "<group>"; };
 		5CEB02B32B28CA43002B6C55 /* LargeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
+		5CEB02B52B2A0CB4002B6C55 /* TodosRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosRequestBody.swift; sourceTree = "<group>"; };
+		5CEB02BB2B2B51A1002B6C55 /* ManagersAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagersAssembly.swift; sourceTree = "<group>"; };
+		5CEB02BD2B2B51A7002B6C55 /* VCAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCAssembly.swift; sourceTree = "<group>"; };
+		5CEB02BF2B2B51E1002B6C55 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CEB02B92B2B5167002B6C55 /* Dip in Frameworks */,
 				5CEB02B22B28C550002B6C55 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +228,7 @@
 		5C50A3042AFD355E00EEE149 /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				5CEB02BA2B2B518F002B6C55 /* Factories */,
 				5C50A3052AFD358000EEE149 /* ValidationManager.swift */,
 				5CCBF89B2B164FCC00790C8D /* UserManager.swift */,
 			);
@@ -301,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				5CCBF8852B0FA21900790C8D /* OSLog.swift */,
+				5CEB02BF2B2B51E1002B6C55 /* AuthManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -318,7 +328,7 @@
 		5CCBF88B2B0FA67B00790C8D /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				5CEB02A62B236F38002B6C55 /* ProfileResponseBody.swift */,
+				5CEB02A62B236F38002B6C55 /* ProfileResponse.swift */,
 				5CCBF88C2B0FA6B600790C8D /* EmptyResponse.swift */,
 				5CCBF88E2B0FA6DA00790C8D /* AuthResponse.swift */,
 				5CCBF8902B0FA71600790C8D /* DataResponse.swift */,
@@ -444,6 +454,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		5CEB02BA2B2B518F002B6C55 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				5CEB02BD2B2B51A7002B6C55 /* VCAssembly.swift */,
+				5CEB02BB2B2B51A1002B6C55 /* ManagersAssembly.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -464,6 +483,7 @@
 			name = todo;
 			packageProductDependencies = (
 				5CEB02B12B28C550002B6C55 /* Kingfisher */,
+				5CEB02B82B2B5167002B6C55 /* Dip */,
 			);
 			productName = todo;
 			productReference = 5C151E202AEAB8E1009684FE /* todo.app */;
@@ -539,6 +559,7 @@
 			mainGroup = 5C151E172AEAB8E1009684FE;
 			packageReferences = (
 				5CEB02B02B28C550002B6C55 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				5CEB02B72B2B5167002B6C55 /* XCRemoteSwiftPackageReference "Dip" */,
 			);
 			productRefGroup = 5C151E212AEAB8E1009684FE /* Products */;
 			projectDirPath = "";
@@ -637,6 +658,7 @@
 				5C50A3022AFD33AE00EEE149 /* PrimaryButton.swift in Sources */,
 				5C50A3112B02DB7F00EEE149 /* TextViewInput.swift in Sources */,
 				5CEB02B62B2A0CB4002B6C55 /* TodosRequestBody.swift in Sources */,
+				5CEB02BC2B2B51A1002B6C55 /* ManagersAssembly.swift in Sources */,
 				5CCBF89E2B18E5FD00790C8D /* LoadingIndicatorImageView.swift in Sources */,
 				5CCBF8892B0FA27200790C8D /* NetworkManager.swift in Sources */,
 				5C50A30F2B026C4C00EEE149 /* TextButton.swift in Sources */,
@@ -644,6 +666,7 @@
 				5C54AF062B22275A004CA56E /* Date+.swift in Sources */,
 				5CCBF8A22B18E9AA00790C8D /* StatefullView.swift in Sources */,
 				5CCBF8932B10CBC900790C8D /* DateFormatter.swift in Sources */,
+				5CEB02C02B2B51E1002B6C55 /* AuthManager.swift in Sources */,
 				5C151E282AEAB8E2009684FE /* AuthViewController.swift in Sources */,
 				5CE2343A2AF3F3660097AB36 /* TextField.swift in Sources */,
 				5CCD1C272AF6B3BE002C7FAF /* SignUpViewController.swift in Sources */,
@@ -660,17 +683,17 @@
 				5CCBF89C2B164FCC00790C8D /* UserManager.swift in Sources */,
 				5C151E262AEAB8E2009684FE /* SceneDelegate.swift in Sources */,
 				5C50A3202B06686200EEE149 /* NewItemViewController.swift in Sources */,
+				5CEB02BE2B2B51A7002B6C55 /* VCAssembly.swift in Sources */,
 				5CCBF89A2B164F7D00790C8D /* SplashViewController.swift in Sources */,
 				5CE234322AF1692A0097AB36 /* MainViewController.swift in Sources */,
 				5C50A3162B05048400EEE149 /* EmptyViewController.swift in Sources */,
-				5CEB02A72B236F38002B6C55 /* ProfileResponseBody.swift in Sources */,
+				5CEB02A72B236F38002B6C55 /* ProfileResponse.swift in Sources */,
 				5CCBF88F2B0FA6DB00790C8D /* AuthResponse.swift in Sources */,
 				5CCBF8912B0FA71600790C8D /* DataResponse.swift in Sources */,
 				5C54AF0B2B2340E7004CA56E /* ProfileViewController.swift in Sources */,
 				5CCBF8952B135A1000790C8D /* TodosResponse.swift in Sources */,
 				5CE2343D2AF3FE400097AB36 /* TextInput.swift in Sources */,
 				5CCB52412B1CD4BC00F3A281 /* SignInRequestBody.swift in Sources */,
-				5CCB52412B1CD4BC00F3A281 /* SignInRequest.swift in Sources */,
 				5CEB02B42B28CA43002B6C55 /* LargeButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1004,6 +1027,14 @@
 				minimumVersion = 7.10.1;
 			};
 		};
+		5CEB02B72B2B5167002B6C55 /* XCRemoteSwiftPackageReference "Dip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliSoftware/Dip";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1011,6 +1042,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5CEB02B02B28C550002B6C55 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		5CEB02B82B2B5167002B6C55 /* Dip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CEB02B72B2B5167002B6C55 /* XCRemoteSwiftPackageReference "Dip" */;
+			productName = Dip;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

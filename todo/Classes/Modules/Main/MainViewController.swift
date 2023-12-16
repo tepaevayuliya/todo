@@ -87,7 +87,7 @@ final class MainViewController: ParentViewController {
             do {
                 (view as? StatefullView)?.state = .loading
 
-                data = try await NetworkManager.shared.requestWithoutRequestBody(urlPart: "todos", method: "GET")
+                data = try await NetworkManager.shared.getTodoList()
 
                 sections = data
                     .reduce(into: [(date: Date, items: [TodosResponse])](), { partialResult, item in
@@ -121,10 +121,10 @@ final class MainViewController: ParentViewController {
         performSegue(withIdentifier: "new-item", sender: nil)
     }
 
-    private func toggleToDo(id: String) {
+    private func toggleTodo(id: String) {
         Task {
             do {
-                _ = try await NetworkManager.shared.requestWithoutRequestBody(urlPart: "todos/mark/\(id)", method: "PUT") as EmptyResponse
+                _ = try await NetworkManager.shared.toggleTodoMark(todoId: id)
                 getData()
             } catch {
                 DispatchQueue.main.async {
@@ -176,7 +176,7 @@ extension MainViewController: UICollectionViewDataSource {
                 }
                 if let item {
                     cell.setup(item: item, action: { [weak self] in
-                        self?.toggleToDo(id: item.id)
+                        self?.toggleTodo(id: item.id)
                     })
                 }
 

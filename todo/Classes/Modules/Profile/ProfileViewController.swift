@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ProfileViewController: ParentViewController {
     override func viewDidLoad() {
@@ -43,14 +44,14 @@ final class ProfileViewController: ParentViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 
-    private var data: ProfileResponseBody?
+    private var data: ProfileResponse?
 
     private func getUserInfo() {
         Task {
             do {
                 (view as? StatefullView)?.state = .loading
 
-                data = try await NetworkManager.shared.requestWithoutRequestBody(urlPart: "user", method: "GET")
+                data = try await NetworkManager.shared.getUserProfile()
 
                 userName.text = data?.name
 
@@ -68,9 +69,17 @@ final class ProfileViewController: ParentViewController {
         Task {
             do {
                 if let imageId = self.data?.imageId {
-                    let imgURL: Data = try await NetworkManager.shared.requestWithResponseData(urlPart: "user/photo/\(imageId)", method: "GET")
+                    let modifier = AnyModifier { request in
+                        var request = request
+                        if let token = UserManager.shared.accessToken {
+                            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+                        }
+                        return request
+                    }
 
-                    profileImageView.image = UIImage(data: imgURL)
+                    profileImageView.kf.cancelDownloadTask()
+                    let urlString = "http://45.144.64.179/api/user/photo/\(imageId)"
+                    profileImageView.kf.setImage(with: URL(string: urlString), placeholder: UIImage.strokedCheckmark, options: [.requestModifier(modifier)])
                 }
             } catch {
                 DispatchQueue.main.async {

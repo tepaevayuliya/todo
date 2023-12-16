@@ -7,8 +7,11 @@
 
 import Combine
 import UIKit
+import Dip
 
 final class AuthViewController: ParentViewController {
+    @Injected private var networkManager: AuthManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,13 +61,12 @@ final class AuthViewController: ParentViewController {
         if isValidFlag {
             Task {
                 do {
-                    let requestBody = SignInRequestBody(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
-                    var response = AuthResponse()
-                    response = try await NetworkManager.shared.requestWithRequestBody(urlPart: "auth/login", method: "POST", requestBody: requestBody)
-                    UserManager.shared.set(accessToken: response.accessToken)
+//                    _ = try await NetworkManager.shared.signIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
+                    _ = try await networkManager.signInDip(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
 
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    view.window?.rootViewController = storyboard.instantiateInitialViewController()
+                    let vc = storyboard.instantiateInitialViewController()
+                    view.window?.rootViewController = vc
                 } catch {
                     DispatchQueue.main.async {
                         self.showSnackbarVC(message: error.localizedDescription)

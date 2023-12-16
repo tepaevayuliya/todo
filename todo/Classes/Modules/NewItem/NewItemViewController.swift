@@ -98,7 +98,7 @@ final class NewItemViewController: ParentViewController {
         }
         Task {
             do {
-                _ = try await NetworkManager.shared.requestWithoutRequestBody(urlPart: "todos/\(itemId)", method: "DELETE") as EmptyResponse
+                _ = try await NetworkManager.shared.deleteTodo(todoId: itemId)
 
                 delegate?.didSelect(self)
                 navigationController?.popViewController(animated: true)
@@ -126,9 +126,7 @@ final class NewItemViewController: ParentViewController {
         if isValidFlag {
             Task {
                 do {
-                    let requestBody = TodosRequestBody(title: self.titleView.text ?? "", description: self.descriptionView.text ?? "", date: self.datePicker.date)
-
-                    let _: EmptyResponse = try await NetworkManager.shared.requestWithRequestBody(urlPart: "todos", method: "POST", requestBody: requestBody)
+                    _ = try await NetworkManager.shared.createNewTodo(title: titleView.text ?? "", description: descriptionView.text ?? "", date: datePicker.date)
 
                     delegate?.didSelect(self)
                     navigationController?.popViewController(animated: true)

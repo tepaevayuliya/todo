@@ -26,52 +26,44 @@ enum NetworkError: LocalizedError {
 }
 
 final class NetworkManager {
-    static var shared = NetworkManager()
+    private let decoder: JSONDecoder
+    private let encoder: JSONEncoder
 
-    private init() {}
+    init(decoder: JSONDecoder, encoder: JSONEncoder) {
+        self.decoder = decoder
+        self.encoder = encoder
+    }
 
-    private lazy var decoder: JSONDecoder = {
+    static let shared = NetworkManager(decoder: {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .secondsSince1970
 
         return decoder
-    }()
-
-    private lazy var encoder: JSONEncoder = {
+    }(), encoder: {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .secondsSince1970
 
         return encoder
-    }()
+    }())
 
     struct EmptyEncodable: Encodable {}
 
-    func requestWithoutRequestBody<Response: Decodable>(urlPart: String, method: String) async throws -> Response {
-        let data = try await request(urlPart: urlPart, method: method, requestBody: EmptyEncodable?.none)
-        return try decoder.decode(DataResponse<Response>.self, from: data).data
-    }
-
-    func requestWithRequestBody<Request: Encodable, Response: Decodable>(urlPart: String, method: String, requestBody: Request?) async throws -> Response {
-        let data = try await request(urlPart: urlPart, method: method, requestBody: requestBody)
-        return try decoder.decode(DataResponse<Response>.self, from: data).data
-    }
-
-    func requestWithResponseData(urlPart: String, method: String) async throws -> Data {
+    func request<Response: Decodable>(urlPart: String, method: String) async throws -> Response {
         try await request(urlPart: urlPart, method: method, requestBody: EmptyEncodable?.none)
     }
 
-    private func request<Request: Encodable>(
+    func request<Request: Encodable, Response: Decodable>(
         urlPart: String,
         method: String,
         requestBody: Request?
-    ) async throws -> Data {
-        guard let url = URL(string: "\(PlistFiles.apiBaseUrl)/api/\(urlPart)") else {
+    ) async throws -> Response {
+        guard let url = URL(string: urlPart) else {
             throw NetworkError.wrongURL
         }
 
         var request = URLRequest(url: url)
-        request.httpMethod = "\(method)"
+        request.httpMethod = method
 
         if let requestBody {
             request.httpBody = try encoder.encode(requestBody)
@@ -91,10 +83,10 @@ final class NetworkManager {
             log.debug("\(response)")
             switch httpResponse.statusCode {
             case 200 ..< 400:
-                if data.isEmpty, let emptyData = "{\"data\":{}}".data(using: .utf8) {
-                    return emptyData
+                if data.isEmpty, let emptyData = "{}".data(using: .utf8) {
+                    return try decoder.decode(Response.self, from: emptyData)
                 }
-                return data
+                return try decoder.decode(DataResponse<Response>.self, from: data).data
             case 401:
                 await ParentViewController.goToAuth()
                 throw NetworkError.expiredToken
@@ -104,5 +96,69 @@ final class NetworkManager {
         } else {
             throw NetworkError.wrongResponse
         }
+    }
+
+    func signIn(email: String, password: String) async throws -> AuthResponse {
+        let signInData = SignInRequestBody(email: email, password: password)
+        let authResponse: AuthResponse = try await request(
+            urlPart: "\(PlistFiles.apiBaseUrl)/api/auth/login",
+            method: "POST",
+            requestBody: signInData
+        )
+        UserManager.shared.set(accessToken: authResponse.accessToken)
+        return authResponse
+    }
+
+    func signUp(name: String, email: String, password: String) async throws -> AuthResponse {
+        let signUpData = SignUpRequestBody(name: name, email: email, password: password)
+        let authResponse: AuthResponse = try await request(
+            urlPart: "\(PlistFiles.apiBaseUrl)/api/auth/registration",
+            method: "POST",
+            requestBody: signUpData
+        )
+        UserManager.shared.set(accessToken: authResponse.accessToken)
+        return authResponse
+    }
+
+    func getTodoList() async throws -> [TodosResponse] {
+        let todosResponse: [TodosResponse] = try await request(
+            urlPart: "\(PlistFiles.apiBaseUrl)/api/todos",
+            method: "GET"
+        )
+        return todosResponse
+    }
+
+    func createNewTodo(title: String, description: String, date: Date) async throws -> TodosResponse {
+        let newItemData = TodosRequestBody(title: title, description: description, date: date)
+        let newTodoResponse: TodosResponse = try await request(
+            urlPart: "\(PlistFiles.apiBaseUrl)/api/todos",
+            method: "POST",
+            requestBody: newItemData
+        )
+        return newTodoResponse
+    }
+
+    func toggleTodoMark(todoId: String) async throws -> EmptyResponse {
+        let todoMarkResponse: EmptyResponse = try await request(
+            urlPart: "\(PlistFiles.apiBaseUrl)/api/todos/mark/\(todoId)",
+            method: "PUT"
+        )
+        return todoMarkResponse
+    }
+
+    func deleteTodo(todoId: String) async throws -> EmptyResponse {
+        let deleteResponse: EmptyResponse = try await request(
+            urlPart: "\(PlistFiles.apiBaseUrl)/api/todos/\(todoId)",
+            method: "DELETE"
+        )
+        return deleteResponse
+    }
+
+    func getUserProfile() async throws -> ProfileResponse {
+        let profileResponse: ProfileResponse = try await request(
+            urlPart: "\(PlistFiles.apiBaseUrl)/api/user",
+            method: "GET"
+        )
+        return profileResponse
     }
 }

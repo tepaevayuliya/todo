@@ -67,13 +67,11 @@ final class SignUpViewController: ParentViewController {
         if isValidFlag {
             Task {
                 do {
-                    let requestBody = SignUpRequestBody(name: nameTextField.text ?? "", email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
-                    var response = AuthResponse()
-                    response = try await NetworkManager.shared.requestWithRequestBody(urlPart: "auth/registration", method: "POST", requestBody: requestBody)
-                    UserManager.shared.set(accessToken: response.accessToken)
+                    _ = try await NetworkManager.shared.signUp(name: nameTextField.text ?? "", email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
 
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    view.window?.rootViewController = storyboard.instantiateInitialViewController()
+                    let vc = storyboard.instantiateInitialViewController()
+                    view.window?.rootViewController = vc
                 } catch {
                     DispatchQueue.main.async {
                         self.showSnackbarVC(message: error.localizedDescription)

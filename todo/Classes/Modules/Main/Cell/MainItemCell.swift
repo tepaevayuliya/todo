@@ -47,18 +47,6 @@ final class MainItemCell: UICollectionViewCell {
         view.layer.cornerRadius = 16
         iconButton.isSelected = item.isCompleted
         self.action = action
-
-        let modifier = AnyModifier { request in
-            var request = request
-            if let token = UserManager.shared.accessToken {
-                request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            }
-            return request
-        }
-
-        imageView.kf.cancelDownloadTask()
-        let urlString = "http://45.144.64.179/api/user/photo/6573879c3b4dabf6363fbd89"
-        imageView.kf.setImage(with: URL(string: urlString), placeholder: UIImage.strokedCheckmark, options: [.requestModifier(modifier)])
     }
 
     private var action: (() -> Void)?
