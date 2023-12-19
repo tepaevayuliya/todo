@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-final class ProfileViewController: ParentViewController {
+final class ProfileViewController: ParentViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,12 +20,45 @@ final class ProfileViewController: ParentViewController {
 
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
 
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        profileImageView.addGestureRecognizer(tap)
+        profileImageView.isUserInteractionEnabled = true
+
         getUserInfo()
     }
 
     @IBOutlet private var profileImageView: UIImageView!
     @IBOutlet private var userName: UILabel!
     @IBOutlet private var exitButton: TextButton!
+    private var imagePicker = UIImagePickerController()
+
+    @objc
+    func handleTap(_ sender: UITapGestureRecognizer) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = false
+
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            profileImageView.image = image
+
+            Task {
+                do {
+                    _ = try await NetworkManager.shared.uploadUserPhoto(image: image)
+                } catch {
+                    DispatchQueue.main.async {
+                        self.showSnackbarVC(message: error.localizedDescription)
+                    }
+                }
+            }
+        }
+    }
 
     @IBAction private func didTapExitButton() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -60,7 +93,6 @@ final class ProfileViewController: ParentViewController {
                 DispatchQueue.main.async {
                     self.showSnackbarVC(message: error.localizedDescription)
                 }
-
             }
         }
     }
@@ -79,7 +111,7 @@ final class ProfileViewController: ParentViewController {
 
                     profileImageView.kf.cancelDownloadTask()
                     let urlString = "http://45.144.64.179/api/user/photo/\(imageId)"
-                    profileImageView.kf.setImage(with: URL(string: urlString), placeholder: UIImage.strokedCheckmark, options: [.requestModifier(modifier)])
+                    profileImageView.kf.setImage(with: URL(string: urlString), placeholder: nil, options: [.requestModifier(modifier)])
                 }
             } catch {
                 DispatchQueue.main.async {
@@ -87,6 +119,5 @@ final class ProfileViewController: ParentViewController {
                 }
             }
         }
-
     }
 }

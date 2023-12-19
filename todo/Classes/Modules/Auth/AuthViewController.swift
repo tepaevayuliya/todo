@@ -61,8 +61,7 @@ final class AuthViewController: ParentViewController {
         if isValidFlag {
             Task {
                 do {
-//                    _ = try await NetworkManager.shared.signIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
-                    _ = try await networkManager.signInDip(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
+                    _ = try await NetworkManager.shared.signIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
 
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateInitialViewController()

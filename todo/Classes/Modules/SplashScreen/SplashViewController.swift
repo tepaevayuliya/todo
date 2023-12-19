@@ -11,7 +11,6 @@ final class SplashViewController: ParentViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        UserManager.shared.reset()
         let storyboard = UIStoryboard(name: UserManager.shared.accessToken == nil ? "Auth" : "Main", bundle: nil)
         let vc = storyboard.instantiateInitialViewController()
         view.window?.rootViewController = vc

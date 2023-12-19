@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import UIKit
 
 enum NetworkError: LocalizedError {
     case wrongStatusCode, wrongURL, wrongResponse, expiredToken
@@ -69,8 +70,16 @@ final class NetworkManager {
             request.httpBody = try encoder.encode(requestBody)
         }
 
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        if let userImage = requestBody as? Data {
+            let boundary = UUID().uuidString
+
+            request.httpBody = multipartFormDataBody(userImage: userImage, boundary: boundary)
+
+            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        } else {
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+        }
 
         if let accessToken = UserManager.shared.accessToken {
             request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
@@ -160,5 +169,26 @@ final class NetworkManager {
             method: "GET"
         )
         return profileResponse
+    }
+
+    func uploadUserPhoto(image: UIImage) async throws -> EmptyResponse {
+        let userImage = image.jpegData(compressionQuality: 0.2)
+
+        let response: EmptyResponse = try await request(
+            urlPart: "\(PlistFiles.apiBaseUrl)/api/user/photo",
+            method: "POST",
+            requestBody: userImage
+        )
+        return response
+    }
+
+    private func multipartFormDataBody(userImage: Data, boundary: String) -> Data {
+        var body = Data()
+        body.append("\r\n--\(boundary)\r\n")
+        body.append("Content-Disposition: form-data; name=\"uploadedFile\"; filename=\"image.jpg\"\r\n")
+        body.append("Content-Type: image/jpeg\r\n\r\n")
+        body.append(userImage)
+        body.append("\r\n--\(boundary)--\r\n")
+        return body
     }
 }

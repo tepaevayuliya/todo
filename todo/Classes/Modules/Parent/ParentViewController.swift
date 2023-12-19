@@ -28,15 +28,13 @@ class ParentViewController: UIViewController {
     private var count = 0
     private let errorView = UIView()
     private let errorLabel = UILabel()
+    private let errorButton = UIButton(type: .custom)
     private lazy var errorLabelTopConstraint = errorLabel.topAnchor.constraint(equalTo: errorView.topAnchor, constant: 6)
 
     private func setup() {
-        if let window = UIApplication.shared.connectedScenes.compactMap({ ($0 as? UIWindowScene)?.keyWindow }).last {
-            window.addSubview(errorView)
-            errorView.topAnchor.constraint(equalTo: window.topAnchor).isActive = true
-            errorView.leadingAnchor.constraint(equalTo: window.leadingAnchor).isActive = true
-            errorView.trailingAnchor.constraint(equalTo: window.trailingAnchor).isActive = true
-        }
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorButton.translatesAutoresizingMaskIntoConstraints = false
 
         errorView.addSubview(errorLabel)
         errorView.backgroundColor = UIColor.Color.grey1
@@ -50,6 +48,15 @@ class ParentViewController: UIViewController {
         errorLabel.numberOfLines = 3
         errorLabel.textColor = UIColor.Color.white
         errorLabel.textAlignment = NSTextAlignment.center
+
+        errorView.addSubview(errorButton)
+        errorButton.topAnchor.constraint(equalTo: errorView.topAnchor).isActive = true
+        errorButton.bottomAnchor.constraint(equalTo: errorView.bottomAnchor).isActive = true
+        errorButton.leadingAnchor.constraint(equalTo: errorView.leadingAnchor).isActive = true
+        errorButton.trailingAnchor.constraint(equalTo: errorView.trailingAnchor).isActive = true
+
+        errorButton.addTarget(self, action: #selector(cancelSnackBar), for: .touchUpInside)
+
     }
 
     static func goToAuth() {
@@ -61,17 +68,27 @@ class ParentViewController: UIViewController {
 
     func showSnackbarVC(message: String) {
         count += 1
-        errorView.isHidden = false
-        errorView.translatesAutoresizingMaskIntoConstraints = false
-        errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorView.removeFromSuperview()
+
+        if let window = UIApplication.shared.connectedScenes.compactMap({ ($0 as? UIWindowScene)?.keyWindow }).last {
+            window.addSubview(errorView)
+            errorView.topAnchor.constraint(equalTo: window.topAnchor).isActive = true
+            errorView.leadingAnchor.constraint(equalTo: window.leadingAnchor).isActive = true
+            errorView.trailingAnchor.constraint(equalTo: window.trailingAnchor).isActive = true
+        }
 
         errorLabel.text = message
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             if self?.count == 1 {
-                self?.errorView.isHidden = true
+                self?.errorView.removeFromSuperview()
             }
             self?.count -= 1
         }
+    }
+    
+    @objc
+    private func cancelSnackBar() {
+        errorView.removeFromSuperview()
     }
 }

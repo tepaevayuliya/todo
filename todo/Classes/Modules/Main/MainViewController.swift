@@ -45,6 +45,7 @@ final class MainViewController: ParentViewController {
         })
 
         getData()
+        configureRefreshControl()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,6 +58,19 @@ final class MainViewController: ParentViewController {
             selectedItem = nil
         default:
             break
+        }
+    }
+
+    func configureRefreshControl() {
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+
+    @objc 
+    private func handleRefreshControl() {
+        getData()
+        DispatchQueue.main.async {
+            self.collectionView.refreshControl?.endRefreshing()
         }
     }
 
@@ -222,6 +236,14 @@ extension MainViewController: UICollectionViewDelegate {
 extension MainViewController: NewItemViewControllerDelegate {
     func didSelect(_: NewItemViewController) {
         getData()
+
+        let count: Int
+        if let selectedDate {
+            count = sections.first(where: { $0.date == selectedDate })?.items.count ?? 0
+        } else {
+            count = data.count
+        }
+        collectionView.scrollToItem(at: IndexPath(item: count - 1, section: 1), at: .bottom, animated: false)
     }
 }
 
