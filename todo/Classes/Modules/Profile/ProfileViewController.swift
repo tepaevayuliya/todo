@@ -98,26 +98,18 @@ final class ProfileViewController: ParentViewController, UINavigationControllerD
     }
 
     private func getProfileImageView() {
-        Task {
-            do {
-                if let imageId = self.data?.imageId {
-                    let modifier = AnyModifier { request in
-                        var request = request
-                        if let token = UserManager.shared.accessToken {
-                            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-                        }
-                        return request
-                    }
-
-                    profileImageView.kf.cancelDownloadTask()
-                    let urlString = "http://45.144.64.179/api/user/photo/\(imageId)"
-                    profileImageView.kf.setImage(with: URL(string: urlString), placeholder: nil, options: [.requestModifier(modifier)])
+        if let imageId = self.data?.imageId {
+            let modifier = AnyModifier { request in
+                var request = request
+                if let token = UserManager.shared.accessToken {
+                    request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
                 }
-            } catch {
-                DispatchQueue.main.async {
-                    self.showSnackbarVC(message: error.localizedDescription)
-                }
+                return request
             }
+
+            profileImageView.kf.cancelDownloadTask()
+            let urlString = "\(PlistFiles.apiBaseUrl)/api/user/photo/\(imageId)"
+            profileImageView.kf.setImage(with: URL(string: urlString), placeholder: nil, options: [.requestModifier(modifier)])
         }
     }
 }

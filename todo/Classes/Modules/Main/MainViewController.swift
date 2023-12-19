@@ -61,7 +61,7 @@ final class MainViewController: ParentViewController {
         }
     }
 
-    func configureRefreshControl() {
+    private func configureRefreshControl() {
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
     }
@@ -82,9 +82,7 @@ final class MainViewController: ParentViewController {
             collectionView.reloadSections(IndexSet(integer: 1))
         }
     }
-
     @IBOutlet private var newTaskButton: PrimaryButton!
-
     @IBOutlet private var collectionView: UICollectionView!
 
     @IBAction private func didTapNewTaskButton() {
