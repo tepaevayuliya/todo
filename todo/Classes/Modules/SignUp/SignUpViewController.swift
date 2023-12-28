@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Dip
 
 final class SignUpViewController: ParentViewController {
+    @Injected private var networkManager: SignUpManager!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,18 +68,20 @@ final class SignUpViewController: ParentViewController {
         }
 
         if isValidFlag {
+            signUpButton.setLoading(true)
             Task {
                 do {
-                    _ = try await NetworkManager.shared.signUp(name: nameTextField.text ?? "", email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
+                    _ = try await networkManager.signUp(name: nameTextField.text ?? "", email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
 
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateInitialViewController()
                     view.window?.rootViewController = vc
                 } catch {
                     DispatchQueue.main.async {
-                        self.showSnackbarVC(message: error.localizedDescription)
+                        self.snackBarView.showSnackbarVC(message: error.localizedDescription)
                     }
                 }
+                signUpButton.setLoading(false)
             }
         }
     }

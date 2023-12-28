@@ -66,10 +66,6 @@ final class NetworkManager {
         var request = URLRequest(url: url)
         request.httpMethod = method
 
-        if let requestBody {
-            request.httpBody = try encoder.encode(requestBody)
-        }
-
         if let userImage = requestBody as? Data {
             let boundary = UUID().uuidString
 
@@ -77,6 +73,9 @@ final class NetworkManager {
 
             request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         } else {
+            if let requestBody {
+                request.httpBody = try encoder.encode(requestBody)
+            }
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue("application/json", forHTTPHeaderField: "Accept")
         }
@@ -105,81 +104,6 @@ final class NetworkManager {
         } else {
             throw NetworkError.wrongResponse
         }
-    }
-
-    func signIn(email: String, password: String) async throws -> AuthResponse {
-        let signInData = SignInRequestBody(email: email, password: password)
-        let authResponse: AuthResponse = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/auth/login",
-            method: "POST",
-            requestBody: signInData
-        )
-        UserManager.shared.set(accessToken: authResponse.accessToken)
-        return authResponse
-    }
-
-    func signUp(name: String, email: String, password: String) async throws -> AuthResponse {
-        let signUpData = SignUpRequestBody(name: name, email: email, password: password)
-        let authResponse: AuthResponse = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/auth/registration",
-            method: "POST",
-            requestBody: signUpData
-        )
-        UserManager.shared.set(accessToken: authResponse.accessToken)
-        return authResponse
-    }
-
-    func getTodoList() async throws -> [TodosResponse] {
-        let todosResponse: [TodosResponse] = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/todos",
-            method: "GET"
-        )
-        return todosResponse
-    }
-
-    func createNewTodo(title: String, description: String, date: Date) async throws -> TodosResponse {
-        let newItemData = TodosRequestBody(title: title, description: description, date: date)
-        let newTodoResponse: TodosResponse = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/todos",
-            method: "POST",
-            requestBody: newItemData
-        )
-        return newTodoResponse
-    }
-
-    func toggleTodoMark(todoId: String) async throws -> EmptyResponse {
-        let todoMarkResponse: EmptyResponse = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/todos/mark/\(todoId)",
-            method: "PUT"
-        )
-        return todoMarkResponse
-    }
-
-    func deleteTodo(todoId: String) async throws -> EmptyResponse {
-        let deleteResponse: EmptyResponse = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/todos/\(todoId)",
-            method: "DELETE"
-        )
-        return deleteResponse
-    }
-
-    func getUserProfile() async throws -> ProfileResponse {
-        let profileResponse: ProfileResponse = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/user",
-            method: "GET"
-        )
-        return profileResponse
-    }
-
-    func uploadUserPhoto(image: UIImage) async throws -> EmptyResponse {
-        let userImage = image.jpegData(compressionQuality: 0.2)
-
-        let response: EmptyResponse = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/user/photo",
-            method: "POST",
-            requestBody: userImage
-        )
-        return response
     }
 
     private func multipartFormDataBody(userImage: Data, boundary: String) -> Data {

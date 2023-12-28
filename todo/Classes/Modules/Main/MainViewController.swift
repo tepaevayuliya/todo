@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Dip
 
 final class MainViewController: ParentViewController {
+    @Injected private var networkManager: MainManager!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,6 +47,7 @@ final class MainViewController: ParentViewController {
             }
         })
 
+        (view as? StatefullView)?.state = .loading
         getData()
         configureRefreshControl()
     }
@@ -55,6 +59,7 @@ final class MainViewController: ParentViewController {
         case let destination as NewItemViewController:
             destination.delegate = self
             destination.selectedItem = selectedItem
+            destination.selectedDate = selectedDate
             selectedItem = nil
         default:
             break
@@ -66,12 +71,10 @@ final class MainViewController: ParentViewController {
         collectionView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
     }
 
-    @objc 
+    @objc
     private func handleRefreshControl() {
+        refreshСontrolIsDisplayed = true
         getData()
-        DispatchQueue.main.async {
-            self.collectionView.refreshControl?.endRefreshing()
-        }
     }
 
     private var data = [TodosResponse]()
@@ -85,6 +88,8 @@ final class MainViewController: ParentViewController {
     @IBOutlet private var newTaskButton: PrimaryButton!
     @IBOutlet private var collectionView: UICollectionView!
 
+    private var refreshСontrolIsDisplayed = false
+
     @IBAction private func didTapNewTaskButton() {
         goToNewItem()
     }
@@ -97,9 +102,7 @@ final class MainViewController: ParentViewController {
     private func getData() {
         Task {
             do {
-                (view as? StatefullView)?.state = .loading
-
-                data = try await NetworkManager.shared.getTodoList()
+                data = try await networkManager.getTodoList()
 
                 sections = data
                     .reduce(into: [(date: Date, items: [TodosResponse])](), { partialResult, item in
@@ -126,6 +129,13 @@ final class MainViewController: ParentViewController {
             } catch {
                 (view as? StatefullView)?.state = .empty(error: error)
             }
+
+            if refreshСontrolIsDisplayed {
+                DispatchQueue.main.async {
+                    self.collectionView.refreshControl?.endRefreshing()
+                    self.refreshСontrolIsDisplayed = false
+                }
+            }
         }
     }
 
@@ -136,11 +146,12 @@ final class MainViewController: ParentViewController {
     private func toggleTodo(id: String) {
         Task {
             do {
-                _ = try await NetworkManager.shared.toggleTodoMark(todoId: id)
+                _ = try await networkManager.toggleTodoMark(todoId: id)
+                (view as? StatefullView)?.state = .loading
                 getData()
             } catch {
                 DispatchQueue.main.async {
-                    self.showSnackbarVC(message: error.localizedDescription)
+                    self.snackBarView.showSnackbarVC(message: error.localizedDescription)
                 }
             }
         }
@@ -232,16 +243,21 @@ extension MainViewController: UICollectionViewDelegate {
 }
 
 extension MainViewController: NewItemViewControllerDelegate {
-    func didSelect(_: NewItemViewController) {
+    func didSelect(_: NewItemViewController, action: ItemAction, date: Date?) {
         getData()
 
-        let count: Int
-        if let selectedDate {
-            count = sections.first(where: { $0.date == selectedDate })?.items.count ?? 0
-        } else {
-            count = data.count
+        switch action {
+        case .create:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
+                if let newDate = date, let selectedDate, !Calendar.current.isDate(selectedDate, inSameDayAs: newDate) {
+                    return
+                } else {
+                    collectionView.scrollToItem(at: IndexPath(item: collectionView.numberOfItems(inSection: 1) - 1, section: 1), at: .bottom, animated: false)
+                }
+            }
+        case .delete:
+            break
         }
-        collectionView.scrollToItem(at: IndexPath(item: count - 1, section: 1), at: .bottom, animated: false)
     }
 }
 
