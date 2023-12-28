@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import UIKit
 
 enum NetworkError: LocalizedError {
     case wrongStatusCode, wrongURL, wrongResponse, expiredToken
@@ -65,12 +66,19 @@ final class NetworkManager {
         var request = URLRequest(url: url)
         request.httpMethod = method
 
-        if let requestBody {
-            request.httpBody = try encoder.encode(requestBody)
-        }
+        if let userImage = requestBody as? Data {
+            let boundary = UUID().uuidString
 
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.httpBody = multipartFormDataBody(userImage: userImage, boundary: boundary)
+
+            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        } else {
+            if let requestBody {
+                request.httpBody = try encoder.encode(requestBody)
+            }
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+        }
 
         if let accessToken = UserManager.shared.accessToken {
             request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
@@ -98,67 +106,13 @@ final class NetworkManager {
         }
     }
 
-    func signIn(email: String, password: String) async throws -> AuthResponse {
-        let signInData = SignInRequestBody(email: email, password: password)
-        let authResponse: AuthResponse = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/auth/login",
-            method: "POST",
-            requestBody: signInData
-        )
-        UserManager.shared.set(accessToken: authResponse.accessToken)
-        return authResponse
-    }
-
-    func signUp(name: String, email: String, password: String) async throws -> AuthResponse {
-        let signUpData = SignUpRequestBody(name: name, email: email, password: password)
-        let authResponse: AuthResponse = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/auth/registration",
-            method: "POST",
-            requestBody: signUpData
-        )
-        UserManager.shared.set(accessToken: authResponse.accessToken)
-        return authResponse
-    }
-
-    func getTodoList() async throws -> [TodosResponse] {
-        let todosResponse: [TodosResponse] = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/todos",
-            method: "GET"
-        )
-        return todosResponse
-    }
-
-    func createNewTodo(title: String, description: String, date: Date) async throws -> TodosResponse {
-        let newItemData = TodosRequestBody(title: title, description: description, date: date)
-        let newTodoResponse: TodosResponse = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/todos",
-            method: "POST",
-            requestBody: newItemData
-        )
-        return newTodoResponse
-    }
-
-    func toggleTodoMark(todoId: String) async throws -> EmptyResponse {
-        let todoMarkResponse: EmptyResponse = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/todos/mark/\(todoId)",
-            method: "PUT"
-        )
-        return todoMarkResponse
-    }
-
-    func deleteTodo(todoId: String) async throws -> EmptyResponse {
-        let deleteResponse: EmptyResponse = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/todos/\(todoId)",
-            method: "DELETE"
-        )
-        return deleteResponse
-    }
-
-    func getUserProfile() async throws -> ProfileResponse {
-        let profileResponse: ProfileResponse = try await request(
-            urlPart: "\(PlistFiles.apiBaseUrl)/api/user",
-            method: "GET"
-        )
-        return profileResponse
+    private func multipartFormDataBody(userImage: Data, boundary: String) -> Data {
+        var body = Data()
+        body.append("\r\n--\(boundary)\r\n")
+        body.append("Content-Disposition: form-data; name=\"uploadedFile\"; filename=\"image.jpg\"\r\n")
+        body.append("Content-Type: image/jpeg\r\n\r\n")
+        body.append(userImage)
+        body.append("\r\n--\(boundary)--\r\n")
+        return body
     }
 }

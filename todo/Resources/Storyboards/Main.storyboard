@@ -59,6 +59,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Lm9-cm-xPY"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="nil" keyPath="dipTag"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="collectionView" destination="wwA-Ed-D96" id="93d-wU-3Re"/>
                         <outlet property="newTaskButton" destination="UrP-Ve-Np0" id="qgD-PR-cXM"/>

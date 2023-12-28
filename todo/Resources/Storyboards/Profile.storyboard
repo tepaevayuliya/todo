@@ -60,6 +60,9 @@
                             <constraint firstItem="UkT-pB-rnI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Lle-2y-AZq" secondAttribute="bottom" id="t4p-wt-eeE"/>
                         </constraints>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="nil" keyPath="dipTag"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="exitButton" destination="UkT-pB-rnI" id="dk2-Ph-2Pr"/>
                         <outlet property="profileImageView" destination="Eo0-hf-fnz" id="Dc8-95-rGZ"/>

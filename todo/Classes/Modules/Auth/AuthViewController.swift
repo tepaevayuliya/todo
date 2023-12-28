@@ -59,19 +59,20 @@ final class AuthViewController: ParentViewController {
         }
 
         if isValidFlag {
+            signInButton.setLoading(true)
             Task {
                 do {
-//                    _ = try await NetworkManager.shared.signIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
-                    _ = try await networkManager.signInDip(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
+                    _ = try await networkManager.signIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
 
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateInitialViewController()
                     view.window?.rootViewController = vc
                 } catch {
                     DispatchQueue.main.async {
-                        self.showSnackbarVC(message: error.localizedDescription)
+                        self.snackBarView.showSnackbarVC(message: error.localizedDescription)
                     }
                 }
+                signInButton.setLoading(true)
             }
         }
     }

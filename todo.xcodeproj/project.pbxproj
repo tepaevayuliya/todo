@@ -14,6 +14,12 @@
 		5C151E3B2AEAB8E5009684FE /* TodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C151E3A2AEAB8E5009684FE /* TodoTests.swift */; };
 		5C151E452AEAB8E5009684FE /* TodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C151E442AEAB8E5009684FE /* TodoUITests.swift */; };
 		5C151E472AEAB8E5009684FE /* TodoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C151E462AEAB8E5009684FE /* TodoUITestsLaunchTests.swift */; };
+		5C21316D2B38B99500C8455C /* SignUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21316C2B38B99500C8455C /* SignUpManager.swift */; };
+		5C21316F2B38D7FB00C8455C /* MainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C21316E2B38D7FB00C8455C /* MainManager.swift */; };
+		5C2131712B38DAB200C8455C /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2131702B38DAB200C8455C /* ProfileManager.swift */; };
+		5C2131732B38DBF400C8455C /* NewItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2131722B38DBF400C8455C /* NewItemManager.swift */; };
+		5C2131752B3A25CB00C8455C /* SnackBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2131742B3A25CB00C8455C /* SnackBarView.swift */; };
+		5C2131772B3B1B1900C8455C /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2131762B3B1B1900C8455C /* Data+.swift */; };
 		5C50A3022AFD33AE00EEE149 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A3002AFD33AE00EEE149 /* PrimaryButton.swift */; };
 		5C50A3032AFD33AE00EEE149 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A3012AFD33AE00EEE149 /* MainButton.swift */; };
 		5C50A3062AFD358000EEE149 /* ValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C50A3052AFD358000EEE149 /* ValidationManager.swift */; };
@@ -95,6 +101,12 @@
 		5C151E402AEAB8E5009684FE /* todoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C151E442AEAB8E5009684FE /* TodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUITests.swift; sourceTree = "<group>"; };
 		5C151E462AEAB8E5009684FE /* TodoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5C21316C2B38B99500C8455C /* SignUpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpManager.swift; sourceTree = "<group>"; };
+		5C21316E2B38D7FB00C8455C /* MainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainManager.swift; sourceTree = "<group>"; };
+		5C2131702B38DAB200C8455C /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
+		5C2131722B38DBF400C8455C /* NewItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemManager.swift; sourceTree = "<group>"; };
+		5C2131742B3A25CB00C8455C /* SnackBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBarView.swift; sourceTree = "<group>"; };
+		5C2131762B3B1B1900C8455C /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		5C50A3002AFD33AE00EEE149 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		5C50A3012AFD33AE00EEE149 /* MainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		5C50A3052AFD358000EEE149 /* ValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationManager.swift; sourceTree = "<group>"; };
@@ -311,6 +323,10 @@
 			children = (
 				5CCBF8852B0FA21900790C8D /* OSLog.swift */,
 				5CEB02BF2B2B51E1002B6C55 /* AuthManager.swift */,
+				5C21316C2B38B99500C8455C /* SignUpManager.swift */,
+				5C21316E2B38D7FB00C8455C /* MainManager.swift */,
+				5C2131702B38DAB200C8455C /* ProfileManager.swift */,
+				5C2131722B38DBF400C8455C /* NewItemManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -440,6 +456,7 @@
 				5C50A3102B02DB7F00EEE149 /* TextViewInput.swift */,
 				5CCBF89D2B18E5FD00790C8D /* LoadingIndicatorImageView.swift */,
 				5CCBF8A12B18E9AA00790C8D /* StatefullView.swift */,
+				5C2131742B3A25CB00C8455C /* SnackBarView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -450,6 +467,7 @@
 				5CCBF8922B10CBC900790C8D /* DateFormatter.swift */,
 				5C54AEF42B21398B004CA56E /* UIViewController+Keyboard.swift */,
 				5C54AF052B22275A004CA56E /* Date+.swift */,
+				5C2131762B3B1B1900C8455C /* Data+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -656,6 +674,8 @@
 			files = (
 				5C54AEFF2B221BC5004CA56E /* Plist.swift in Sources */,
 				5C50A3022AFD33AE00EEE149 /* PrimaryButton.swift in Sources */,
+				5C21316F2B38D7FB00C8455C /* MainManager.swift in Sources */,
+				5C2131712B38DAB200C8455C /* ProfileManager.swift in Sources */,
 				5C50A3112B02DB7F00EEE149 /* TextViewInput.swift in Sources */,
 				5CEB02B62B2A0CB4002B6C55 /* TodosRequestBody.swift in Sources */,
 				5CEB02BC2B2B51A1002B6C55 /* ManagersAssembly.swift in Sources */,
@@ -668,6 +688,7 @@
 				5CCBF8932B10CBC900790C8D /* DateFormatter.swift in Sources */,
 				5CEB02C02B2B51E1002B6C55 /* AuthManager.swift in Sources */,
 				5C151E282AEAB8E2009684FE /* AuthViewController.swift in Sources */,
+				5C2131772B3B1B1900C8455C /* Data+.swift in Sources */,
 				5CE2343A2AF3F3660097AB36 /* TextField.swift in Sources */,
 				5CCD1C272AF6B3BE002C7FAF /* SignUpViewController.swift in Sources */,
 				5C54AEFE2B221BC5004CA56E /* Strings.swift in Sources */,
@@ -676,6 +697,7 @@
 				5C50A3032AFD33AE00EEE149 /* MainButton.swift in Sources */,
 				5C54AF042B222043004CA56E /* MainDateCell.swift in Sources */,
 				5C54AEF52B21398B004CA56E /* UIViewController+Keyboard.swift in Sources */,
+				5C2131752B3A25CB00C8455C /* SnackBarView.swift in Sources */,
 				5CCB523F2B1CD49400F3A281 /* SignUpRequestBody.swift in Sources */,
 				5C50A3062AFD358000EEE149 /* ValidationManager.swift in Sources */,
 				5CCBF8862B0FA21900790C8D /* OSLog.swift in Sources */,
@@ -693,8 +715,10 @@
 				5C54AF0B2B2340E7004CA56E /* ProfileViewController.swift in Sources */,
 				5CCBF8952B135A1000790C8D /* TodosResponse.swift in Sources */,
 				5CE2343D2AF3FE400097AB36 /* TextInput.swift in Sources */,
+				5C21316D2B38B99500C8455C /* SignUpManager.swift in Sources */,
 				5CCB52412B1CD4BC00F3A281 /* SignInRequestBody.swift in Sources */,
 				5CEB02B42B28CA43002B6C55 /* LargeButton.swift in Sources */,
+				5C2131732B38DBF400C8455C /* NewItemManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Dip
 
 struct NewItemData {
     let title: String
@@ -14,11 +15,18 @@ struct NewItemData {
     let isCompleted: Bool
 }
 
+enum ItemAction {
+    case create
+    case delete
+}
+
 protocol NewItemViewControllerDelegate: AnyObject {
-    func didSelect(_ vc: NewItemViewController)
+    func didSelect(_ vc: NewItemViewController, action: ItemAction, date: Date?)
 }
 
 final class NewItemViewController: ParentViewController {
+    @Injected private var networkManager: NewItemManager!
+
     @IBOutlet private var titleView: TextViewInput!
     @IBOutlet private var descriptionView: TextViewInput!
     @IBOutlet private var deadlineLabel: UILabel!
@@ -28,6 +36,12 @@ final class NewItemViewController: ParentViewController {
     @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var superView: UIView!
 
+    private lazy var createButtonTopConstraint = createButton.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0)
+    @IBOutlet private var keyboardTopConstraint: NSLayoutConstraint!
+    @IBOutlet private var keyboardScrollViewConstraint: NSLayoutConstraint!
+
+    var selectedItem: TodosResponse?
+    var selectedDate: Date?
     weak var delegate: NewItemViewControllerDelegate?
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -54,6 +68,10 @@ final class NewItemViewController: ParentViewController {
         datePicker.tintColor = UIColor.Color.lightRed
 
         addTapToHideKeyboardGesture()
+
+        if let selectedDate {
+            datePicker.date = selectedDate
+        }
 
         if let selectedItem {
             let button = UIButton(type: .system)
@@ -87,10 +105,6 @@ final class NewItemViewController: ParentViewController {
         }
     }
 
-    private lazy var createButtonTopConstraint = createButton.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0)
-    @IBOutlet private var keyboardTopConstraint: NSLayoutConstraint!
-    @IBOutlet private var keyboardScrollViewConstraint: NSLayoutConstraint!
-
     @objc
     private func deleteToDo() {
         guard let itemId = selectedItem?.id else {
@@ -98,19 +112,19 @@ final class NewItemViewController: ParentViewController {
         }
         Task {
             do {
-                _ = try await NetworkManager.shared.deleteTodo(todoId: itemId)
+                _ = try await networkManager.deleteTodo(todoId: itemId)
 
-                delegate?.didSelect(self)
+                delegate?.didSelect(self, action: .delete, date: nil)
                 navigationController?.popViewController(animated: true)
             } catch {
                 DispatchQueue.main.async {
-                    self.showSnackbarVC(message: error.localizedDescription)
+                    self.snackBarView.showSnackbarVC(message: error.localizedDescription)
                 }
             }
         }
     }
 
-    @IBAction private func didTap() {
+    @IBAction private func createToDo() {
         var isValidFlag = true
 
         if titleView.text?.isEmpty ?? true {
@@ -124,20 +138,20 @@ final class NewItemViewController: ParentViewController {
         }
 
         if isValidFlag {
+            createButton.setLoading(true)
             Task {
                 do {
-                    _ = try await NetworkManager.shared.createNewTodo(title: titleView.text ?? "", description: descriptionView.text ?? "", date: datePicker.date)
+                    _ = try await networkManager.createNewTodo(title: titleView.text ?? "", description: descriptionView.text ?? "", date: datePicker.date)
 
-                    delegate?.didSelect(self)
+                    delegate?.didSelect(self, action: .create, date: datePicker.date)
                     navigationController?.popViewController(animated: true)
                 } catch {
                     DispatchQueue.main.async {
-                        self.showSnackbarVC(message: error.localizedDescription)
+                        self.snackBarView.showSnackbarVC(message: error.localizedDescription)
                     }
                 }
+                createButton.setLoading(false)
             }
         }
     }
-
-    var selectedItem: TodosResponse?
 }

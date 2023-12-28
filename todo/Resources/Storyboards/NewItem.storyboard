@@ -76,7 +76,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="didTap" destination="Y6W-OH-hqX" eventType="touchUpInside" id="bsQ-Xd-1Zo"/>
+                                    <action selector="createToDo" destination="Y6W-OH-hqX" eventType="touchUpInside" id="bsQ-Xd-1Zo"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -94,6 +94,9 @@
                             <constraint firstItem="n7b-Qc-bEn" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="Y2d-aN-RdM"/>
                         </constraints>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="nil" keyPath="dipTag"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="createButton" destination="2Uf-IX-kKS" id="yjg-bG-tRt"/>
                         <outlet property="datePicker" destination="tQt-S2-DMm" id="a1b-DA-44k"/>

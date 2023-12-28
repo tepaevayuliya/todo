@@ -14,8 +14,16 @@ enum VCAssembly {
         let container = DependencyContainer()
         container.collaborate(with: ManagersAssembly.container)
         container.register { AuthViewController() }
+        container.register { SignUpViewController() }
+        container.register { MainViewController() }
+        container.register { ProfileViewController() }
+        container.register { NewItemViewController() }
         return container
     }()
 }
 
 extension AuthViewController: StoryboardInstantiatable {}
+extension SignUpViewController: StoryboardInstantiatable {}
+extension MainViewController: StoryboardInstantiatable {}
+extension ProfileViewController: StoryboardInstantiatable {}
+extension NewItemViewController: StoryboardInstantiatable {}
